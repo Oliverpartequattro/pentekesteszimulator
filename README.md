@@ -1,0 +1,2 @@
+# pentekesteszimulator
+Péntek Este Szimulátor
