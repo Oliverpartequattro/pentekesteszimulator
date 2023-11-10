@@ -1,5 +1,5 @@
 # Péntek Este Szimulátor 📆
-A legnormálisabb Jedlikes gyerek egy átlagos péntel estélyét szemléltető program. 😂
+A legnormálisabb Jedlikes gyerek egy átlagos péntek estélyét szemléltető program. 😂
 
 Dokumentáció: Péntek Este Szimulátor.docx 📰
 
