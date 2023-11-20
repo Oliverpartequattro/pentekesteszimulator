@@ -47,9 +47,10 @@ namespace Pentekesteszimulator
             Console.WriteLine();
 
             int length = $"Pénz: {Convert.ToString(player.Money)} Ft".Length + $"Véralkohol szint: {Convert.ToString(player.Alcohol)} ezrelék".Length + $"Boldogság: {Convert.ToString(player.Happiness)}".Length;
-            Console.Write(writePlayer($"Pénz: {Convert.ToString(player.Money)} Ft", length));
-            Console.Write(writePlayer($"Véralkohol szint: {Convert.ToString(player.Alcohol)} ezrelék", length));
-            Console.Write(writePlayer($"Boldogság: {Convert.ToString(player.Happiness)}", length));
+
+            writePlayer($"Pénz: {Convert.ToString(player.Money)} Ft", length);
+            writePlayer($"Véralkohol szint: {Convert.ToString(player.Alcohol)} ezrelék", length);
+            writePlayer($"Boldogság: {Convert.ToString(player.Happiness)}", length);
 
             Console.WriteLine("\n");
             Console.WriteLine(textCenter("Idő: " + player.Time));
@@ -65,9 +66,97 @@ namespace Pentekesteszimulator
             return ret;
         }
 
-        static string writePlayer(string text, int len)
+        static void writePlayer(string text, int len)
         {
-            return new string(' ', (Console.WindowWidth - len) / 4) + text;
+            if (text[text.Length-1] == 't') //pénz
+            {
+                string[] words = text.Split(' ');
+                Console.Write(new string(' ', (Console.WindowWidth - len) / 4));
+                Console.Write(words[0] + " ");
+
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                if (int.Parse(words[1]) >= 4000)
+                {
+                    Console.ForegroundColor= ConsoleColor.Green;
+                }
+                else if (int.Parse(words[1]) <= 2000)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                Console.Write(words[1] + " ");
+                Console.Write(words[2]);
+                Console.ForegroundColor = ConsoleColor.White;
+
+            }
+            else if (text[text.Length - 1] == 'k') // alkohol
+            {
+                string[] words = text.Split(' ');
+                Console.Write(new string(' ', (Console.WindowWidth - len) / 4));
+                Console.Write(words[0] + " ");
+                Console.Write(words[1] + " ");
+
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                if (double.Parse(words[2]) >= 4)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                else if (double.Parse(words[2]) >= 3)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                }
+                else if (double.Parse(words[2]) >= 1)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                Console.Write(words[2] + " ");
+                Console.Write(words[3]);
+                Console.ForegroundColor = ConsoleColor.White;
+
+            }
+            else // boldogság
+            {
+                string[] words = text.Split(' ');
+                Console.Write(new string(' ', (Console.WindowWidth - len) / 4));
+                Console.Write(words[0] + " ");
+
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                if (int.Parse(words[1]) >= 80)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                }
+                else if (int.Parse(words[1]) >= 60)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
+                else if (int.Parse(words[1]) >= 40)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                else if (int.Parse(words[1]) >= 20)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+
+                Console.Write(words[1]);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
 
         static string textCenter(string text)

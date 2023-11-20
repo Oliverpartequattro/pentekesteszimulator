@@ -1,7 +1,6 @@
-Idő növekvés függvény
-Displayben színezés
+Idő növekvés függvény(random)
 Fancy menü választás
 
 
-
+Az atribute változások randomok legyenek
 Többi...
