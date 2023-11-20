@@ -1,0 +1,7 @@
+Idő növekvés függvény
+Displayben színezés
+Fancy menü választás
+
+
+
+Többi...
