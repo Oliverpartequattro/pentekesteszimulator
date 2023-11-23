@@ -19,7 +19,7 @@ namespace Pentekesteszimulator
             Alcohol = 0.0; // vérezrelék
 
             Random r = new Random();
-            Happiness = r.Next(0, 101); // 100-ból
+            Happiness = r.Next(30, 60); // 100-ból
 
             Time = "17:00";
         }

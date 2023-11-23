@@ -12,6 +12,7 @@ namespace Pentekesteszimulator
     {
         public static int Display(string location, string description, string question, string[] options, Player1 player)
         {
+            Console.Clear();
             Console.WriteLine(new string(textCenter("   ___  _        _       _                _                 _                 _   _   _             ")));
             Console.WriteLine(new string(textCenter("  / _ \\/_/ _ __ | |_ ___| | __   ___  ___| |_ ___   ___ ___(_)_ __ ___  _   _| | /_/_| |_ ___  _ __ ")));
             Console.WriteLine(new string(textCenter(" / /_)/ _ \\ '_ \\| __/ _ \\ |/ /  / _ \\/ __| __/ _ \\ / __|_  / | '_ ` _ \\| | | | |/ _` | __/ _ \\| '__|")));
@@ -30,6 +31,8 @@ namespace Pentekesteszimulator
 
             Console.WriteLine($"{question}\n");
 
+            Time(player);
+
             for (int i = 0; i < options.Length; i++)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -46,10 +49,10 @@ namespace Pentekesteszimulator
             Console.WriteLine(textCenter("Játékos Tulajdonságai:"));
             Console.WriteLine();
 
-            int length = $"Pénz: {Convert.ToString(player.Money)} Ft".Length + $"Véralkohol szint: {Convert.ToString(player.Alcohol)} ezrelék".Length + $"Boldogság: {Convert.ToString(player.Happiness)}".Length;
-
+            int length = $"Pénz: {Convert.ToString(player.Money)} Ft".Length + $"Véralkohol szint: {Convert.ToString(Math.Round(player.Alcohol, 2))} ezrelék".Length + $"Boldogság: {Convert.ToString(player.Happiness)}".Length;
+            
             writePlayer($"Pénz: {Convert.ToString(player.Money)} Ft", length);
-            writePlayer($"Véralkohol szint: {Convert.ToString(player.Alcohol)} ezrelék", length);
+            writePlayer($"Véralkohol szint: {Convert.ToString(Math.Round(player.Alcohol, 2))} ezrelék", length);
             writePlayer($"Boldogság: {Convert.ToString(player.Happiness)}", length);
 
             Console.WriteLine("\n");
