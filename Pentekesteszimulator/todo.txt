@@ -9,6 +9,8 @@ Szívroham
 Pénz kérés az elején
 Maximum boldogság 100
 Valamiért zöld minden
+a program csak ott nem áll le soha ami a displaybe van irva displayend
+százalékok töül sokak
 
 Az atribute változások randomok legyenek
 Többi...

@@ -69,6 +69,9 @@ namespace Pentekesteszimulator
                 case 2:
                     Falu();
                     break;
+                case 3:
+                    //Kulfold();
+                    break;
             }
         }
 
@@ -89,7 +92,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, 2, 0, player);
             string[] options = new string[] { "Szórakozóhely", "Kocsma", "Supermarket" };
-            int choice = Display("Putri Pályaudvar", "A Putri Pályaudvaron vagy", " ", "Hová mész tovább?", options, player);
+            int choice = Display("Putri Pályaudvar", "A Putri Pályaudvaron vagy.", " ", "Hová mész tovább?", options, player);
 
             switch (choice)
             {
@@ -114,10 +117,10 @@ namespace Pentekesteszimulator
             int choice;
             if (chance <= 40)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                choice = Display($"Happy Hours Nightclub", "Beléptél a szórakozóhelyre.", "Megláttál egy aranyos lányt", "Mit teszel?", options, player);
-                Console.ResetColor();
                 options = new string[] { "Ivás", "Az \"éj hölgye\"", "Vissza a városba", "Odamész ahhoz az aranyos lányhoz" };
+                Console.ForegroundColor = ConsoleColor.Green;
+                choice = Display($"Happy Hours Nightclub", "Beléptél a szórakozóhelyre.", "Megláttál egy aranyos lányt.", "Mit teszel?", options, player);
+                Console.ResetColor();      
             }
             else
             {
@@ -135,7 +138,7 @@ namespace Pentekesteszimulator
                     Varos();
                     break;
                 case 4:
-
+                    IngyenesNeni();
                     break;
             }
         }
@@ -143,33 +146,54 @@ namespace Pentekesteszimulator
         static void EjHolgye()
         {
             int chance = r.Next(0, 100);
-            Increase(0, 5, -10000, player); //alkohol boldogság pénz
-            string[] options = new string[] { "Elmész vele a panelba" };
-            if (chance <= 100)
+            Increase(0, 30, -10000, player); //alkohol boldogság pénz
+            string[] options = new string[]{ "Megmutatom neki a Fortnite Battle Passomat.",};
+            int choice;
+            if (chance <= 40)
             {
-                options = new string[] { "Elmész vele a panelba", "Elmenekülsz" };
+                options = new string[] { "Felül leszek", "Alul leszek", "Elmenekülök", };
+                Console.ForegroundColor = ConsoleColor.Green;
+                choice = Display($"Cigiszagú panel", "Felvitt a fizetős \"hölgy\" a paneljébe.", "Nagyobb neki, mint neked.", "Mit teszel?", options, player);
+                Console.ResetColor();
             }
             else
             {
-
+                choice = Display("Cigiszagú panel", "Felvitt egy cigiszagú panelbe, ahol 3 férfi fehér csíkokat szív az asztalról.", " ", "Mit teszel?", options, player);
             }
-
-            int choice = Display("Az éj hölgye", "Igénybe vetted az éjszaka hölgyének szolgáltatásait", " ", "Mit teszel?", options, player);
-
             switch (choice)
             {
-
                 case 1:
-                    DisplayEnd(false, "Cigiszagú panel", "Kurelás");
+                    DisplayEnd(false, "Cigiszagú panel", "A fortika reszelés után megbánva hazamentél, mert elvesztetted a vbucksjaidat.");
                     break;
                 case 2:
-                    Console.WriteLine("masodik");
+                    DisplayEnd(false, "Cigiszagú panel", "Az incidens után alig tudtál menni, annyira fájt a hátsó feled, megbántad az estét.");
                     break;
                 case 3:
                     Varos();
                     break;
-                case 4:
+            }
+        }
 
+        static void IngyenesNeni()
+        {
+            int chance = r.Next(0, 100);
+            Increase(0, 50, 0, player); //alkohol boldogság pénz
+            string[] options = new string[] { "Hazaviszed", "Elutasítod és inkább iszol egyet"};
+            int choice;
+           choice = Display("Happy Hours Nightclub", "Beszélgettél a lánnyal, és fel akar menni a lakásodba.", " ", "Mit teszel?", options, player);
+            switch (choice)
+            {
+                case 1:
+                   if(chance <= 10) { 
+                    DisplayEnd(false, "Győrzámoly, Szerencse utca 9", "A helyes lány titokban egy szerb bérgyilkos volt, akit placeholder küldött rád, kitömött emberi próbababát csinált belőled.");
+                    }
+                    else
+                    {
+                        DisplayEnd(true, "Győrzámoly, Szerencse utca 9", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
+                    }
+                    break;
+                case 2:
+                    Szorakozohely();
                     break;
             }
         }
