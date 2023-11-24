@@ -19,7 +19,7 @@ namespace Pentekesteszimulator
         public static void Otthon()
         {
             string[] options = new string[] { "Busz", "Autó", "Bicikli" };
-            int choice = Display("Győrzámoly, Szerencse utca 9", "Fájó fejjel kelsz fel, úgy érzed, mintha 2000 évet utaztál volna, ezért úgy döntesz, hogy berúgsz.", "Milyen járművel indulsz el?", options, player);
+            int choice = Display("Győrzámoly, Szerencse utca 9", "Fájó fejjel kelsz fel egy fura középkorban játszódó álom után, úgy érzed, mintha 2000 évet időutaztál volna, ezért úgy döntesz, hogy berúgsz.", " ", "Milyen járművel indulsz el?", options, player);
 
             switch (choice)
             {
@@ -41,7 +41,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, -10, -300, player);
             string[] options = new string[] { "Város", "Falu" };
-            int choice = Display("Buszmegálló", "Úgy döntöttél busszal indulsz útnak.", "Hová mész tovább?", options, player);
+            int choice = Display("Buszmegálló", "Úgy döntöttél busszal indulsz útnak.", " ", "Hová mész tovább?", options, player);
 
             switch (choice)
             {
@@ -59,7 +59,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, 0, -300, player);
             string[] options = new string[] { "Város", "Falu" };
-            int choice = Display("Garázs", "Úgy döntöttél autóval indulsz útnak.", "Hová mész tovább?", options, player);
+            int choice = Display("Garázs", "Úgy döntöttél autóval indulsz útnak.", " ", "Hová mész tovább?", options, player);
 
             switch (choice)
             {
@@ -76,7 +76,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, 2, 0, player);
             string[] options = new string[] { "Falu" };
-            int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", "Hová mész tovább?", options, player);
+            int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", " ", "Hová mész tovább?", options, player);
 
             switch (choice)
             {
@@ -89,7 +89,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, 2, 0, player);
             string[] options = new string[] { "Szórakozóhely", "Kocsma", "Supermarket" };
-            int choice = Display("Putri Pályaudvar", "A Putri Pályaudvaron vagy", "Hová mész tovább?", options, player);
+            int choice = Display("Putri Pályaudvar", "A Putri Pályaudvaron vagy", " ", "Hová mész tovább?", options, player);
 
             switch (choice)
             {
@@ -110,14 +110,19 @@ namespace Pentekesteszimulator
         {
             int chance = r.Next(0, 100);
             Increase(r.Next(30, 60) / 100.0, 10, -1190, player); //alkohol boldogság pénz
-            string[] options = new string[] { "Ivás", "Az \"éj hölgye\"", "Vissza a városba" };
+            string[] options = new string[] { "Ivás", "Az \"éj hölgye\" ", "Vissza a városba" };
+            int choice;
             if (chance <= 40)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
+                choice = Display($"Happy Hours Nightclub", "Beléptél a szórakozóhelyre.", "Megláttál egy aranyos lányt", "Mit teszel?", options, player);
+                Console.ResetColor();
                 options = new string[] { "Ivás", "Az \"éj hölgye\"", "Vissza a városba", "Odamész ahhoz az aranyos lányhoz" };
             }
-
-            int choice = Display("Happy Hours Nightclub", "Beléptél a szórakozóhelyre.", "Mit teszel?", options, player);
-
+            else
+            {
+                choice = Display("Happy Hours Nightclub", "Beléptél a szórakozóhelyre.", " ", "Mit teszel?", options, player);
+            }
             switch (choice)
             {
                 case 1:
@@ -140,13 +145,16 @@ namespace Pentekesteszimulator
             int chance = r.Next(0, 100);
             Increase(0, 5, -10000, player); //alkohol boldogság pénz
             string[] options = new string[] { "Elmész vele a panelba" };
-            if (chance <= 40)
+            if (chance <= 100)
             {
-                Console.BackgroundColor = ConsoleColor.Red;
                 options = new string[] { "Elmész vele a panelba", "Elmenekülsz" };
             }
+            else
+            {
 
-            int choice = Display("Az éj hölgye", "Beléptél a szórakozóhelyre.", "Mit teszel?", options, player);
+            }
+
+            int choice = Display("Az éj hölgye", "Igénybe vetted az éjszaka hölgyének szolgáltatásait", " ", "Mit teszel?", options, player);
 
             switch (choice)
             {
@@ -172,7 +180,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, 5, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Fej vagy írás", "Vissza a városba" };
-            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy", "Mit teszel?", options, player);
+            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy", " ", "Mit teszel?", options, player);
 
             switch (choice)
             {
@@ -193,7 +201,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, 5, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Fej vagy írás", "Vissza a városba" };
-            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy", "Mit teszel?", options, player);
+            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy", " ", "Mit teszel?", options, player);
 
             switch (choice)
             {
@@ -215,7 +223,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, 5, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Falu" };
-            int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", "Hová mész tovább?", options, player);
+            int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", " ","Hová mész tovább?", options, player);
 
             switch (choice)
             {

@@ -15,7 +15,7 @@ namespace Pentekesteszimulator
 
         public Player1()
         {
-            Money = 6000; // Ft
+            Money = 6000000; // Ft
             Alcohol = 0.0; // vérezrelék
 
             Random r = new Random();

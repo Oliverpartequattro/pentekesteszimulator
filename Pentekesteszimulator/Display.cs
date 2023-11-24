@@ -10,7 +10,7 @@ namespace Pentekesteszimulator
 {
     internal partial class Program
     {
-        public static int Display(string location, string description, string question, string[] options, Player1 player)
+        public static int Display(string location, string description, string extra, string question, string[] options, Player1 player)
         {
             Console.Clear();
             Console.WriteLine(new string(textCenter("   ___  _        _       _                _                 _                 _   _   _             ")));
@@ -27,9 +27,23 @@ namespace Pentekesteszimulator
             Console.WriteLine($"{location}\n");
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine($"{description}\n");
+            if (extra == " ")
+            {
+                Console.WriteLine($"{description}\n");
 
-            Console.WriteLine($"{question}\n");
+                Console.WriteLine($"{question}\n");
+            }
+            else
+            {
+            
+                    Console.WriteLine($"{description}\n");
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"{extra}\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    Console.WriteLine($"{question}\n");
+                }
 
             Time(player);
 

@@ -6,6 +6,9 @@ Increase
 Feltételes helyek
 Végén a lófasz ne
 Szívroham
+Pénz kérés az elején
+Maximum boldogság 100
+Valamiért zöld minden
 
 Az atribute változások randomok legyenek
 Többi...
