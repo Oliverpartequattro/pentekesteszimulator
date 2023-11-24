@@ -32,7 +32,6 @@ namespace Pentekesteszimulator
                 case 3:
                     Bicikli();
                     break;
-
             }
 
         }
@@ -52,7 +51,6 @@ namespace Pentekesteszimulator
                     Falu();
                     break;
             }
-
         }
 
         static void Auto()
@@ -88,6 +86,8 @@ namespace Pentekesteszimulator
                     break;
             }
         }
+
+        #region varos
         static void Varos()
         {
             Increase(0, 2, 0, player);
@@ -109,6 +109,8 @@ namespace Pentekesteszimulator
                     break;
             }
         }
+
+        #region szorakozohely
         static void Szorakozohely()
         {
             int chance = r.Next(0, 100);
@@ -197,6 +199,7 @@ namespace Pentekesteszimulator
                     break;
             }
         }
+        #endregion
 
 
 
@@ -243,6 +246,9 @@ namespace Pentekesteszimulator
             }
         }
 
+        #endregion
+
+        #region falu
         static void Falu()
         {
             Increase(0, 5, 0, player); //alkohol boldogság pénz
@@ -256,6 +262,7 @@ namespace Pentekesteszimulator
                     break;
             }
         }
+        #endregion
 
 
     }
