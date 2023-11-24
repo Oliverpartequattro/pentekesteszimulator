@@ -1,0 +1,7 @@
+Idő növekvés függvény(random)
+Fancy menü választás
+Attribute növés fgv.
+DisplayDeath fgv.
+
+Az atribute változások randomok legyenek
+Többi...
