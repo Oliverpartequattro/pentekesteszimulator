@@ -39,7 +39,7 @@ namespace Pentekesteszimulator
 
         static void Busz()
         {
-            Increse(0, -10, -300, player);
+            Increase(0, -10, -300, player);
             string[] options = new string[] { "Város", "Falu" };
             int choice = Display("Buszmegálló", "Úgy döntöttél busszal indulsz útnak.", "Hová mész tovább?", options, player);
 
@@ -57,7 +57,7 @@ namespace Pentekesteszimulator
 
         static void Auto()
         {
-            Increse(0, 0, -300, player);
+            Increase(0, 0, -300, player);
             string[] options = new string[] { "Város", "Falu" };
             int choice = Display("Garázs", "Úgy döntöttél autóval indulsz útnak.", "Hová mész tovább?", options, player);
 
@@ -74,7 +74,7 @@ namespace Pentekesteszimulator
 
         static void Bicikli()
         {
-            Increse(0, 2, 0, player);
+            Increase(0, 2, 0, player);
             string[] options = new string[] { "Falu" };
             int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", "Hová mész tovább?", options, player);
 
@@ -87,7 +87,7 @@ namespace Pentekesteszimulator
         }
         static void Varos()
         {
-            Increse(0, 2, 0, player);
+            Increase(0, 2, 0, player);
             string[] options = new string[] { "Szórakozóhely", "Kocsma", "Supermarket" };
             int choice = Display("Putri Pályaudvar", "A Putri Pályaudvaron vagy", "Hová mész tovább?", options, player);
 
@@ -109,7 +109,7 @@ namespace Pentekesteszimulator
         static void Szorakozohely()
         {
             int chance = r.Next(0, 100);
-            Increse(r.Next(30,60) / 100.0, 10, -1190, player); //alkohol boldogság pénz
+            Increase(r.Next(30,60) / 100.0, 10, -1190, player); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Az \"éj hölgye\"", "Vissza a városba" };
             if (chance <= 40)
             {
@@ -124,13 +124,13 @@ namespace Pentekesteszimulator
                     Szorakozohely();
                     break;
                 case 2:
-                    EjHolgye();
+             
                     break;
                 case 3:
                     Varos();
                     break;
                 case 4:
-                    IngyenesNeni();
+                 
                     break;
             }
         }
@@ -139,7 +139,7 @@ namespace Pentekesteszimulator
 
         static void Kocsma()
         {
-            Increse(0, 5, 0, player); //alkohol boldogság pénz
+            Increase(0, 5, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Fej vagy írás", "Vissza a városba" };
             int choice = Display("Vörös Farkas Pub", "A kocsmában vagy", "Mit teszel?", options, player);
 
@@ -161,7 +161,7 @@ namespace Pentekesteszimulator
 
         static void Falu()
         {
-            Increse(0, 5, 0, player); //alkohol boldogság pénz
+            Increase(0, 5, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Falu" };
             int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", "Hová mész tovább?", options, player);
 
