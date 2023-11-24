@@ -1,7 +1,11 @@
-Idő növekvés függvény(random)
 Fancy menü választás
-Attribute növés fgv.
 DisplayDeath fgv.
+TimeIncrease
+Const.halálok
+Increase
+Feltételes helyek
+Végén a lófasz ne
+Szívroham
 
 Az atribute változások randomok legyenek
 Többi...

@@ -26,6 +26,11 @@ namespace Pentekesteszimulator
                 newMin %= 60;
             }
 
+            if(newHour >= 24)
+            {
+                newHour = 0;
+            }
+
             if(newMin < 10)
             {
                 player.Time = $"{newHour}:0{newMin}";
