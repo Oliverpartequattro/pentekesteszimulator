@@ -1,5 +1,5 @@
 # Péntek Este Szimulátor 📆
-A legnormálisabb Jedlikes gyerek egy átlagos péntek estélyét szemléltető program. 😂
+Felkeltél a középkori álmodból, és annyira fáj a fejed, hogy úgy döntesz berúgsz. 🐒
 
 Dokumentáció: Péntek Este Szimulátor.docx 📰
 
