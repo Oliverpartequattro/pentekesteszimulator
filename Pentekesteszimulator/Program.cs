@@ -13,7 +13,7 @@ namespace Pentekesteszimulator
         {
             Console.ForegroundColor = ConsoleColor.White;
             Otthon();
-        
+
         }
 
         public static void Otthon()
@@ -102,14 +102,14 @@ namespace Pentekesteszimulator
                     break;
 
                 case 3:
-                    
+                    Supermarket();
                     break;
             }
         }
         static void Szorakozohely()
         {
             int chance = r.Next(0, 100);
-            Increase(r.Next(30,60) / 100.0, 10, -1190, player); //alkohol boldogság pénz
+            Increase(r.Next(30, 60) / 100.0, 10, -1190, player); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Az \"éj hölgye\"", "Vissza a városba" };
             if (chance <= 40)
             {
@@ -124,18 +124,49 @@ namespace Pentekesteszimulator
                     Szorakozohely();
                     break;
                 case 2:
-             
+                    EjHolgye();
                     break;
                 case 3:
                     Varos();
                     break;
                 case 4:
-                 
+
                     break;
             }
         }
 
-        
+        static void EjHolgye()
+        {
+            int chance = r.Next(0, 100);
+            Increase(0, 5, -10000, player); //alkohol boldogság pénz
+            string[] options = new string[] { "Elmész vele a panelba" };
+            if (chance <= 40)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                options = new string[] { "Elmész vele a panelba", "Elmenekülsz" };
+            }
+
+            int choice = Display("Az éj hölgye", "Beléptél a szórakozóhelyre.", "Mit teszel?", options, player);
+
+            switch (choice)
+            {
+
+                case 1:
+                    DisplayEnd(false, "Cigiszagú panel", "Kurelás");
+                    break;
+                case 2:
+                    Console.WriteLine("masodik");
+                    break;
+                case 3:
+                    Varos();
+                    break;
+                case 4:
+
+                    break;
+            }
+        }
+
+
 
         static void Kocsma()
         {
@@ -146,11 +177,32 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
-                  
+
                     break;
 
                 case 2:
-             
+
+                    break;
+
+                case 3:
+
+                    break;
+            }
+        }
+        static void Supermarket()
+        {
+            Increase(0, 5, 0, player); //alkohol boldogság pénz
+            string[] options = new string[] { "Ivás", "Fej vagy írás", "Vissza a városba" };
+            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy", "Mit teszel?", options, player);
+
+            switch (choice)
+            {
+                case 1:
+
+                    break;
+
+                case 2:
+
                     break;
 
                 case 3:
