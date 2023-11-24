@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 using System.Threading.Channels;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Pentekesteszimulator
 {
@@ -199,31 +201,83 @@ namespace Pentekesteszimulator
                     break;
             }
         }
-        #endregion
+        #endregion //szorakozohely
 
-
-
+        #region kocsma
         static void Kocsma()
         {
-            Increase(0, 5, 0, player); //alkohol boldogság pénz
+            Increase(r.Next(30, 60) / 100.0, 10, -800, player); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Fej vagy írás", "Vissza a városba" };
             int choice = Display("Vörös Farkas Pub", "A kocsmában vagy", " ", "Mit teszel?", options, player);
 
             switch (choice)
             {
                 case 1:
-
+                    Kocsma();
                     break;
 
                 case 2:
-
+                    FejVagyIras();
                     break;
 
                 case 3:
-
+                    Varos();
                     break;
             }
         }
+
+        static void FejVagyIras()
+        {
+            int chance = r.Next(0, 2);
+            Increase(r.Next(30, 60) / 100.0, 10, -800, player); //alkohol boldogság pénz
+            string[] options = new string[] { "Játék", "Vissza a pulthoz"};
+            int choice = Display("Vörös Farkas Pub", "Egy lista ember??? vállalta a \"Fej Vagy Írás\" kihívásod.", " ", "Mi a következő lépésed?", options, player);
+
+            switch (choice)
+            {
+                case 1:
+                    int bet;
+                    Console.WriteLine("Mennyi pénzt raksz fel?");
+                    string input = Console.ReadLine();
+
+                    if (int.TryParse(input, out bet))
+                    {
+                        Console.WriteLine($"{bet} Ft-ot tettél fel.");
+                        Console.WriteLine("Fej Vagy Írás?");
+                        if (chance < 1)
+                        {
+                            Increase(0, 20, bet * 2, player); //alkohol boldogság pénz
+                        }
+                        else
+                        {
+                            Increase(0, 20, - bet * 2, player); //alkohol boldogság pénz
+                        }
+                    }
+                    else
+                    {
+                        int pickpocket = r.Next(0, 1501);
+                        Console.WriteLine($"A lista ember??? felpofozott, mert a {bet} közelsem egy szám.\nMíg feltápászkodtál, kivett a zsebedből {pickpocket} Ft-ot");
+                        Increase(0, -30, - pickpocket, player); //alkohol boldogság pénz
+                        Thread.Sleep(50);
+                        Console.WriteLine("Most kelsz fel....");
+                        Thread.Sleep(1000);
+                        FejVagyIras();
+                    }
+                    
+                    break;
+
+                case 2:
+                    FejVagyIras();
+                    break;
+
+                case 3:
+                    Varos();
+                    break;
+            }
+        }
+        #endregion //kocsma
+
+        #region supermarket
         static void Supermarket()
         {
             Increase(0, 5, 0, player); //alkohol boldogság pénz
@@ -245,8 +299,9 @@ namespace Pentekesteszimulator
                     break;
             }
         }
+        #endregion //supermarket
 
-        #endregion
+        #endregion //varos
 
         #region falu
         static void Falu()
@@ -262,7 +317,7 @@ namespace Pentekesteszimulator
                     break;
             }
         }
-        #endregion
+        #endregion //falu
 
 
     }

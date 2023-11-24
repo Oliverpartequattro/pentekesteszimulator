@@ -11,6 +11,8 @@ Maximum boldogság 100
 Valamiért zöld minden
 a program csak ott nem áll le soha ami a displaybe van irva displayend
 százalékok töül sokak
+verekedés lista
+random ember lista
 
 Az atribute változások randomok legyenek
 Többi...
