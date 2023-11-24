@@ -62,6 +62,20 @@ namespace Pentekesteszimulator
 
             Console.WriteLine();
 
+
+            if (player.Alcohol >= 5.2)
+            {
+                DisplayEnd(false, "None", "Alkoholmérgezés");
+            }
+            else if(player.Happiness <= 0)
+            {
+                DisplayEnd(false, "None", "Öngyilkos lettél");
+            }
+            else if(player.Money <= 0)
+            {
+                DisplayEnd(false, "None", "Csóró lettél");
+            }
+
             int ret;
             do{ 
             } while (!(int.TryParse(Console.ReadKey(true).KeyChar.ToString(), out ret) && ret >= 1 && ret <= options.Length));
