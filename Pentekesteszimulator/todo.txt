@@ -1,10 +1,10 @@
-Fancy menü választás
+Fancy menü választás copy paste paliéktol!!!!
 DisplayDeath fgv. - //KÉSZ
 TimeIncrease - //KÉSZ
 Const.halálok - //KÉSZ
 Increase - //KÉSZ
 Feltételes helyek - //KÉSZ
-Végén a lófasz ne
+Végén a lófasz ne elotte console foprgerodudan fekete érted PINTÉR BÁLINT GÉNIUSZ -//KÉSZ
 Szívroham - //KÉSZ
 Pénz kérés az elején
 Maximum boldogság 100 
@@ -21,6 +21,8 @@ hogyha tul nagy bet, akkor 0 (int max ertek miat???)
  viccesgomba fuggveny - //KÉSZ
  console color random valtakozik folyamatosan ha a fantasywolrdben vagy
  console nincs ékezet
+kaszinó eltúnik idő
+0 közelsem egy szám a fej vagy irasnal ha beirod textet az inputba szam helyett
 
-Az atribute változások randomok legyenek
+Az atribute változások randomok legyenek -//KÉSZ
 Többi...

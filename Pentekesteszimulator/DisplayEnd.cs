@@ -61,6 +61,8 @@ namespace Pentekesteszimulator
             }
 
             Console.WriteLine($"A játék végének oka: {description}\n");
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.Black;
         }
     }
 }
