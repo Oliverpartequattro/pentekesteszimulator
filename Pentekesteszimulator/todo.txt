@@ -10,17 +10,16 @@ Pénz kérés az elején
 Maximum boldogság 100 
 Valamiért zöld minden - //KÉSZ
 a program csak ott nem áll le soha ami a displaybe van irva displayend
-százalékok tullll sokak
 verekedés lista mozdulatok stb
+ alterlány de amúgy más is cselekvés lista
 random ember lista!!!!
-pickpocket nem mukodik a levonas de mukdoik csak nem azonnal!!!
-hogyha tul nagy bet, akkor 0 i (int max ertek miat???)
+hogyha tul nagy bet, akkor 0 (int max ertek miat???)
  if (userChoice.Equals("Fej", StringComparison.OrdinalIgnoreCase) || userChoice.Equals("Írás", StringComparison.OrdinalIgnoreCase)) ez mi
- Fantáziavilágok!!!
+ Fantáziavilágok!!! - //KÉSZ
  szövegek legyenek érdekesebbek
  másik játék referenciák
- alterlány de amúgy más is cselekvés lista
- viccesgomba fuggveny
+ viccesgomba fuggveny - //KÉSZ
+ console color random valtakozik folyamatosan ha a fantasywolrdben vagy
 
 Az atribute változások randomok legyenek
 Többi...

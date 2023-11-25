@@ -131,10 +131,11 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
-                    if (chance <= 100)
+                    if (chance <= 10)
                     {
                         worlds[r.Next(0, worlds.Length)]();
                     }
+                    Szorakozohely();
                     break;
                 case 2:
                     EjHolgye();
