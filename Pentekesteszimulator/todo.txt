@@ -16,6 +16,7 @@ random ember lista
 pickpocket nem mukodik a levonas de mukdoik csak nem azonnal!!!
 hogyha tul nagy bet, akkor 0
  if (userChoice.Equals("Fej", StringComparison.OrdinalIgnoreCase) || userChoice.Equals("Írás", StringComparison.OrdinalIgnoreCase)) ez mi
+ Fantáziavilágok!!!
 
 Az atribute változások randomok legyenek
 Többi...

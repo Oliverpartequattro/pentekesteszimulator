@@ -124,7 +124,7 @@ namespace Pentekesteszimulator
                 options = new string[] { "Ivás", "Az \"éj hölgye\"", "Vissza a városba", "Odamész ahhoz az aranyos lányhoz" };
                 Console.ForegroundColor = ConsoleColor.Green;
                 choice = Display($"Happy Hours Nightclub", "Beléptél a szórakozóhelyre.", "Megláttál egy aranyos lányt.", "Mit teszel?", options, player);
-                Console.ResetColor();      
+                Console.ResetColor();
             }
             else
             {
