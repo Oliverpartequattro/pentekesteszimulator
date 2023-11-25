@@ -20,6 +20,7 @@ hogyha tul nagy bet, akkor 0 (int max ertek miat???)
  másik játék referenciák
  viccesgomba fuggveny - //KÉSZ
  console color random valtakozik folyamatosan ha a fantasywolrdben vagy
+ console nincs ékezet
 
 Az atribute változások randomok legyenek
 Többi...

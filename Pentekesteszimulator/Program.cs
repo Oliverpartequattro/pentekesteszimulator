@@ -248,7 +248,7 @@ namespace Pentekesteszimulator
 
                     if (int.TryParse(input, out bet))
                     {
-                        Console.WriteLine($"{bet} Ft-ot tettél fel.");
+                        Console.WriteLine($"{bet} Ft-ot tettél fel.\n");
 
                         Console.WriteLine("Fej vagy Írás?");
                         string userChoice = Console.ReadLine();
@@ -366,7 +366,7 @@ namespace Pentekesteszimulator
 
         static void AlterLany()
         {
-            int chance = r.Next(0, 100);
+            int chance = r.Next(0, 101);
             Increase(0, 50, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Hazaviszed", "Elutasítod és inkább magányos maradsz" };
             int choice;
@@ -380,7 +380,7 @@ namespace Pentekesteszimulator
                     }
                     else if (chance <= 80)
                     {
-                        ViccesGomba();
+                        worlds[r.Next(0, worlds.Length)]();
                     }
                     else
                     {
@@ -392,11 +392,6 @@ namespace Pentekesteszimulator
                     break;
             }
         }
-        static void ViccesGomba()
-        {
-            //egy fuggveny lista???? kulon helyekrol es opciokrol!%!%!%!%
-        }
-
 
         #endregion //supermarket
 

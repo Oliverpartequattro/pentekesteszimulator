@@ -35,7 +35,7 @@ namespace Pentekesteszimulator
                 "Megküzdöd a lángoló virágokkal, amelyeknek minden szirma éles tűzkarmokká változik, és csak egy szoknyás szellemként menekülhetsz el.", 
                 "Részt veszel a hőlégballon versenyen, de a hőlégballonok helyett hatalmas lángcsóvákat kell irányítanod, miközben a fityfirittyesek kiabálnak neked.", 
                 "Egy lángoló híd mellett pókháló kötögetsz, miközben a fityfirittyes pókok vidáman ugrándoznak körülötted." };
-            int choice = Display("Fityfirittyes Tűzpokol", "Beleittál az italodba, és hirtelen a Fityfirittyes Tűzpokolban találod magad.", " ", "Mit teszel?", options, player);
+            int choice = Display("Fityfirittyes Tűzpokol", "Elsötétedett a világ, és hirtelen a Fityfirittyes Tűzpokolban találod magad.", " ", "Mit teszel?", options, player);
 
             switch (choice)
             {
@@ -57,7 +57,7 @@ namespace Pentekesteszimulator
                 "A bágyogszováti temetői tévéműsort készíted, ahol a síremlékeken táncoló zombik versenyeznek a legstílusosabb mozgásért.",
                 "Két sír közt kanapét helyezel el, és elrendezel egy kis szellemfogadást a szellemekkel, akik az elhunytak közül érkeznek egy kis csevegésre és teázásra."
             };
-            int choice = Display("Bágyogszováti Temető", "Beleittál az italodba, és hirtelen a Bágyogszováti Temetőben találod magad. Pályaudvaron vagy.", " ", "Mit teszel?", options, player);
+            int choice = Display("Bágyogszováti Temető", "Elsötétedett a világ, és hirtelen a Bágyogszováti Temetőben találod magad. Pályaudvaron vagy.", " ", "Mit teszel?", options, player);
 
             switch (choice)
             {
@@ -80,7 +80,7 @@ namespace Pentekesteszimulator
                 "Vizes halakkal dobálod meg azokat a horgászokat, akik nem követik a \"delfin-kódexet\"."
             };
 
-            int choice = Display("Down-Kóros Delfin Horgászbolt", "Beleittál az italodba, és hirtelen a Down-Kóros Delfin Horgászboltban találod magad. Pályaudvaron vagy.", " ", "Mit teszel?", options, player);
+            int choice = Display("Down-Kóros Delfin Horgászbolt", "Elsötétedett a világ, és hirtelen a Down-Kóros Delfin Horgászboltban találod magad. Pályaudvaron vagy.", " ", "Mit teszel?", options, player);
 
             switch (choice)
             {
@@ -103,7 +103,7 @@ namespace Pentekesteszimulator
                     "Téglákat dobálsz a kitalált hajléktalanokra, de azok a levegőben elkezdenek lebegni, és hangosan nevetnek a találatokon."
                 };
 
-            int choice = Display("Retek Taverna", "Beleittál az italodba, és hirtelen a Retek Tavernában találod magad. Pályaudvaron vagy.", " ", "Mit teszel?", options, player);
+            int choice = Display("Retek Taverna", "Elsötétedett a világ, és hirtelen a Retek Tavernában találod magad. Pályaudvaron vagy.", " ", "Mit teszel?", options, player);
 
             switch (choice)
             {
@@ -126,7 +126,7 @@ namespace Pentekesteszimulator
                     "Sziklákat dobálsz az árva lélekű hajléktalanokra, miközben őrjöngsz a kétségbeesésükön."
                  };
 
-            int choice = Display("Purgatórium", "Beleittál az italodba, és hirtelen a Purgatóriumban találod magad. Pályaudvaron vagy.", " ", "Mit teszel?", options, player);
+            int choice = Display("Purgatórium", "Elsötétedett a világ, és hirtelen a Purgatóriumban találod magad. Pályaudvaron vagy.", " ", "Mit teszel?", options, player);
 
             switch (choice)
             {
