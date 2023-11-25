@@ -131,7 +131,10 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
-                    Szorakozohely();
+                    if (chance <= 100)
+                    {
+                        worlds[r.Next(0, worlds.Length)]();
+                    }
                     break;
                 case 2:
                     EjHolgye();
@@ -224,7 +227,6 @@ namespace Pentekesteszimulator
 
         static void FejVagyIras()
         {
-            int chance = r.Next(0, 2);
             Increase(0, 0, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Játék", "Vissza a pulthoz"};
             int choice = Display("Vörös Farkas Pub", "Egy lista ember??? vállalta a \"Fej Vagy Írás\" kihívásod.", " ", "Mi a következő lépésed?", options, player);
