@@ -1,22 +1,26 @@
 Fancy menü választás
-DisplayDeath fgv.
-TimeIncrease
-Const.halálok
-Increase
-Feltételes helyek
+DisplayDeath fgv. - //KÉSZ
+TimeIncrease - //KÉSZ
+Const.halálok - //KÉSZ
+Increase - //KÉSZ
+Feltételes helyek - //KÉSZ
 Végén a lófasz ne
-Szívroham
+Szívroham - //KÉSZ
 Pénz kérés az elején
-Maximum boldogság 100
-Valamiért zöld minden
+Maximum boldogság 100 
+Valamiért zöld minden - //KÉSZ
 a program csak ott nem áll le soha ami a displaybe van irva displayend
-százalékok töül sokak
+százalékok tullll sokak
 verekedés lista mozdulatok stb
-random ember lista
+random ember lista!!!!
 pickpocket nem mukodik a levonas de mukdoik csak nem azonnal!!!
-hogyha tul nagy bet, akkor 0
+hogyha tul nagy bet, akkor 0 i (int max ertek miat???)
  if (userChoice.Equals("Fej", StringComparison.OrdinalIgnoreCase) || userChoice.Equals("Írás", StringComparison.OrdinalIgnoreCase)) ez mi
  Fantáziavilágok!!!
+ szövegek legyenek érdekesebbek
+ másik játék referenciák
+ alterlány de amúgy más is cselekvés lista
+ viccesgomba fuggveny
 
 Az atribute változások randomok legyenek
 Többi...

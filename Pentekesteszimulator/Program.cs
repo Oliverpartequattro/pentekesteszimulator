@@ -122,9 +122,7 @@ namespace Pentekesteszimulator
             if (chance <= 40)
             {
                 options = new string[] { "Ivás", "Az \"éj hölgye\"", "Vissza a városba", "Odamész ahhoz az aranyos lányhoz" };
-                Console.ForegroundColor = ConsoleColor.Green;
                 choice = Display($"Happy Hours Nightclub", "Beléptél a szórakozóhelyre.", "Megláttál egy aranyos lányt.", "Mit teszel?", options, player);
-                Console.ResetColor();
             }
             else
             {
@@ -156,9 +154,7 @@ namespace Pentekesteszimulator
             if (chance <= 40)
             {
                 options = new string[] { "Felül leszek", "Alul leszek", "Elmenekülök", };
-                Console.ForegroundColor = ConsoleColor.Green;
                 choice = Display($"Cigiszagú panel", "Felvitt a fizetős \"hölgy\" a paneljébe.", "Nagyobb neki, mint neked.", "Mit teszel?", options, player);
-                Console.ResetColor();
             }
             else
             {
@@ -189,7 +185,7 @@ namespace Pentekesteszimulator
             {
                 case 1:
                    if(chance <= 10) { 
-                    DisplayEnd(false, "Győrzámoly, Szerencse utca 9", "A helyes lány titokban egy szerb bérgyilkos volt, akit placeholder küldött rád, kitömött emberi próbababát csinált belőled.");
+                    DisplayEnd(false, "Győrzámoly, Szerencse utca 9", "A helyes lány titokban egy szerb bérgyilkos volt, akit LISTA küldött rád, kitömött emberi próbababát csinált belőled.");
                     }
                     else
                     {
@@ -208,7 +204,7 @@ namespace Pentekesteszimulator
         {
             Increase(r.Next(30, 60) / 100.0, 10, -800, player); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Fej vagy írás", "Vissza a városba" };
-            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy", " ", "Mit teszel?", options, player);
+            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy.", " ", "Mit teszel?", options, player);
 
             switch (choice)
             {
@@ -268,16 +264,20 @@ namespace Pentekesteszimulator
 
                             if (char.ToLower(userChoice[0]) == char.ToLower(result[0]))
                             {
-                                Console.WriteLine("Nyertél!");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine($"Nyertél {bet} Ft-ot!");
+                                Console.ResetColor();
                                 Increase(0, 30, bet, player); //alkohol boldogság pénz
                                 Thread.Sleep(1000);
                                 FejVagyIras();
                             }
                             else
                             {
-                                Console.WriteLine("Vesztettél");
-                                Increase(0, 30, - bet, player); //alkohol boldogság pénz
-                                Thread.Sleep(1000);
+                                Console.ForegroundColor= ConsoleColor.Red;
+                                Console.WriteLine($"Vesztettél {bet} Ft-ot!");
+                                Console.ResetColor();
+                                Increase(0, -30, - bet, player); //alkohol boldogság pénz
+                                Thread.Sleep(2000);
                                 FejVagyIras();
                             }
                         }
@@ -331,25 +331,70 @@ namespace Pentekesteszimulator
         #region supermarket
         static void Supermarket()
         {
-            Increase(0, 5, 0, player); //alkohol boldogság pénz
-            string[] options = new string[] { "Ivás", "Fej vagy írás", "Vissza a városba" };
-            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy", " ", "Mit teszel?", options, player);
+            int chance = r.Next(0, 100);
+            Increase(r.Next(30, 60) / 100.0, 10, -300, player); //alkohol boldogság pénz
+            string[] options = new string[] { "Veszel egy sört", "Vissza a városba" };
+            int choice;
+            if (chance <= 70)
+            {
+                options = new string[] { "Veszel egy sört", "Vissza a városba", "Odamész az alter lányhoz" };
+                choice = Display("Zuszi néni supermarkete", "A supermarketben vagy (ha budapesti, akkor a közértben).", "Megpillantasz egy alter lányt, ahogy éppen a Jagermaisterért nyúl. (LISTA)", "Mit teszel?", options, player);
+            }
+            else
+            {
+                choice = Display("Zuszi néni supermarkete", "A supermarketben vagy.", " ", "Mit teszel?", options, player);
+            }
 
             switch (choice)
             {
                 case 1:
-
+                    Supermarket();
                     break;
 
                 case 2:
-
+                    Varos();
                     break;
 
                 case 3:
-
+                    AlterLany();
                     break;
             }
         }
+
+        static void AlterLany()
+        {
+            int chance = r.Next(0, 100);
+            Increase(0, 50, 0, player); //alkohol boldogság pénz
+            string[] options = new string[] { "Hazaviszed", "Elutasítod és inkább magányos maradsz" };
+            int choice;
+            choice = Display("Zsuzsi néni supermarketje", "Beszélgettél az alter lánnyal, és fel akar menni a lakásodba.", " ", "Mit teszel?", options, player);
+            switch (choice)
+            {
+                case 1:
+                    if (chance <= 10)
+                    {
+                        DisplayEnd(false, "Győrzámoly, Szerencse utca 9", "Az alter lány titokban egy szerb bérgyilkos volt, akit LISTA küldött rád, kitömött emberi próbababát csinált belőled.");
+                    }
+                    else if (chance <= 80)
+                    {
+                        ViccesGomba();
+                    }
+                    else
+                    {
+                        DisplayEnd(true, "Győrzámoly, Szerencse utca 9", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
+                    }
+                    break;
+                case 2:
+                    Supermarket();
+                    break;
+            }
+        }
+        static void ViccesGomba()
+        {
+            //egy fuggveny lista???? kulon helyekrol es opciokrol!%!%!%!%
+        }
+
+
         #endregion //supermarket
 
         #endregion //varos
