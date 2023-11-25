@@ -21,7 +21,7 @@ namespace Pentekesteszimulator
         public static void Otthon()
         {
             string[] options = new string[] { "Busz", "Autó", "Bicikli" };
-            int choice = Display("Győrzámoly, Szerencse utca 9", "Fájó fejjel kelsz fel egy fura középkorban játszódó álom után, úgy érzed, mintha 2000 évet időutaztál volna, ezért úgy döntesz, hogy berúgsz.", " ", "Milyen járművel indulsz el?", options, player);
+            int choice = Display("Győrzámoly, Szerencse utca 29", "Fájó fejjel kelsz fel egy fura középkorban játszódó álom után, úgy érzed, mintha 2000 évet időutaztál volna, ezért úgy döntesz, hogy berúgsz.", " ", "Milyen járművel indulsz el?", options, player);
 
             switch (choice)
             {
@@ -189,11 +189,11 @@ namespace Pentekesteszimulator
             {
                 case 1:
                    if(chance <= 10) { 
-                    DisplayEnd(false, "Győrzámoly, Szerencse utca 9", "A helyes lány titokban egy szerb bérgyilkos volt, akit LISTA küldött rád, kitömött emberi próbababát csinált belőled.");
+                    DisplayEnd(false, "Győrzámoly, Szerencse utca 29", "A helyes lány titokban egy szerb bérgyilkos volt, akit LISTA küldött rád, kitömött emberi próbababát csinált belőled.");
                     }
                     else
                     {
-                        DisplayEnd(true, "Győrzámoly, Szerencse utca 9", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
+                        DisplayEnd(true, "Győrzámoly, Szerencse utca 29", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
                     }
                     break;
                 case 2:
@@ -376,7 +376,7 @@ namespace Pentekesteszimulator
                 case 1:
                     if (chance <= 10)
                     {
-                        DisplayEnd(false, "Győrzámoly, Szerencse utca 9", "Az alter lány titokban egy szerb bérgyilkos volt, akit LISTA küldött rád, kitömött emberi próbababát csinált belőled.");
+                        DisplayEnd(false, "Győrzámoly, Szerencse utca 29", "Az alter lány titokban egy szerb bérgyilkos volt, akit LISTA küldött rád, kitömött emberi próbababát csinált belőled.");
                     }
                     else if (chance <= 80)
                     {
@@ -384,7 +384,7 @@ namespace Pentekesteszimulator
                     }
                     else
                     {
-                        DisplayEnd(true, "Győrzámoly, Szerencse utca 9", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
+                        DisplayEnd(true, "Győrzámoly, Szerencse utca 29", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
                     }
                     break;
                 case 2:

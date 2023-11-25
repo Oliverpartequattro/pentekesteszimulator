@@ -39,7 +39,7 @@ namespace Pentekesteszimulator
 
             switch (choice)
             {
-                case 1:
+                default:
                     DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Fityfirittyes Tűzpokolba kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.");
                     break;
             }
@@ -61,7 +61,7 @@ namespace Pentekesteszimulator
 
             switch (choice)
             {
-                case 1:
+                default :
                     DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Bágyogszováti Temetőbe kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.");
                     break;
             }
@@ -84,7 +84,7 @@ namespace Pentekesteszimulator
 
             switch (choice)
             {
-                case 1:
+                default:
                     DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Down-Kóros Delfin Horgászboltba kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.");
                     break;
             }
@@ -107,7 +107,7 @@ namespace Pentekesteszimulator
 
             switch (choice)
             {
-                case 1:
+                default:
                     DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Retek Tavernába kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.");
                     break;
             }
@@ -130,7 +130,7 @@ namespace Pentekesteszimulator
 
             switch (choice)
             {
-                case 1:
+                default:
                     DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Purgatóriumba kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.");
                     break;
             }
