@@ -11,8 +11,11 @@ Maximum boldogság 100
 Valamiért zöld minden
 a program csak ott nem áll le soha ami a displaybe van irva displayend
 százalékok töül sokak
-verekedés lista
+verekedés lista mozdulatok stb
 random ember lista
+pickpocket nem mukodik a levonas de mukdoik csak nem azonnal!!!
+hogyha tul nagy bet, akkor 0
+ if (userChoice.Equals("Fej", StringComparison.OrdinalIgnoreCase) || userChoice.Equals("Írás", StringComparison.OrdinalIgnoreCase)) ez mi
 
 Az atribute változások randomok legyenek
 Többi...

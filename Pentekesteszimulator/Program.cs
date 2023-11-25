@@ -229,9 +229,16 @@ namespace Pentekesteszimulator
         static void FejVagyIras()
         {
             int chance = r.Next(0, 2);
-            Increase(r.Next(30, 60) / 100.0, 10, -800, player); //alkohol boldogság pénz
+            Increase(0, 0, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Játék", "Vissza a pulthoz"};
             int choice = Display("Vörös Farkas Pub", "Egy lista ember??? vállalta a \"Fej Vagy Írás\" kihívásod.", " ", "Mi a következő lépésed?", options, player);
+
+            static string FlipCoin()
+            {
+                Random random = new Random();
+                int randomNumber = random.Next(0, 2);
+                return randomNumber == 0 ? "Fej" : "Írás";
+            }
 
             switch (choice)
             {
@@ -243,35 +250,79 @@ namespace Pentekesteszimulator
                     if (int.TryParse(input, out bet))
                     {
                         Console.WriteLine($"{bet} Ft-ot tettél fel.");
-                        Console.WriteLine("Fej Vagy Írás?");
-                        if (chance < 1)
+
+                        Console.WriteLine("Fej vagy Írás?");
+                        string userChoice = Console.ReadLine();
+
+                        if (userChoice.Equals("Fej", StringComparison.OrdinalIgnoreCase) || userChoice.Equals("Írás", StringComparison.OrdinalIgnoreCase))
                         {
-                            Increase(0, 20, bet * 2, player); //alkohol boldogság pénz
+                            string result = FlipCoin();
+                            Console.WriteLine("\nAz eredmény:");
+                            string text = $"............... {result} --> ";
+                            int delay = 300;
+                            foreach (char c in text)
+                            {
+                                Console.Write(c);
+                                Thread.Sleep(delay);
+                            }
+
+                            if (char.ToLower(userChoice[0]) == char.ToLower(result[0]))
+                            {
+                                Console.WriteLine("Nyertél!");
+                                Increase(0, 30, bet, player); //alkohol boldogság pénz
+                                Thread.Sleep(1000);
+                                FejVagyIras();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Vesztettél");
+                                Increase(0, 30, - bet, player); //alkohol boldogság pénz
+                                Thread.Sleep(1000);
+                                FejVagyIras();
+                            }
                         }
                         else
                         {
-                            Increase(0, 20, - bet * 2, player); //alkohol boldogság pénz
+                            int pickpocket = r.Next(0, 1501);
+                            Console.WriteLine($"A lista ember??? felpofozott (lista), mert a {userChoice} nem Fej, és nem is Írás.\nMíg feltápászkodtál, kivett a zsebedből {pickpocket} Ft-ot");
+                            Increase(0, -30, -pickpocket, player); //alkohol boldogság pénz
+                            Thread.Sleep(50);
+
+                            Console.Write("Most kelsz fel");
+                            string text = "...............";
+                            int delay = 300;
+                            foreach (char c in text)
+                            {
+                                Console.Write(c);
+                                Thread.Sleep(delay);
+                            }
+                            FejVagyIras();
                         }
-                    }
+                                        
+            }
+
                     else
                     {
                         int pickpocket = r.Next(0, 1501);
-                        Console.WriteLine($"A lista ember??? felpofozott, mert a {bet} közelsem egy szám.\nMíg feltápászkodtál, kivett a zsebedből {pickpocket} Ft-ot");
+                        Console.WriteLine($"A lista ember??? felpofozott (lista), mert a {bet} közelsem egy szám.\nMíg feltápászkodtál, kivett a zsebedből {pickpocket} Ft-ot");
                         Increase(0, -30, - pickpocket, player); //alkohol boldogság pénz
                         Thread.Sleep(50);
-                        Console.WriteLine("Most kelsz fel....");
-                        Thread.Sleep(1000);
+
+                        Console.Write("Most kelsz fel");
+                        string text = "...............";
+                        int delay = 300;
+                        foreach (char c in text)
+                        {
+                            Console.Write(c);
+                            Thread.Sleep(delay);
+                        }
                         FejVagyIras();
                     }
                     
                     break;
 
                 case 2:
-                    FejVagyIras();
-                    break;
-
-                case 3:
-                    Varos();
+                    Kocsma();
                     break;
             }
         }
