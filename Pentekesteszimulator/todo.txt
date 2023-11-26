@@ -23,6 +23,7 @@ hogyha tul nagy bet, akkor 0 (int max ertek miat???)
  console nincs ékezet
 kaszinó eltúnik idő
 0 közelsem egy szám a fej vagy irasnal ha beirod textet az inputba szam helyett
+array voidbol stringet akar de mi a faszomert
 
 Az atribute változások randomok legyenek -//KÉSZ
 Többi...

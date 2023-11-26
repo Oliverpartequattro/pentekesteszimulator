@@ -133,7 +133,7 @@ namespace Pentekesteszimulator
                 case 1:
                     if (chance <= 10)
                     {
-                        worlds[r.Next(0, worlds.Length)]();
+                        VarazsGomba();
                     }
                     Szorakozohely();
                     break;
@@ -300,10 +300,8 @@ namespace Pentekesteszimulator
                                 Thread.Sleep(delay);
                             }
                             FejVagyIras();
-                        }
-                                        
-            }
-
+                        }                
+                    }
                     else
                     {
                         int pickpocket = r.Next(0, 1501);
@@ -321,9 +319,7 @@ namespace Pentekesteszimulator
                         }
                         FejVagyIras();
                     }
-                    
                     break;
-
                 case 2:
                     Kocsma();
                     break;
@@ -368,30 +364,47 @@ namespace Pentekesteszimulator
         {
             int chance = r.Next(0, 101);
             Increase(0, 50, 0, player); //alkohol boldogság pénz
-            string[] options = new string[] { "Hazaviszed", "Elutasítod és inkább magányos maradsz" };
+            string[] options = new string[] { $"Hazaviszed", "Elutasítod és inkább magányos maradsz" };
             int choice;
-            choice = Display("Zsuzsi néni supermarketje", "Beszélgettél az alter lánnyal, és fel akar menni a lakásodba.", " ", "Mit teszel?", options, player);
+            if (chance <= 80)
+            {
+                options = new string[] { "Hazaviszed", "Elutasítod és inkább magányos maradsz", "Gombásztok" };
+                choice = Display("Zsuzsi néni supermarketje", "Beszélgettél az alter lánnyal, és fel akar menni a lakásodba.", $"A zsebében ott lapul {r.Next(3,11)} gramm varázsgomba", "Mit teszel?", options, player);
+            }
+            else
+            {
+                choice = Display("Zsuzsi néni supermarketje", "Beszélgettél az alter lánnyal, és fel akar menni a lakásodba.", " ", "Mit teszel?", options, player);
+            }  
             switch (choice)
             {
                 case 1:
-                    if (chance <= 10)
+                    if (chance <= 100)
                     {
-                        DisplayEnd(false, "Győrzámoly, Szerencse utca 29", "Az alter lány titokban egy szerb bérgyilkos volt, akit LISTA küldött rád, kitömött emberi próbababát csinált belőled.");
-                    }
-                    else if (chance <= 80)
-                    {
-                        worlds[r.Next(0, worlds.Length)]();
+                        DisplayEnd(false, "Győrzámoly, Szerencse utca 29", $"Az alter lány titokban egy szerb bérgyilkos volt, akit küldött rád, kitömött emberi próbababát csinált belőled.");
                     }
                     else
                     {
                         DisplayEnd(true, "Győrzámoly, Szerencse utca 29", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
                     }
                     break;
-                case 2:
+                    case 2:
                     Supermarket();
+                    break;
+                case 3:
+                    VarazsGomba();
                     break;
             }
         }
+
+        static void VarazsGomba()
+        {
+            worlds [r.Next(0, worlds.Length)]();
+        }
+
+        static void RandomPerson()
+        {
+            PeopleAndFightArrays[0]();
+        } //KURVA ÉLETBE MÁR
 
         #endregion //supermarket
 
