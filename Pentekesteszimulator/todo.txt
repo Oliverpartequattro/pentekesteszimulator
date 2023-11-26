@@ -10,9 +10,10 @@ Pénz kérés az elején
 Maximum boldogság 100 
 Valamiért zöld minden - //KÉSZ
 a program csak ott nem áll le soha ami a displaybe van irva displayend
-verekedés lista mozdulatok stb
- alterlány de amúgy más is cselekvés lista
-random ember lista!!!!
+verekedés lista mozdulatok stb -//KÉSZ
+ alterlány lista nem akarom
+ cselekvés lista -//KÉSZ
+random ember lista!!!! -//KÉSZ
 hogyha tul nagy bet, akkor 0 (int max ertek miat???)
  if (userChoice.Equals("Fej", StringComparison.OrdinalIgnoreCase) || userChoice.Equals("Írás", StringComparison.OrdinalIgnoreCase)) ez mi
  Fantáziavilágok!!! - //KÉSZ
@@ -23,7 +24,8 @@ hogyha tul nagy bet, akkor 0 (int max ertek miat???)
  console nincs ékezet
 kaszinó eltúnik idő
 0 közelsem egy szám a fej vagy irasnal ha beirod textet az inputba szam helyett
-array voidbol stringet akar de mi a faszomert
+array voidbol stringet akar de mi a faszomert -//KÉSZ
+rányomsz arra hogy fej vagy iras es eltelik 45 perc - ido realisztikus telese (display paramater)
 
 Az atribute változások randomok legyenek -//KÉSZ
 Többi...

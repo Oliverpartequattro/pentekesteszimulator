@@ -6,17 +6,18 @@ namespace Pentekesteszimulator
 {
     internal partial class Program
     {
-        public delegate void Arrays();
+        public delegate string Arrays();
 
         public static Arrays[] PeopleAndFightArrays = new Arrays[]
         {
             RandomPerson1,
-            RandomMove,
+            RandomMove1,
+            RandomMove2,
         };
 
-        public static void RandomPerson1()
+        public static string RandomPerson1()
         {
-             string[] people =
+            string[] people =
             {
              "Szakállas alkoholista",
              "Kalapos ember",
@@ -65,6 +66,7 @@ namespace Pentekesteszimulator
              "Haragos tetovált",
              "Rángatózó epilepsziás",
              "Habzószájú irodalomtanár",
+             "Kibelezett class",
              "Ütős bokszoló",
              "Ordító rockzenész",
              "Verekedő motorkerékpáros",
@@ -80,11 +82,164 @@ namespace Pentekesteszimulator
              "Harcias viking",
              "Rúgásos kick-boxos"
             };
-            Console.Write(people[r.Next(0, people.Length)]);
+            return people[r.Next(0, people.Length)];
     }
-        public static void RandomMove()
+        public static string RandomMove1()
         {
-            Console.WriteLine("asd");
+            string[] prefixes =
+            {
+                "Meg",
+                "Szét",
+                "Fel",
+                "Le",
+                "Össze",
+                "Be",
+                "El",
+                "Ki"
+            };
+
+              string[] moves =
+                {
+                "préselted",
+                "ütötted",
+                "fejelted",
+                "törted",
+                "bökted",
+                "könyökölted",
+                "csípted",
+                "nyársaltad",
+                "ragadtad",
+                "haraptad",
+                "jobbhorogoztad",
+                "nyaltad",
+                "pofoztad",
+                "ütötted",
+                "csavargattad",
+                "tapostad",
+                "csaptad",
+                "mélyesztetted",
+                "vágtad",
+                "fogtad",
+                "rántottad",
+                "hajítottad",
+                "köszörülted",
+                "rúgtad",
+                "tépted",
+                "csiklandoztad"
+            };
+
+            string[] bodyParts =
+            {
+                "az állát",
+                "a torkát",
+                "az állkapcsát",
+                "a lábát",
+                "az orrát",
+                "a hátát",
+                "az arcát",
+                "a vállát",
+                "a kezét",
+                "a gyomrát",
+                "a koponyáját",
+                "a fogát",
+                "a gigáját",
+                "a nyelvét",
+                "az agylebenyét",
+                "a nyaki vénáját",
+                "a combközét",
+                "az izületét",
+                "a nyakcsigolyáját",
+                "az agyát",
+                "a köldökét",
+                "az ujjperceit",
+                "a tarkóját",
+                "a bőrét",
+                "a hónalját",
+                "az ujjbegyeit",
+                "az ujjainak hegyét",
+                "az orrcimpáját",
+                "az orrnyílását"
+            };
+            return prefixes[r.Next(0, prefixes.Length)] + moves[r.Next(0, moves.Length)] + " " + bodyParts[r.Next(0, bodyParts.Length)];
+        }
+
+        public static string RandomMove2()
+        {
+            string[] prefixes =
+             {
+                "meg",
+                "szét",
+                "fel",
+                "le",
+                "össze",
+                "be",
+                "el",
+                "ki"
+            };
+
+            string[] moves =
+              {
+                "préselte",
+                "ütötte",
+                "fejelte",
+                "törte",
+                "bökte",
+                "könyökölte",
+                "csípte",
+                "nyársalta",
+                "ragadta",
+                "harapta",
+                "jobbhorogozta",
+                "nyalta",
+                "pofozta",
+                "ütötte",
+                "csavargatta",
+                "taposta",
+                "csapta",
+                "mélyesztette",
+                "vágta",
+                "fogta",
+                "rántotta",
+                "hajította",
+                "köszörülte",
+                "rúgta",
+                "tépte",
+                "csiklandozta"
+            };
+
+            string[] bodyParts =
+           {
+                "az álladat",
+                "a torkodat",
+                "az állkapcsodat",
+                "a lábadat",
+                "az orrodat",
+                "a hátadat",
+                "az arcodat",
+                "a válladat",
+                "a kezedet",
+                "a gyomrodat",
+                "a koponyádat",
+                "a fogadat",
+                "a gigádat",
+                "a nyelvedet",
+                "az agylebenyedet",
+                "a nyaki véna​dat",
+                "a combközödet",
+                "az ízületedet",
+                "a nyakcsigolyádat",
+                "az agyadat",
+                "a köldöködet",
+                "az ujjperceidet",
+                "a tarkódat",
+                "a bőrödet",
+                "a hónaljadat",
+                "az ujjbegyeidet",
+                "az ujjaidnak hegyét",
+                "az orrcimpádat",
+                "az orrnyílásodat"
+         };
+            return prefixes[r.Next(0, prefixes.Length)] + moves[r.Next(0, moves.Length)] + " " + bodyParts[r.Next(0, bodyParts.Length)];
         }
 
     }

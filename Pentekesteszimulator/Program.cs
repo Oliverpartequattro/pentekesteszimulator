@@ -21,7 +21,7 @@ namespace Pentekesteszimulator
         public static void Otthon()
         {
             string[] options = new string[] { "Busz", "Autó", "Bicikli" };
-            int choice = Display("Győrzámoly, Szerencse utca 29", "Fájó fejjel kelsz fel egy fura középkorban játszódó álom után, úgy érzed, mintha 2000 évet időutaztál volna, ezért úgy döntesz, hogy berúgsz.", " ", "Milyen járművel indulsz el?", options, player);
+            int choice = Display("Győrzámoly, Szerencse utca 22", "Fájó fejjel kelsz fel egy fura középkorban játszódó álom után, úgy érzed, mintha 2000 évet időutaztál volna, ezért úgy döntesz, hogy berúgsz.", " ", "Milyen járművel indulsz el?", options, player);
 
             switch (choice)
             {
@@ -189,11 +189,11 @@ namespace Pentekesteszimulator
             {
                 case 1:
                    if(chance <= 10) { 
-                    DisplayEnd(false, "Győrzámoly, Szerencse utca 29", "A helyes lány titokban egy szerb bérgyilkos volt, akit LISTA küldött rád, kitömött emberi próbababát csinált belőled.");
+                    DisplayEnd(false, "Győrzámoly, Szerencse utca 22", $"A helyes lány titokban egy szerb bérgyilkos volt, akit {RandomPerson()} küldött rád, kitömött emberi próbababát csinált belőled.");
                     }
                     else
                     {
-                        DisplayEnd(true, "Győrzámoly, Szerencse utca 29", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
+                        DisplayEnd(true, "Győrzámoly, Szerencse utca 22", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
                     }
                     break;
                 case 2:
@@ -228,9 +228,10 @@ namespace Pentekesteszimulator
 
         static void FejVagyIras()
         {
+            string opponent = RandomPerson();
             Increase(0, 0, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Játék", "Vissza a pulthoz"};
-            int choice = Display("Vörös Farkas Pub", "Egy lista ember??? vállalta a \"Fej Vagy Írás\" kihívásod.", " ", "Mi a következő lépésed?", options, player);
+            int choice = Display("Vörös Farkas Pub", $"{opponent} vállalta a \"Fej Vagy Írás\" kihívásod.", " ", "Mi a következő lépésed?", options, player);
 
             static string FlipCoin()
             {
@@ -287,7 +288,7 @@ namespace Pentekesteszimulator
                         else
                         {
                             int pickpocket = r.Next(0, 1501);
-                            Console.WriteLine($"A lista ember??? felpofozott (lista), mert a {userChoice} nem Fej, és nem is Írás.\nMíg feltápászkodtál, kivett a zsebedből {pickpocket} Ft-ot");
+                            Console.WriteLine($"{opponent} {RandomMoveOpponent()}, mert a {userChoice} nem Fej, és nem is Írás.\nMíg feltápászkodtál, kivett a zsebedből {pickpocket} Ft-ot");
                             Increase(0, -30, -pickpocket, player); //alkohol boldogság pénz
                             Thread.Sleep(50);
 
@@ -305,7 +306,7 @@ namespace Pentekesteszimulator
                     else
                     {
                         int pickpocket = r.Next(0, 1501);
-                        Console.WriteLine($"A lista ember??? felpofozott (lista), mert a {bet} közelsem egy szám.\nMíg feltápászkodtál, kivett a zsebedből {pickpocket} Ft-ot");
+                        Console.WriteLine($"{opponent}  {RandomMoveOpponent()} , mert a {bet} közelsem egy szám.\nMíg feltápászkodtál, kivett a zsebedből {pickpocket} Ft-ot");
                         Increase(0, -30, - pickpocket, player); //alkohol boldogság pénz
                         Thread.Sleep(50);
 
@@ -337,11 +338,11 @@ namespace Pentekesteszimulator
             if (chance <= 70)
             {
                 options = new string[] { "Veszel egy sört", "Vissza a városba", "Odamész az alter lányhoz" };
-                choice = Display("Zuszi néni supermarkete", "A supermarketben vagy (ha budapesti, akkor a közértben).", "Megpillantasz egy alter lányt, ahogy éppen a Jagermaisterért nyúl. (LISTA)", "Mit teszel?", options, player);
+                choice = Display("Zsuzsi néni supermarkete", "A supermarketben vagy (ha budapesti, akkor a közértben).", "Megpillantasz egy alter lányt, ahogy éppen a Jagermaisterért nyúl.", "Mit teszel?", options, player);
             }
             else
             {
-                choice = Display("Zuszi néni supermarkete", "A supermarketben vagy.", " ", "Mit teszel?", options, player);
+                choice = Display("Zsuzsi néni supermarkete", "A supermarketben vagy (ha budapesti, akkor a közértben).", " ", "Mit teszel?", options, player);
             }
 
             switch (choice)
@@ -378,13 +379,13 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
-                    if (chance <= 100)
+                    if (chance <= 10)
                     {
-                        DisplayEnd(false, "Győrzámoly, Szerencse utca 29", $"Az alter lány titokban egy szerb bérgyilkos volt, akit küldött rád, kitömött emberi próbababát csinált belőled.");
+                        DisplayEnd(false, "Győrzámoly, Szerencse utca 22", $"Az alter lány titokban egy szerb bérgyilkos volt, akit {RandomPerson()} küldött rád, kitömött emberi próbababát csinált belőled.");
                     }
                     else
                     {
-                        DisplayEnd(true, "Győrzámoly, Szerencse utca 29", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
+                        DisplayEnd(true, "Győrzámoly, Szerencse utca 22", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
                     }
                     break;
                     case 2:
@@ -401,10 +402,20 @@ namespace Pentekesteszimulator
             worlds [r.Next(0, worlds.Length)]();
         }
 
-        static void RandomPerson()
+        static string RandomPerson()
         {
-            PeopleAndFightArrays[0]();
-        } //KURVA ÉLETBE MÁR
+            return PeopleAndFightArrays[0]();
+        } 
+
+        static string RandomMove()
+        {
+            return PeopleAndFightArrays[1]();
+        }
+
+        static string RandomMoveOpponent()
+        {
+            return PeopleAndFightArrays[2]();
+        }
 
         #endregion //supermarket
 
