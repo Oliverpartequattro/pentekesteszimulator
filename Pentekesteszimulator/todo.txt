@@ -1,31 +1,18 @@
 Fancy menü választás copy paste paliéktol!!!!
-DisplayDeath fgv. - //KÉSZ
-TimeIncrease - //KÉSZ
-Const.halálok - //KÉSZ
-Increase - //KÉSZ
-Feltételes helyek - //KÉSZ
-Végén a lófasz ne elotte console foprgerodudan fekete érted PINTÉR BÁLINT GÉNIUSZ -//KÉSZ
-Szívroham - //KÉSZ
+Szívroham
 Pénz kérés az elején
 Maximum boldogság 100 
-Valamiért zöld minden - //KÉSZ
 a program csak ott nem áll le soha ami a displaybe van irva displayend
-verekedés lista mozdulatok stb -//KÉSZ
- alterlány lista nem akarom
- cselekvés lista -//KÉSZ
-random ember lista!!!! -//KÉSZ
 hogyha tul nagy bet, akkor 0 (int max ertek miat???)
  if (userChoice.Equals("Fej", StringComparison.OrdinalIgnoreCase) || userChoice.Equals("Írás", StringComparison.OrdinalIgnoreCase)) ez mi
- Fantáziavilágok!!! - //KÉSZ
  szövegek legyenek érdekesebbek
  másik játék referenciák
- viccesgomba fuggveny - //KÉSZ
  console color random valtakozik folyamatosan ha a fantasywolrdben vagy
- console nincs ékezet
 kaszinó eltúnik idő
-0 közelsem egy szám a fej vagy irasnal ha beirod textet az inputba szam helyett
-array voidbol stringet akar de mi a faszomert -//KÉSZ
+enter az ablak bezárrásához
 rányomsz arra hogy fej vagy iras es eltelik 45 perc - ido realisztikus telese (display paramater)
+0-23 feltetel
+vege a jateknak (6)
+ha az option nagyon hosszú nem tabbal kezdi az új sort
 
-Az atribute változások randomok legyenek -//KÉSZ
 Többi...

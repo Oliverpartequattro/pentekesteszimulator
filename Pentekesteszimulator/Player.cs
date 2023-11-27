@@ -21,7 +21,7 @@ namespace Pentekesteszimulator
             Random r = new Random();
             Happiness = r.Next(30, 60); // 100-ból
 
-            Time = "17:00";
+            Time = "15:00";
         }
     }
 }
