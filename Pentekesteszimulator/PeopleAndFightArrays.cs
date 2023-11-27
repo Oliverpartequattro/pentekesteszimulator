@@ -71,7 +71,10 @@ namespace Pentekesteszimulator
              "Ordító szélhámos",
              "Verekedős betyár",
              "Harcias viking",
-             "Rúgásos kick-boxos"
+             "Rúgásos kick-boxos",
+             "Pinterius Valentino",
+             "László Sándor",
+             "Dr. House",
             };
             return people[r.Next(0, people.Length)];
     }
@@ -232,6 +235,55 @@ namespace Pentekesteszimulator
          };
             return prefixes[r.Next(0, prefixes.Length)] + moves[r.Next(0, moves.Length)] + " " + bodyParts[r.Next(0, bodyParts.Length)];
         }
+
+        public static string RandomInsult()
+            {
+            string[] insults =
+        {
+                    "idióta",
+                    "eszetlen",
+                    "nyomorult",
+                    "szerencsétlen",
+                    "agyhalott",
+                    "sajátos nevelést igénylő",
+                    "nemnormális",
+                    "droid",
+                    "debil",
+                    "agyilag nem ép",
+                    "majom",
+                    "elmeroggyant",
+                    "akusztikus",
+                    "fityfiritty",
+                    "ördög fia",
+                    "korlátolt elméjű",
+                    "hibbant",
+                    "szűk látókörű",
+                    "csőlátású",
+                    "kókler",
+                    "elmebeteg",
+                    "mentálisan korlátolt",
+                    "mentálisan visszamaradott",
+                    "visszafogott",
+                    "normáltalan",
+                    "zavarodott",
+                    "intellektuálisatlan",
+                    "szellemileg kihívott",
+                    "agyirokkant",
+                    "halvány eszű",
+                    "agycsavarodott",
+                    "konzervdoboz",
+                    "akadályozott",
+                    "csirkefogó",
+                    "csöves",
+                    "intellektuális vakvágány",
+                    "agyi zsákutca",
+                    "bohóc",
+                    "agyalágyult",
+                    "fertőszentmiklósi",
+                    "fertőszentmiklósi",
+            };
+            return insults[r.Next(0, insults.Length)];
+            }
 
     }
 }

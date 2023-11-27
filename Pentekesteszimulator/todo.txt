@@ -1,15 +1,14 @@
 Meeting:
-if (userChoice.Equals("Fej", StringComparison.OrdinalIgnoreCase) || userChoice.Equals("Írás", StringComparison.OrdinalIgnoreCase)) ez mi --- case insensitiveként hasonlítja össze öket
 lehetne cr a fejvagyirasok utan
 Randommove meg ilyesmik ujra rendezése
 console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
-figyelmeztető az alkohol halálról stb.
-kaszinó eltúnik idő --- kész ha a kaszinó alatt a fejvagyirasra gondolsz
-0-23 feltetel ejfeli mise --- nem értem miről hadoválsz
 ha az option nagyon hosszú nem tabbal kezdi az új sort  --- nehéz
+csúszkák
+lottoba ay i. elemet neyi eyert ugzanott vannak csak akkor nzer!!!!!!! jo ez megvan
 
 Pénz kérés az elején
 másik játék referenciák
-szövegek legyenek érdekesebbek  --- a const haláloknál is legyenek frappánsak
+szövegek legyenek érdekesebbek  --- a const haláloknál is legyenek frappánsak array
 
+figyelmeztető az alkohol halálról stb.
 Fancy menü választás copy paste paliéktol!!!

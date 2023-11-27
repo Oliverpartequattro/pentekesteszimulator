@@ -535,13 +535,13 @@ namespace Pentekesteszimulator
                 {
                     if (guesses[i] <= 0 || guesses[i] > 10)
                     {
-                        Console.WriteLine("Ez nem 0 és 10 között van te gyökér");
+                        Console.WriteLine($"Ez nem 1 és 10 között van te {RandomInsult()}");
                         i--;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Ez nem szám te kurva");
+                    Console.WriteLine($"Ez nem szám te {RandomInsult()}");
                     i--;
                 }
             }
@@ -573,12 +573,16 @@ namespace Pentekesteszimulator
             int count = 0;
             for (int i = 0; i < guesses.Length; i++)
             {
-                if (guesses[i] == winNums[i])
+                if (winNums.Contains(guesses[i]))
+                { 
                     count++;
+                }
             }
             if (count >= 1) 
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"{count} számot találtál el, nyertél {500 * count * 10}Ft-ot!");
+                Console.ForegroundColor = ConsoleColor.White;
                 Increase(0, 50, 500 * count * 10, player);
                 Console.WriteLine("Vissza a boltba...");
                 Console.ReadKey();
@@ -586,7 +590,9 @@ namespace Pentekesteszimulator
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Nem nyertél!");
+                Console.ForegroundColor = ConsoleColor.White;
                 Increase(0, - 30, 0, player);
                 Console.WriteLine("Vissza a boltba...");
                 Console.ReadKey();
