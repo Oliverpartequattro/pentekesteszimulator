@@ -4,7 +4,6 @@ Randommove meg ilyesmik ujra rendezése
 console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
 ha az option nagyon hosszú nem tabbal kezdi az új sort  --- nehéz
 csúszkák
-lottoba ay i. elemet neyi eyert ugzanott vannak csak akkor nzer!!!!!!! jo ez megvan
 
 Pénz kérés az elején
 másik játék referenciák
