@@ -10,7 +10,7 @@ namespace Pentekesteszimulator
 {
     internal partial class Program
     {
-        public static int Display(string location, string description, string extra, string question, Player1 player, string[] options)
+        public static int Display(string location, string description, string extra, string question, Player1 player, bool timeStopped, string[] options)
         {
             Console.Clear();
             Console.WriteLine(new string(textCenter("   ___  _        _       _                _                 _                 _   _   _             ")));
@@ -45,7 +45,11 @@ namespace Pentekesteszimulator
                     Console.WriteLine($"{question}\n");
                 }
 
-            Time(player);
+            if(!timeStopped)
+            {
+                Time(player);
+            }
+            
 
             for (int i = 0; i < options.Length; i++)
             {
