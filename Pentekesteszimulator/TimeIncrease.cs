@@ -11,7 +11,7 @@ namespace Pentekesteszimulator
         public static void Time(Player1 player)
         {
             Random r = new Random();
-            int time = r.Next(30, 61);
+            int time = r.Next(30, 51);
 
             string[] arr = player.Time.Split(":");
             int min = time % 60;
@@ -38,6 +38,11 @@ namespace Pentekesteszimulator
             else
             {
                 player.Time = $"{newHour}:{newMin}";
+            }
+
+            if (newHour > 6 && newHour <= 12)
+            {
+                DisplayEnd(true, "None", "Nagyon késő van. fáradtan hazatérsz épségben.");
             }
 
         }

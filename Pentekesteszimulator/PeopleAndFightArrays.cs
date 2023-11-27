@@ -6,16 +6,7 @@ namespace Pentekesteszimulator
 {
     internal partial class Program
     {
-        public delegate string Arrays();
-
-        public static Arrays[] PeopleAndFightArrays = new Arrays[]
-        {
-            RandomPerson1,
-            RandomMove1,
-            RandomMove2,
-        };
-
-        public static string RandomPerson1()
+        public static string RandomPerson()
         {
             string[] people =
             {
@@ -84,7 +75,7 @@ namespace Pentekesteszimulator
             };
             return people[r.Next(0, people.Length)];
     }
-        public static string RandomMove1()
+        public static string RandomMove()
         {
             string[] prefixes =
             {
@@ -163,7 +154,7 @@ namespace Pentekesteszimulator
             return prefixes[r.Next(0, prefixes.Length)] + moves[r.Next(0, moves.Length)] + " " + bodyParts[r.Next(0, bodyParts.Length)];
         }
 
-        public static string RandomMove2()
+        public static string RandomMoveOpponent()
         {
             string[] prefixes =
              {

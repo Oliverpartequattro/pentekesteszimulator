@@ -1,18 +1,15 @@
-Fancy menü választás copy paste paliéktol!!!!
-Szívroham
-Pénz kérés az elején
-Maximum boldogság 100 
-a program csak ott nem áll le soha ami a displaybe van irva displayend
-hogyha tul nagy bet, akkor 0 (int max ertek miat???)
- if (userChoice.Equals("Fej", StringComparison.OrdinalIgnoreCase) || userChoice.Equals("Írás", StringComparison.OrdinalIgnoreCase)) ez mi
- szövegek legyenek érdekesebbek
- másik játék referenciák
- console color random valtakozik folyamatosan ha a fantasywolrdben vagy
-kaszinó eltúnik idő
-enter az ablak bezárrásához
-rányomsz arra hogy fej vagy iras es eltelik 45 perc - ido realisztikus telese (display paramater)
-0-23 feltetel
-vege a jateknak (6)
-ha az option nagyon hosszú nem tabbal kezdi az új sort
+Meeting:
+if (userChoice.Equals("Fej", StringComparison.OrdinalIgnoreCase) || userChoice.Equals("Írás", StringComparison.OrdinalIgnoreCase)) ez mi --- case insensitiveként hasonlítja össze öket
+lehetne cr a fejvagyirasok utan
+Randommove meg ilyesmik ujra rendezése
+console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
+figyelmeztető az alkohol halálról stb.
+kaszinó eltúnik idő --- kész ha a kaszinó alatt a fejvagyirasra gondolsz
+0-23 feltetel ejfeli mise --- nem értem miről hadoválsz
+ha az option nagyon hosszú nem tabbal kezdi az új sort  --- nehéz
 
-Többi...
+Pénz kérés az elején
+másik játék referenciák
+szövegek legyenek érdekesebbek  --- a const haláloknál is legyenek frappánsak
+
+Fancy menü választás copy paste paliéktol!!!

@@ -9,6 +9,7 @@ namespace Pentekesteszimulator
     internal partial class Program
     {
         private static Player1 player = new Player1();
+        private static bool timeStopped = false;
         private static Random r = new Random();
 
         public static void Main(string[] args)
@@ -21,7 +22,7 @@ namespace Pentekesteszimulator
         public static void Otthon()
         {
             string[] options = new string[] { "Busz", "Autó", "Bicikli" };
-            int choice = Display("Győrzámoly, Szerencse utca 22", "Fájó fejjel kelsz fel egy fura középkorban játszódó álom után, úgy érzed, mintha 2000 évet időutaztál volna, ezért úgy döntesz, hogy berúgsz.", " ", "Milyen járművel indulsz el?", player, options);
+            int choice = Display("Győrzámoly, Szerencse utca 22", "Fájó fejjel kelsz fel egy fura középkorban játszódó álom után, úgy érzed, mintha 2000 évet időutaztál volna, ezért úgy döntesz, hogy berúgsz.", " ", "Milyen járművel indulsz el?", player, timeStopped, options);
 
             switch (choice)
             {
@@ -42,7 +43,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, -10, -300, player);
             string[] options = new string[] { "Város", "Falu" };
-            int choice = Display("Buszmegálló", "Úgy döntöttél busszal indulsz útnak.", " ", "Hová mész tovább?", player, options);
+            int choice = Display("Buszmegálló", "Úgy döntöttél busszal indulsz útnak.", " ", "Hová mész tovább?", player, timeStopped, options);
 
             switch (choice)
             {
@@ -59,7 +60,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, 0, -300, player);
             string[] options = new string[] { "Város", "Falu" };
-            int choice = Display("Garázs", "Úgy döntöttél autóval indulsz útnak.", " ", "Hová mész tovább?", player, options);
+            int choice = Display("Garázs", "Úgy döntöttél autóval indulsz útnak.", " ", "Hová mész tovább?", player, timeStopped, options);
 
             switch (choice)
             {
@@ -79,7 +80,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, 2, 0, player);
             string[] options = new string[] { "Falu" };
-            int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", " ", "Hová mész tovább?", player, options);
+            int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", " ", "Hová mész tovább?", player, timeStopped, options);
 
             switch (choice)
             {
@@ -94,7 +95,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, 2, 0, player);
             string[] options = new string[] { "Szórakozóhely", "Kocsma", "Supermarket" };
-            int choice = Display("Putri Pályaudvar", "A Putri Pályaudvaron vagy.", " ", "Hová mész tovább?", player, options);
+            int choice = Display("Putri Pályaudvar", "A Putri Pályaudvaron vagy.", " ", "Hová mész tovább?", player, timeStopped, options);
 
             switch (choice)
             {
@@ -122,11 +123,11 @@ namespace Pentekesteszimulator
             if (chance <= 40)
             {
                 options = new string[] { "Ivás", "Az \"éj hölgye\"", "Vissza a városba", "Odamész ahhoz az aranyos lányhoz" };
-                choice = Display($"Happy Hours Nightclub", "Beléptél a szórakozóhelyre.", "Megláttál egy aranyos lányt.", "Mit teszel?", player, options);
+                choice = Display($"Happy Hours Nightclub", "Beléptél a szórakozóhelyre.", "Megláttál egy aranyos lányt.", "Mit teszel?", player, timeStopped, options);
             }
             else
             {
-                choice = Display("Happy Hours Nightclub", "Beléptél a szórakozóhelyre.", " ", "Mit teszel?", player, options);
+                choice = Display("Happy Hours Nightclub", "Beléptél a szórakozóhelyre.", " ", "Mit teszel?", player, timeStopped, options);
             }
             switch (choice)
             {
@@ -158,11 +159,11 @@ namespace Pentekesteszimulator
             if (chance <= 40)
             {
                 options = new string[] { "Felül leszek", "Alul leszek", "Elmenekülök", };
-                choice = Display($"Cigiszagú panel", "Felvitt a fizetős \"hölgy\" a paneljébe.", "Nagyobb neki, mint neked.", "Mit teszel?", player, options);
+                choice = Display($"Cigiszagú panel", "Felvitt a fizetős \"hölgy\" a paneljébe.", "Nagyobb neki, mint neked.", "Mit teszel?", player, timeStopped, options);
             }
             else
             {
-                choice = Display("Cigiszagú panel", "Felvitt egy cigiszagú panelbe, ahol 3 férfi fehér csíkokat szív az asztalról.", " ", "Mit teszel?", player, options);
+                choice = Display("Cigiszagú panel", "Felvitt egy cigiszagú panelbe, ahol 3 férfi fehér csíkokat szív az asztalról.", " ", "Mit teszel?", player, timeStopped, options);
             }
             switch (choice)
             {
@@ -184,7 +185,7 @@ namespace Pentekesteszimulator
             Increase(0, 50, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Hazaviszed", "Elutasítod és inkább iszol egyet"};
             int choice;
-           choice = Display("Happy Hours Nightclub", "Beszélgettél a lánnyal, és fel akar menni a lakásodba.", " ", "Mit teszel?", player, options);
+           choice = Display("Happy Hours Nightclub", "Beszélgettél a lánnyal, és fel akar menni a lakásodba.", " ", "Mit teszel?", player, timeStopped, options);
             switch (choice)
             {
                 case 1:
@@ -208,7 +209,7 @@ namespace Pentekesteszimulator
         {
             Increase(r.Next(30, 60) / 100.0, 10, -800, player); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Fej vagy írás", "Vissza a városba" };
-            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy.", " ", "Mit teszel?", player, options);
+            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy.", " ", "Mit teszel?", player, timeStopped, options);
 
             switch (choice)
             {
@@ -231,7 +232,7 @@ namespace Pentekesteszimulator
             string opponent = RandomPerson();
             Increase(0, 0, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Játék", "Vissza a pulthoz"};
-            int choice = Display("Vörös Farkas Pub", $"{opponent} vállalta a \"Fej Vagy Írás\" kihívásod.", " ", "Mi a következő lépésed?", player, options);
+            int choice = Display("Vörös Farkas Pub", $"{opponent} vállalta a \"Fej Vagy Írás\" kihívásod.", " ", "Mi a következő lépésed?", player, true, options);
 
             static string FlipCoin()
             {
@@ -244,10 +245,18 @@ namespace Pentekesteszimulator
             {
                 case 1:
                     int bet;
+                    ulong bigNum;
                     Console.WriteLine("Mennyi pénzt raksz fel?");
                     string input = Console.ReadLine();
 
-                    if (int.TryParse(input, out bet))
+                    if (int.TryParse(input, out bet) && bet > player.Money)
+                    {
+                        Console.WriteLine($"\n{opponent} átnézte a zsebeidet és nincs ennyi pénzed. {opponent} megfenyeget, ne próbálkozz a csalással.\nMegértetted?");
+                        Console.ReadKey(true);
+
+                        FejVagyIras();
+                    }
+                    else if (int.TryParse(input, out bet))
                     {
                         Console.WriteLine($"{bet} Ft-ot tettél fel.\n");
 
@@ -317,6 +326,22 @@ namespace Pentekesteszimulator
                             FejVagyIras();
                         }                
                     }
+                    else if (ulong.TryParse(input, out bigNum)){
+                        Console.WriteLine($"\nEz túl nagy szám {opponent}-nek, nem tudja feldolgozni. Azt hiszi csalni akarsz ezért {RandomMoveOpponent()}.");
+                        Increase(0, -30, 0, player);
+
+                        Console.Write("Most kelsz fel");
+                        string text = "...............";
+                        int delay = 300;
+                        foreach (char c in text)
+                        {
+                            Console.Write(c);
+                            Thread.Sleep(delay);
+                        }
+                        Console.ReadKey(true);
+
+                        FejVagyIras();
+                    }
                     else
                     {
                         int pickpocket = r.Next(0, 1501);
@@ -352,11 +377,11 @@ namespace Pentekesteszimulator
             if (chance <= 70)
             {
                 options = new string[] { "Veszel egy sört", "Vissza a városba", "Odamész az alter lányhoz" };
-                choice = Display("Zsuzsi néni supermarkete", "A supermarketben vagy (ha budapesti, akkor a közértben).", "Megpillantasz egy alter lányt, ahogy éppen a Jagermaisterért nyúl.", "Mit teszel?", player, options);
+                choice = Display("Zsuzsi néni supermarkete", "A supermarketben vagy (ha budapesti, akkor a közértben).", "Megpillantasz egy alter lányt, ahogy éppen a Jagermaisterért nyúl.", "Mit teszel?", player, timeStopped, options);
             }
             else
             {
-                choice = Display("Zsuzsi néni supermarkete", "A supermarketben vagy (ha budapesti, akkor a közértben).", " ", "Mit teszel?", player, options);
+                choice = Display("Zsuzsi néni supermarkete", "A supermarketben vagy (ha budapesti, akkor a közértben).", " ", "Mit teszel?", player, timeStopped, options);
             }
 
             switch (choice)
@@ -384,11 +409,11 @@ namespace Pentekesteszimulator
             if (chance <= 80)
             {
                 options = new string[] { "Hazaviszed", "Elutasítod és inkább magányos maradsz", "Gombásztok" };
-                choice = Display("Zsuzsi néni supermarketje", "Beszélgettél az alter lánnyal, és fel akar menni a lakásodba.", $"A zsebében ott lapul {r.Next(3,11)} gramm varázsgomba", "Mit teszel?", player, options);
+                choice = Display("Zsuzsi néni supermarketje", "Beszélgettél az alter lánnyal, és fel akar menni a lakásodba.", $"A zsebében ott lapul {r.Next(3,11)} gramm varázsgomba", "Mit teszel?", player, timeStopped, options);
             }
             else
             {
-                choice = Display("Zsuzsi néni supermarketje", "Beszélgettél az alter lánnyal, és fel akar menni a lakásodba.", " ", "Mit teszel?", player, options);
+                choice = Display("Zsuzsi néni supermarketje", "Beszélgettél az alter lánnyal, és fel akar menni a lakásodba.", " ", "Mit teszel?", player, timeStopped, options);
             }  
             switch (choice)
             {
@@ -416,21 +441,6 @@ namespace Pentekesteszimulator
             worlds [r.Next(0, worlds.Length)]();
         }
 
-        static string RandomPerson()
-        {
-            return PeopleAndFightArrays[0]();
-        } 
-
-        static string RandomMove()
-        {
-            return PeopleAndFightArrays[1]();
-        }
-
-        static string RandomMoveOpponent()
-        {
-            return PeopleAndFightArrays[2]();
-        }
-
         #endregion //supermarket
 
         #endregion //varos
@@ -440,7 +450,7 @@ namespace Pentekesteszimulator
         {
             Increase(0, 5, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Falu" };
-            int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", " ","Hová mész tovább?", player, options);
+            int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", " ","Hová mész tovább?", player, timeStopped, options);
 
             switch (choice)
             {

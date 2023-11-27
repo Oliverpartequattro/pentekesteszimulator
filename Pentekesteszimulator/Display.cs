@@ -10,7 +10,7 @@ namespace Pentekesteszimulator
 {
     internal partial class Program
     {
-        public static int Display(string location, string description, string extra, string question, Player1 player, string[] options)
+        public static int Display(string location, string description, string extra, string question, Player1 player, bool timeStopped, string[] options)
         {
             Console.Clear();
             Console.WriteLine(new string(textCenter("   ___  _        _       _                _                 _                 _   _   _             ")));
@@ -43,9 +43,12 @@ namespace Pentekesteszimulator
                     Console.ForegroundColor = ConsoleColor.White;
 
                     Console.WriteLine($"{question}\n");
-                }
+            }
 
-            Time(player);
+            if (!timeStopped)
+            {
+                Time(player);
+            }
 
             for (int i = 0; i < options.Length; i++)
             {
@@ -54,8 +57,6 @@ namespace Pentekesteszimulator
 
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"{options[i]}");
-
-
             }
             Console.WriteLine();
 
@@ -83,11 +84,18 @@ namespace Pentekesteszimulator
             }
             else if(player.Happiness <= 0)
             {
-                DisplayEnd(false, "None", "Öngyilkos lettél");
+                DisplayEnd(false, "None", "Annyira szomorkás lett az életed hogy öngyilkos lettél");
             }
             else if(player.Money <= 0)
             {
                 DisplayEnd(false, "None", "Csóró lettél");
+            }
+
+
+            int cardiacArrest = r.Next(0, 201);
+            if (cardiacArrest == 42) //fortika
+            {
+                DisplayEnd(false, "None", "Hirtelen szúró fájdalmat érzel a mellkasod bal oldalán. Szívrohamban eltávozol.");
             }
 
             int ret;

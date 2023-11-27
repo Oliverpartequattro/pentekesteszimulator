@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Pentekesteszimulator
 {
@@ -61,8 +62,19 @@ namespace Pentekesteszimulator
             }
 
             Console.WriteLine($"A játék végének oka: {description}\n");
+
+            
+            Console.WriteLine("Nyomjon entert a kilépéshez.\n");
+            ConsoleKey ret;
+            do
+            {
+                ret = Console.ReadKey(true).Key;
+            } while (ret != ConsoleKey.Enter);
+
+            Console.WriteLine("Bezárhatja a programot.");
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.Black;
+            Environment.Exit(0);
+
         }
     }
 }

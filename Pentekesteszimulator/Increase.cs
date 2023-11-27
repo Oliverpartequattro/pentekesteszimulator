@@ -10,8 +10,17 @@ namespace Pentekesteszimulator
     {
         public static void Increase(double alc, int happ, int mon, Player1 player) {
             player.Alcohol += alc;
-            player.Happiness += happ;
             player.Money += mon;
+
+            if (player.Happiness + happ >= 100)
+            {
+                player.Happiness = 100;
+            }
+            else
+            {
+                player.Happiness += happ;
+            }
+
         }
     }
 }
