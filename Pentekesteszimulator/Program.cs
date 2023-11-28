@@ -3,14 +3,18 @@ using System.Numerics;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Threading;
+using System.ComponentModel;
 
 namespace Pentekesteszimulator
 {
     internal partial class Program
     {
         private static Player1 player = new Player1();
-        private static bool timeStopped = false;
         private static Random r = new Random();
+        private static int allBeer = r.Next(6, 31);
+        private static int beerCount = 0;
+        private static bool timeStopped = false;
+        private static bool boughtBeer = false;
 
         public static void Main(string[] args)
         {
@@ -456,11 +460,11 @@ namespace Pentekesteszimulator
             if (chance <= 10)
             {
                 options = new string[] { "Sarki bolt", "Haverok", "Falusi kocsma", "Maradok vele inni" };
-                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat letekerve a faluközpontba jutsz.", $"Egy {drinkMan} \"vegyes házit\" kínál.", "Hová mész tovább?", player, true, options);
+                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat végigszenvedve a faluközpontba jutsz.", $"Egy {drinkMan} \"vegyes házit\" kínál.", "Hová mész tovább?", player, true, options);
             }
             else
             {
-                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat letekerve a faluközpontba jutsz.", " ", "Hová mész tovább?", player, true, options);
+                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat végigszenvedve a faluközpontba jutsz.", " ", "Hová mész tovább?", player, true, options);
             }
             switch (choice)
             {
@@ -468,7 +472,18 @@ namespace Pentekesteszimulator
                     SarkiBolt();
                     break;
                 case 2:
-                    Haverok();
+                    if (boughtBeer == true)
+                    {
+                        Haverok();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nem vettél sört a sarki boltban, üres kézzel nem illik beállítani!");
+                        Console.WriteLine("Visszamész a faluba...");
+                        Console.ReadKey();
+                        Falu();
+                    }
+                    
                     break;
                 case 3:
                     FalusiKocsma();
@@ -480,27 +495,31 @@ namespace Pentekesteszimulator
                     }
                     else 
                     {
-                        Increase(r.Next(70, 100) / 100.0, 20, 0, player);
+                        Increase(r.Next(70, 120) / 100.0, 20, 0, player);
                         Falu();
                     }
                     break;
             }
         }
 
+        #region SarkiBolt
         static void SarkiBolt()
         {
+            boughtBeer = true;
+            beerCount++;
+            allBeer ++;
             Time(player);
-            Increase(r.Next(30, 60) / 100.0, 10, -500, player); //alkohol boldogság pénz
+            Increase(0, 1, -500, player); //alkohol boldogság pénz
             string[] options = new string[] { "Veszel egy sört", "Kitöltesz egy lottószelvényt", "Visszamész a faluközpontba" };
             int choice;
             if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
             {
                 options = new string[] { "Veszel egy sört", "Kitöltesz egy lottószelvényt", "Visszamész a faluközpontba", "Elmész a templomba" };
-                choice = Display("Putri kisbolt", "Eljutottál a 0-24-es Putri Kisbolthoz.", "Lehetőságed van elmenni az éjféli misére", "Mit teszel?", player, false, options);       
+                choice = Display("Putri kisbolt", "Eljutottál a 0-24-es Putri Kisbolthoz.", "Lehetőséged van elmenni az éjféli misére", "Mit teszel?", player, true, options);       
             }
             else
             {
-                choice = Display("Putri kisbolt", "Eljutottál a 0-24-es Putri Kisbolthoz.", " ", "Mit teszel?", player, false, options);
+                choice = Display("Putri kisbolt", "Eljutottál a 0-24-es Putri Kisbolthoz.", " ", "Mit teszel?", player, true, options);
             }
             switch (choice)
             {
@@ -511,10 +530,10 @@ namespace Pentekesteszimulator
                     Lotto();
                     break;
                 case 3:
-                    FalusiKocsma();
+                    Falu();
                     break;
                 case 4:
-                    //EjfeliMise();
+                    EjfeliMise();
                     break;
             }
         }
@@ -601,36 +620,108 @@ namespace Pentekesteszimulator
            
         }
 
-        static void Haverok()
+        #endregion
+
+        static void EjfeliMise()
         {
-            string drinkMan = RandomPerson();
-            int chance = r.Next(0, 100);
-            Increase(0, 5, 0, player); //alkohol boldogság pénz
-            string[] options = new string[] { "Sarki bolt", "Haverok", "Falusi kocsma" };
-            int choice = Display("Dorozsmai faluközpont", "A 20km-es főútat letekerve a faluközpontba jutsz.", " ", "Hová mész tovább?", player, true, options);
-            if (chance <= 200)
+            Time(player);
+            Increase(0, 10, 0, player); //alkohol boldogság pénz
+            string[] options = new string[] { "Imádkozol", "Visszamész a faluközpontba"};
+            int choice;
+            if (player.Alcohol >= 2.0)
             {
-                options = new string[] { "Sarki bolt", "Haverok", "Falusi kocsma", "Maradok vele inni" };
-                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat letekerve a faluközpontba jutsz.", $"Egy {drinkMan} \"vegyes házit\" kínál.", "Hová mész tovább?", player, true, options);
+                options = new string[] { "Imádkozol", "Visszamész a faluközpontba", "Megbotránkoztatóan viselkedsz" };
+                choice = Display($"Dorozsmai Szent Szűz \"{RandomPerson()}\" templom", "A templomban vagy megtérés (vagy akció) reményében.", "Morális korlátaidat felszámolta a magas véralkoholszinted.", "Mit teszel?", player, true, options);
+            }
+            else
+            {
+                choice = Display($"Dorozsmai Szent Szűz \"{RandomPerson()}\" templom", "A templomban vagy megtérés (vagy akció) reményében.", " ", "Mit teszel?", player, true, options);
             }
             switch (choice)
             {
                 case 1:
-                    SarkiBolt();
+                    DisplayEnd(true, "Templom", "Az éjféli mise után kijózanodtál, és megtérve hazaértél, túlélve az estét.");
                     break;
                 case 2:
-                    Haverok();
+                   Falu();
                     break;
                 case 3:
-                    FalusiKocsma();
-                    break;
-                case 4:
-                    if (chance <= 20)
+                    string fightMan = RandomPerson();
+                    Console.WriteLine($"Erkölcsök hiányában {RandomScandal()}, és a papot {RandomInsult()}-nak/nek hívtad.\n");
+                    int pickpocket = r.Next(0, 1501);
+                    Thread.Sleep(5000);
+                    Console.WriteLine($"Viselkedéseden {fightMan} annyira megbotránkozott, hogy {RandomMoveOpponent()}.");
+                    Thread.Sleep(500);
+                    Console.WriteLine($"Válaszul {RandomMove()}");
+                    Thread.Sleep(500);
+                    Console.WriteLine($"\nAz örjöngő verekedés után mindketten földre kerültetek.");
+                    Thread.Sleep(500);
+                    Console.WriteLine($"Biológiai leleményességét, és a helyzetet kihasználva, egy goblin kivett a zsebedből {pickpocket} Ft-ot.");
+                    Increase(0, -30, -pickpocket, player); //alkohol boldogság pénz
+                    Thread.Sleep(1000);
+
+                    Console.Write("\nMost kelsz fel");
+                    string text = "...............";
+                    int delay = 300;
+                    foreach (char c in text)
                     {
-                        DisplayEnd(false, "Dorozsmai faluközpont", $"{drinkMan} által kínált \"vegyes házi\" fagyálló volt. Továbbindultál utadra, de menetközben leálltak a veséid, és összeestél.");
-                    };
-                    Increase(r.Next(70, 100) / 100.0, 20, 0, player);
+                        Console.Write(c);
+                        Thread.Sleep(delay);
+                    }
+                    Console.WriteLine("\nA rendőrség visszavisz a faluba....");
+                    Console.ReadKey();
                     Falu();
+                    break;
+            }
+        }
+
+        static void Haverok()
+        {
+            if(allBeer < 3)
+            {
+                Increase(0, 3, 0, player); //alkohol boldogság pénz
+            }
+            else
+            {
+                allBeer -= 3;
+                Increase(r.Next(30, 60) / 100.0, 15, 0, player); //alkohol boldogság pénz
+            }
+            string[] options = new string[] { "Isztok egy kört", "Viccesgombáztok", "Autókáztok egyet", "Visszamész a faluközpontba" };
+            int choice;
+            if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
+            {
+                options = new string[] { "Isztok egy kört", "Viccesgombáztok", "Autókáztok egyet", "Visszamész a faluközpontba", "Elmentek a templomba" };
+                choice = Display("Haverod tanyája", $"Összeültél a 3 haveroddal inni.\n{beerCount} sört vittél, a többiekével együtt összesen {allBeer} sörötök van.", "Lehetőségetek van elmenni az éjféli misére", "Mit teszel?", player, timeStopped, options);       
+            }
+            else
+            {
+                choice = Display("Haverod tanyája", $"Összeültél a 3 haveroddal inni.\n {beerCount} sört vittél, a többiekével együtt összesen {allBeer} sörötök van.", " ", "Mit tesztek?", player, timeStopped, options);
+            }
+            switch (choice)
+            { 
+                case 1:
+                    if(allBeer < 3)
+                    {
+                        Console.WriteLine("Nincs elég sör hármótoknak, ezért nem isztok.");
+                        Console.ReadKey();
+                        Haverok();
+                    }
+                    else
+                    {
+                        Haverok();
+                    }
+                    break;
+                case 2:
+                    VarazsGomba();
+                    break;
+                case 3:
+                    //DrunkDriving();
+                    break;
+                case 4 :
+                    Falu();
+                    break;
+                case 5:
+                    EjfeliMise();
                     break;
             }
         }
@@ -641,11 +732,11 @@ namespace Pentekesteszimulator
             int chance = r.Next(0, 100);
             Increase(0, 5, 0, player); //alkohol boldogság pénz
             string[] options = new string[] { "Sarki bolt", "Haverok", "Falusi kocsma" };
-            int choice = Display("Dorozsmai faluközpont", "A 20km-es főútat letekerve a faluközpontba jutsz.", " ", "Hová mész tovább?", player, true, options);
+            int choice = Display("Dorozsmai faluközpont", "A 20km-es főútat végigszenvedve a faluközpontba jutsz.", " ", "Hová mész tovább?", player, true, options);
             if (chance <= 200)
             {
                 options = new string[] { "Sarki bolt", "Haverok", "Falusi kocsma", "Maradok vele inni" };
-                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat letekerve a faluközpontba jutsz.", $"Egy {drinkMan} \"vegyes házit\" kínál.", "Hová mész tovább?", player, true, options);
+                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat végigszenvedve a faluközpontba jutsz.", $"Egy {drinkMan} \"vegyes házit\" kínál.", "Hová mész tovább?", player, true, options);
             }
             switch (choice)
             {

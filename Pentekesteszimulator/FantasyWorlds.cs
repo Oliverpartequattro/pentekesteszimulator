@@ -99,7 +99,7 @@ namespace Pentekesteszimulator
             Increase(0, 100, 0, player);
             string[] options = new string[]
                  {
-                    "Belevetedsz egy tűzgömböt az égő lelkek közé, közben nevetve a szenvedésükön.",
+                    "Belevetsz egy tűzgömböt az égő lelkek közé, közben nevetve a szenvedésükön.",
                     "Karmokkal téped szét a sírköveket, remélve, hogy a rejtett kincsek és nyomok megtalálhatók a sírokban.",
                     "Vassal és láncokkal kötözöd meg az embereket, majd hagyod, hogy a sötétség végezzen velük.",
                     "Fenyegetőzöl a bordákkal, hogy megtörjed az ellenfeleidet.",

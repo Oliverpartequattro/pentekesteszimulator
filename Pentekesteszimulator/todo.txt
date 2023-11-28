@@ -1,13 +1,19 @@
-Meeting:
-lehetne cr a fejvagyirasok utan
-Randommove meg ilyesmik ujra rendezése
-console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
-ha az option nagyon hosszú nem tabbal kezdi az új sort  --- nehéz
-csúszkák
+Mindenkepp meg lesz csinalva/bugfix:
+	console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
 
-Pénz kérés az elején
-másik játék referenciák
-szövegek legyenek érdekesebbek  --- a const haláloknál is legyenek frappánsak array
 
-figyelmeztető az alkohol halálról stb.
-Fancy menü választás copy paste paliéktol!!!
+
+Opcionalis ha sok idonk van:
+	közös éjféli mise/kocsmai verekedés haverokkal (70% esely a nyeresre)
+	sarki bolt rablás haverokkal!!!!
+	elmentek kocsmázni a haverokkal (30% hogy te fizetsz de akkor 3x ár)
+	reszeg vezetes haverokkal - auto class kezdeti penz alapjan, tobb penz erosebb auto nagyobb esely halalra
+	Pénz kérés az elején
+	másik játék referenciák
+	szövegek legyenek érdekesebbek  --- a const haláloknál is legyenek frappánsak array
+	ha az option nagyon hosszú nem tabbal kezdi az új sort  --- nehéz
+
+Folyamatban:
+	figyelmeztető az alkohol halálról stb.
+	Fancy menü választás copy paste paliéktol!!!
+	csúszkák

@@ -80,6 +80,8 @@ namespace Pentekesteszimulator
              "Gonosz tudós",
              "Rostás Nintendo",
              "Gipsz Jakab",
+             "Sadam Hussein",
+
 
             };
             return people[r.Next(0, people.Length)];
@@ -158,7 +160,8 @@ namespace Pentekesteszimulator
                 "az ujjbegyeit",
                 "az ujjainak hegyét",
                 "az orrcimpáját",
-                "az orrnyílását"
+                "az orrnyílását",
+                "az idegvégződését"
             };
             return prefixes[r.Next(0, prefixes.Length)] + moves[r.Next(0, moves.Length)] + " " + bodyParts[r.Next(0, bodyParts.Length)];
         }
@@ -180,7 +183,6 @@ namespace Pentekesteszimulator
             string[] moves =
               {
                 "préselte",
-                "ütötte",
                 "fejelte",
                 "törte",
                 "bökte",
@@ -237,7 +239,8 @@ namespace Pentekesteszimulator
                 "az ujjbegyeidet",
                 "az ujjaidnak hegyét",
                 "az orrcimpádat",
-                "az orrnyílásodat"
+                "az orrnyílásodat",
+                "az idegvégződésedet",
          };
             return prefixes[r.Next(0, prefixes.Length)] + moves[r.Next(0, moves.Length)] + " " + bodyParts[r.Next(0, bodyParts.Length)];
         }
@@ -286,12 +289,37 @@ namespace Pentekesteszimulator
                     "bohóc",
                     "agyalágyult",
                     "fertőszentmiklósi",
-                    "félegyelmű",
+                    "félkegyelmű",
                     "suttyó",
+                    "amőba",
+                    "egysejtű",
+                    "komplex gondolkodásra képtelen",
+                    "csalódás",
                     
             };
             return insults[r.Next(0, insults.Length)];
             }
+
+        public static string RandomScandal()
+        {
+            string[] scandals =
+        {
+             "leverted az asztal sarkát egy üveg sörrel",
+             "késsel a kezedben üvöltve hadonásztál",
+             "levizelted a falat, miközben 360 fokban pörögtél",
+             "széles mosollyal az arcodon önkényuralmi szimbólumokat mutogattál",
+             "elkezdtél üvöltve mulatós slágereket énekelni",
+             "bandajeleket mutogattál",
+             "örömmel összeraktál egy kalapácsot és egy sarlót, miközben üvöltve hirdetted a proletárdiktatúrát",
+             "felgyújtottál egy melegzászlót",
+             "hangosan és büszkén homofób kifejezéseket kiáltottál",
+             "kimondtad az \"n betűs szót\"",
+             "vérben forgó szemekkel elkezdted Jákob népét derogáló nyelvezettel illetni",
+             "a melletted űlő államtársadat visszakézből orron vágtad, mert alsóbbrendű"
+
+            };
+            return scandals[r.Next(0, scandals.Length)];
+        }
 
     }
 }
