@@ -75,6 +75,12 @@ namespace Pentekesteszimulator
              "Pinterius Valentino",
              "László Sándor",
              "Dr. House",
+             "Bunyós István",
+             "Tófalvi Milán",
+             "Gonosz tudós",
+             "Rostás Nintendo",
+             "Gipsz Jakab",
+
             };
             return people[r.Next(0, people.Length)];
     }
@@ -280,7 +286,9 @@ namespace Pentekesteszimulator
                     "bohóc",
                     "agyalágyult",
                     "fertőszentmiklósi",
-                    "fertőszentmiklósi",
+                    "félegyelmű",
+                    "suttyó",
+                    
             };
             return insults[r.Next(0, insults.Length)];
             }
