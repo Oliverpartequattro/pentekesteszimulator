@@ -62,7 +62,7 @@ namespace Pentekesteszimulator
              "Ordító rockzenész",
              "Verekedő motorkerékpáros",
              "Harcias testépítő",
-             "Rúgkapáló karateka",
+             "Kényszerzubbonyos ember", 
              "Üvöltő szomszéd",
              "Rémítő horrorfilmfigura",
              "Haragos cimbora",
@@ -75,14 +75,18 @@ namespace Pentekesteszimulator
              "Pinterius Valentino",
              "László Sándor",
              "Dr. House",
-             "Bunyós István",
+             "Duhajkodós István",
              "Tófalvi Milán",
              "Gonosz tudós",
              "Rostás Nintendo",
              "Gipsz Jakab",
-             "Sadam Hussein",
-
-
+             "Saddam Hussein",
+             "Karcsú ember",
+             "Kőbányai Szopófantom",
+             "Munkás kéz",
+             "Erős kéz",
+             "Fortnite játékos",
+             "John Wick a Fortniteból",
             };
             return people[r.Next(0, people.Length)];
     }
@@ -90,14 +94,14 @@ namespace Pentekesteszimulator
         {
             string[] prefixes =
             {
-                "Meg",
-                "Szét",
-                "Fel",
-                "Le",
-                "Össze",
-                "Be",
-                "El",
-                "Ki"
+                "meg",
+                "szét",
+                "fel",
+                "le",
+                "össze",
+                "be",
+                "el",
+                "ki"
             };
 
               string[] moves =
@@ -127,7 +131,9 @@ namespace Pentekesteszimulator
                 "köszörülted",
                 "rúgtad",
                 "tépted",
-                "csiklandoztad"
+                "csiklandoztad",
+                "flexelted",
+
             };
 
             string[] bodyParts =
@@ -161,7 +167,11 @@ namespace Pentekesteszimulator
                 "az ujjainak hegyét",
                 "az orrcimpáját",
                 "az orrnyílását",
-                "az idegvégződését"
+                "az idegvégződését",
+                "a csigolyáját",
+                "az ádámcsutkáját",
+                "a gerincoszlopát",
+                "a lelkét",
             };
             return prefixes[r.Next(0, prefixes.Length)] + moves[r.Next(0, moves.Length)] + " " + bodyParts[r.Next(0, bodyParts.Length)];
         }
@@ -206,7 +216,9 @@ namespace Pentekesteszimulator
                 "köszörülte",
                 "rúgta",
                 "tépte",
-                "csiklandozta"
+                "csiklandozta",
+                "flexelte",
+
             };
 
             string[] bodyParts =
@@ -241,6 +253,10 @@ namespace Pentekesteszimulator
                 "az orrcimpádat",
                 "az orrnyílásodat",
                 "az idegvégződésedet",
+                "a csigolyádat",
+                "az ádámcsutkádat",
+                "a gerincoszlopodat",
+                "a lelkedet",
          };
             return prefixes[r.Next(0, prefixes.Length)] + moves[r.Next(0, moves.Length)] + " " + bodyParts[r.Next(0, bodyParts.Length)];
         }
@@ -307,15 +323,18 @@ namespace Pentekesteszimulator
              "leverted az asztal sarkát egy üveg sörrel",
              "késsel a kezedben üvöltve hadonásztál",
              "levizelted a falat, miközben 360 fokban pörögtél",
-             "széles mosollyal az arcodon önkényuralmi szimbólumokat mutogattál",
+             "széles mosollyal az arcodon önkényuralmi jelképeket mutogattál",
              "elkezdtél üvöltve mulatós slágereket énekelni",
-             "bandajeleket mutogattál",
+             "különböző bandajeleket mutogattál",
              "örömmel összeraktál egy kalapácsot és egy sarlót, miközben üvöltve hirdetted a proletárdiktatúrát",
-             "felgyújtottál egy melegzászlót",
+             "felgyújtottál egy melegzászlót, és a hamuból önkényuralmi jelképeket raktál ki",
              "hangosan és büszkén homofób kifejezéseket kiáltottál",
              "kimondtad az \"n betűs szót\"",
              "vérben forgó szemekkel elkezdted Jákob népét derogáló nyelvezettel illetni",
-             "a melletted űlő államtársadat visszakézből orron vágtad, mert alsóbbrendű"
+             "a melletted űlő államtársadat visszakézből orron vágtad, mert alsóbbrendű",
+             "a földre köptél egyet, és átmarta a padlót",
+             "irdatlan nagyot fingottál, és meggyújtottad",
+             "elnyomtam a szomszédomon egy csikket, mert Kőbányait ivott",
 
             };
             return scandals[r.Next(0, scandals.Length)];
