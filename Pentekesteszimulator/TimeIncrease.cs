@@ -13,6 +13,12 @@ namespace Pentekesteszimulator
             Random r = new Random();
             int time = r.Next(30, 51);
 
+            int cardiacArrest = r.Next(0, 201);
+            if (cardiacArrest == 42) //fortika
+            {
+                DisplayEnd(false, "None", "Hirtelen szúró fájdalmat érzel a mellkasod bal oldalán. Szívrohamban eltávozol.");
+            }
+
             string[] arr = player.Time.Split(":");
             int min = time % 60;
             int hour = time / 60;

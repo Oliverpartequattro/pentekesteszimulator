@@ -10,7 +10,7 @@ namespace Pentekesteszimulator
 {
     internal partial class Program
     {
-        public static int Display(string location, string description, string extra, string question, Player1 player, bool timeStopped, string[] options)
+        public static int Display(string location, string description, string extra, string question, Player1 player, bool timeStopped, int index, string[] options)
         {
             Console.Clear();
             Console.WriteLine(new string(textCenter("   ___  _        _       _                _                 _                 _   _   _             ")));
@@ -52,11 +52,28 @@ namespace Pentekesteszimulator
 
             for (int i = 0; i < options.Length; i++)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write($"\t{i + 1}. ");
+                if (i+1 == index)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Write($"\t> ");
 
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"{options[i]}");
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.Write($"{options[i]}");
+
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.WriteLine($" <");
+
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine($"\t  {options[i]}");
+                }
             }
             Console.WriteLine();
 
@@ -91,18 +108,21 @@ namespace Pentekesteszimulator
                 DisplayEnd(false, "None", "Csóró lettél");
             }
 
-
-            int cardiacArrest = r.Next(0, 201);
-            if (cardiacArrest == 42) //fortika
+            ConsoleKey ret;
+            do
             {
-                DisplayEnd(false, "None", "Hirtelen szúró fájdalmat érzel a mellkasod bal oldalán. Szívrohamban eltávozol.");
+                ret = Console.ReadKey(true).Key;
+            } while (ret != ConsoleKey.DownArrow && ret != ConsoleKey.UpArrow && ret != ConsoleKey.Enter);
+
+            switch (ret)
+            {
+                case (ConsoleKey.DownArrow):
+                    return Display(location, description, extra, question, player, true, index+1, options);
+                case (ConsoleKey.UpArrow):
+                    return Display(location, description, extra, question, player, true, index-1, options);
             }
 
-            int ret;
-            do{ 
-            } while (!(int.TryParse(Console.ReadKey(true).KeyChar.ToString(), out ret) && ret >= 1 && ret <= options.Length));
-
-            return ret;
+            return index;
         }
 
         static void writePlayer(string text, int len)
