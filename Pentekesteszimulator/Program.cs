@@ -796,7 +796,7 @@ namespace Pentekesteszimulator
             {
                 DisplayEnd(false, "Kocsma", $"{opponent} annyira összevert, hogy belehaltál a sérüléseidbe.");
             }
-            else 
+            else
             {
                 Thread.Sleep(1000);
 
@@ -813,6 +813,7 @@ namespace Pentekesteszimulator
                 Falu();
             }
         }
+
 
         static void Darts()
         {
