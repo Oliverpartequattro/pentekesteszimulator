@@ -15,20 +15,11 @@ Opcionalis ha sok idonk van:
 	másik játék referenciák
 	szövegek legyenek érdekesebbek  --- a const haláloknál is legyenek frappánsak array
 	ha az option nagyon hosszú nem tabbal kezdi az új sort  --- nehéz
-
-szövegek legyenek érdekesebbek  --- a const haláloknál is legyenek frappánsak array
-console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
-Pénz kérés az elején
-másik játék referenciák
-ha magas a véralkohol szint ne menjen oda ahova a játékos akarja
+	ha magas a véralkohol szint ne menjen oda ahova a játékos akarja
 
 Folyamatban:
 	figyelmeztető az alkohol halálról stb.
 	Fancy menü választás copy paste paliéktol!!!
 	csúszkák
 	darts
-csúszkák
-figyelmeztető az alkohol halálról stb.
-lottó ne lehessen 3szor ugyanaz
-vonal ha a tulajdonságok után írunk
-ha az option nagyon hosszú nem tabbal kezdi az új sort  --- nehéz
+	lottó ne lehessen 3szor ugyanaz
