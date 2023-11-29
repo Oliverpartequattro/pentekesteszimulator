@@ -2,7 +2,10 @@ Mindenkepp meg lesz csinalva/bugfix:
 	console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
 	jelenleg nincs hiba - keresni kell, mert biztos hogy van.
 	kizsebeled, ha nyersz a verekedésben, rendőrök elvisznek
-
+	kulon fajl a variabeleknek
+	ha bemesz barhova ne azonnal igyal
+	csehország valami random történés prágában (csöves?)
+	fuvezes csehorszagban
 
 
 Opcionalis ha sok idonk van:
@@ -17,9 +20,7 @@ Opcionalis ha sok idonk van:
 	szövegek legyenek érdekesebbek  --- a const haláloknál is legyenek frappánsak !!array!!
 	ha az option nagyon hosszú nem tabbal kezdi az új sort  --- nehéz
 	ha magas a véralkohol szint ne menjen oda ahova a játékos akarja
-	fuvezes csehorszagban
-	csehország valami random történés prágában (csöves?)
-	ha bemesz barhova ne azonnal igyal
+
 
 Folyamatban:
 	figyelmeztető az alkohol halálról stb.
