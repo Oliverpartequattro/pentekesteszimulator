@@ -640,7 +640,7 @@ namespace Pentekesteszimulator
         {
             Time(player);
             Increase(0, 10, 0, player); //alkohol boldogság pénz
-            string[] options = new string[] { "Imádkozol", "Visszamész a faluközpontba"};
+            string[] options = new string[] { "Imádkozol", "Visszamész a faluközpontba" };
             int choice;
             if (player.Alcohol >= 2.0)
             {
@@ -657,7 +657,7 @@ namespace Pentekesteszimulator
                     DisplayEnd(true, "Templom", "Az éjféli mise után kijózanodtál, és megtérve hazaértél, túlélve az estét.");
                     break;
                 case 2:
-                   Falu();
+                    Falu();
                     break;
                 case 3:
                     opponent = RandomPerson();
@@ -692,7 +692,8 @@ namespace Pentekesteszimulator
         #region haverok
         static void Haverok()
         {
-            if(allBeer < 3)
+            Time(player);
+            if (allBeer < 3)
             {
                 Increase(0, 3, 0, player); //alkohol boldogság pénz
             }
@@ -706,16 +707,16 @@ namespace Pentekesteszimulator
             if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
             {
                 options = new string[] { "Isztok egy kört", "Viccesgombáztok", "Autókáztok egyet", "Visszamész a faluközpontba", "Elmentek a templomba" };
-                choice = Display("Haverod tanyája", $"Összeültél a 3 haveroddal inni.\n{beerCount} sört vittél, a többiekével együtt összesen {allBeer} sörötök van.", "Lehetőségetek van elmenni az éjféli misére", "Mit teszel?", player, timeStopped, index, options);       
+                choice = Display("Haverod tanyája", $"Összeültél a 3 haveroddal inni.\n{beerCount} sört vittél, a többiekével együtt összesen {allBeer} sörötök van.", "Lehetőségetek van elmenni az éjféli misére", "Mit teszel?", player, true, index,options);
             }
             else
             {
-                choice = Display("Haverod tanyája", $"Összeültél a 3 haveroddal inni.\n {beerCount} sört vittél, a többiekével együtt összesen {allBeer} sörötök van.", " ", "Mit tesztek?", player, timeStopped, index, options);
+                choice = Display("Haverod tanyája", $"Összeültél a 3 haveroddal inni.\n {beerCount} sört vittél, a többiekével együtt összesen {allBeer} sörötök van.", " ", "Mit tesztek?", player, true, index, options);
             }
             switch (choice)
-            { 
+            {
                 case 1:
-                    if(allBeer < 3)
+                    if (allBeer < 3)
                     {
                         Console.WriteLine("Nincs elég sör hármótoknak, ezért nem isztok.");
                         Console.ReadKey();
@@ -732,7 +733,7 @@ namespace Pentekesteszimulator
                 case 3:
                     //DrunkDriving();
                     break;
-                case 4 :
+                case 4:
                     Falu();
                     break;
                 case 5:
@@ -746,6 +747,8 @@ namespace Pentekesteszimulator
         static void FalusiKocsma()
         {
             opponent = RandomPerson();
+            int chance = r.Next(0, 100);
+            Increase(r.Next(30, 60) / 100.0, 10, -700, player); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Blackjack", "Vissza a faluközpontba" };
             int choice;
             if (player.Alcohol >= 2.0)
@@ -755,8 +758,6 @@ namespace Pentekesteszimulator
             }
             else
             {
-                options = new string[] { "Sarki bolt", "Haverok", "Falusi kocsma", "Maradok vele inni" };
-                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat letekerve a faluközpontba jutsz.", $"Egy {opponent} \"vegyes házit\" kínál.", "Hová mész tovább?", player, true, index, options);
                 choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", " ", "Mit teszel?", player, timeStopped, index, options);
             }
             switch (choice)
@@ -844,6 +845,44 @@ namespace Pentekesteszimulator
 
 
         #endregion //falu
+
+        public static void Kulfold()
+        {
+            string[] options = new string[] { "Csehország", "Szlovákia", "Szerbia" };
+            int choice = Display("Legendás hármashatár", "Eljutottál a hármas határig.", " ", "Melyik országba folytatod utadat?", player, timeStopped, index, options);
+            switch (choice)
+            {
+                case 1:
+                    //Csehorszag();
+                    break;
+                case 2:
+                    //Szlovakia();
+                    break;
+                case 3:
+                    //Szerbia();
+                    break;
+            }
+        }
+
+        public static void Csehorszag()
+        {
+            string[] options = new string[] { "Csehország", "Szlovákia", "Szerbia" };
+            int choice = Display("Legendás hármashatár", "Eljutottál a hármas határig.", " ", "Melyik országba folytatod utadat?", player, timeStopped, index, options);
+            switch (choice)
+            {
+                case 1:
+                    //Csehorszag();
+                    break;
+                case 2:
+                    //Szlovakia();
+                    break;
+                case 3:
+                    //Szerbia();
+                    break;
+            }
+        }
+
+
 
 
     }
