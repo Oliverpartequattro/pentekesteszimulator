@@ -69,7 +69,7 @@ namespace Pentekesteszimulator
         static void Auto()
         {
             Increase(0, 0, -300, player);
-            string[] options = new string[] { "Város", "Falu" };
+            string[] options = new string[] { "Város", "Falu", "Elhagyod az országot" };
             int choice = Display("Garázs", "Úgy döntöttél autóval indulsz útnak.", " ", "Hová mész tovább?", player, timeStopped, index, options);
 
             switch (choice)
@@ -81,7 +81,7 @@ namespace Pentekesteszimulator
                     Falu();
                     break;
                 case 3:
-                    //Kulfold();
+                    Kulfold();
                     break;
             }
         }
@@ -746,19 +746,34 @@ namespace Pentekesteszimulator
         #region falusikocsma
         static void FalusiKocsma()
         {
+            bool alcPlusTime = false;
+            bool onlyTime = false;
+            Time(player);
             opponent = RandomPerson();
             int chance = r.Next(0, 100);
             Increase(r.Next(30, 60) / 100.0, 10, -700, player); //alkohol boldogság pénz
-            string[] options = new string[] { "Ivás", "Blackjack", "Vissza a faluközpontba" };
+            string[] options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba" };
             int choice;
             if (player.Alcohol >= 2.0)
             {
                 options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", $"Duhajkodás" };
-                choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat. ", "Mit teszel?", player, timeStopped, index, options);
+                choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat. ", "Mit teszel?", player, true, index, options);
+                //if(char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
+                //{
+                //    alcPlusTime = true;
+                //    options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", "Duhajkodás", "Elmész az éjféli misére" };
+                //    choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat.\nLehetőséged van elmenni az éjféli misére.", "Mit teszel?", player, true, index, options);
+                //}
             }
             else
             {
-                choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", " ", "Mit teszel?", player, timeStopped, index, options);
+                choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", " ", "Mit teszel?", player, true, index, options);
+                //if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
+                //{
+                //    onlyTime = true;
+                //    options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", "Elmész az éjféli misére" };
+                //    choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "Lehetőséged van elmenni az éjféli misére.", "Mit teszel?", player, true, index, options);
+                //}
             }
             switch (choice)
             {
@@ -766,18 +781,19 @@ namespace Pentekesteszimulator
                     FalusiKocsma();
                     break;
                 case 2:
-                    Darts();
+                   // Darts();
                     break;
                 case 3:
                     Falu();
                     break;
                 case 4:
-                    Fight();
+                    Fight("faluba", "Dorozsmai határvégi borvirág kocsma");
+                    Falu();
                     break;
             }
         }
 
-        static void Fight()
+        static void Fight(string placeBack, string endPlace)
         {
             int chance = r.Next(0, 100);
             Console.WriteLine($"A kocsmában részegen {RandomScandal()}, és {opponent} -t {RandomInsult()}-nak/nek hívtad.\n");
@@ -793,9 +809,9 @@ namespace Pentekesteszimulator
             Increase(0, -30, -pickpocket, player); //alkohol boldogság pénz
             Console.WriteLine("\nKelj fel");
             Console.ReadKey();
-            if (chance <= 70)
+            if (chance <= 60)
             {
-                DisplayEnd(false, "Kocsma", $"{opponent} annyira összevert, hogy belehaltál a sérüléseidbe.");
+                DisplayEnd(false, $"{endPlace}", $"{opponent} annyira összevert, hogy belehaltál a sérüléseidbe.");
             }
             else
             {
@@ -809,35 +825,34 @@ namespace Pentekesteszimulator
                     Console.Write(c);
                     Thread.Sleep(delay);
                 }
-                Console.WriteLine("\nA rendőrség visszavisz a faluba....");
+                Console.WriteLine("$\nA rendőrség visszavisz a {placeBack}....");
                 Console.ReadKey();
-                Falu();
             }
         }
 
+        //static void Darts()
+        //{
+        //    Increase(0, 0, 0, player); //alkohol boldogság pénz
+        //    string[] options = new string[] { "Játék", "Vissza a pulthoz",};
+        //    int choice = Display("Égő Fekete János asztal", "A baljós BlackJack asztalnál vagy", " ", "Mit teszel?", player, timeStopped, index, options);
 
-        static void Darts()
-        {
-            Increase(0, 0, 0, player); //alkohol boldogság pénz
-            string[] options = new string[] { "Játék", "Vissza a pulthoz",};
-            int choice = Display("Égő Fekete János asztal", "A baljós BlackJack asztalnál vagy", " ", "Mit teszel?", player, timeStopped, index, options);
+        //    switch (choice)
+        //    {
+        //        case 1:
+        //            //int bet;
+        //            break;
+        //        case 2:
+        //            //BlackJack();
+        //            break;
+        //        case 3:
+        //            Falu();
+        //            break;
+        //        case 4:
+        //            Fight();
+        //            break;
+        //    }
+        //}
 
-            switch (choice)
-            {
-                case 1:
-                    //int bet;
-                    break;
-                case 2:
-                    //BlackJack();
-                    break;
-                case 3:
-                    Falu();
-                    break;
-                case 4:
-                    Fight();
-                    break;
-            }
-        }
         #endregion//falusi kocsma
 
 
@@ -846,6 +861,7 @@ namespace Pentekesteszimulator
 
         #endregion //falu
 
+        #region kulfold
         public static void Kulfold()
         {
             string[] options = new string[] { "Csehország", "Szlovákia", "Szerbia" };
@@ -853,7 +869,7 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
-                    //Csehorszag();
+                    Csehorszag();
                     break;
                 case 2:
                     //Szlovakia();
@@ -866,21 +882,52 @@ namespace Pentekesteszimulator
 
         public static void Csehorszag()
         {
-            string[] options = new string[] { "Csehország", "Szlovákia", "Szerbia" };
-            int choice = Display("Legendás hármashatár", "Eljutottál a hármas határig.", " ", "Melyik országba folytatod utadat?", player, timeStopped, index, options);
+            string[] options = new string[] { "Betérsz a \"hořící kostra\" sörözőbe", "FUVEZES????",};
+            int choice = Display("Prága", "Végigmentél az E50-es autópályán egészen Prágáig, és leparkoltál párhuzamosan.", " ", "Mit teszel?", player, timeStopped, index, options);
             switch (choice)
             {
                 case 1:
-                    //Csehorszag();
+                    CsehSorozo();
                     break;
                 case 2:
-                    //Szlovakia();
+                    //Brownie();
                     break;
                 case 3:
-                    //Szerbia();
+                    //Hajlektalan();
                     break;
             }
         }
+        public static void CsehSorozo()
+        {
+            opponent = RandomPerson();
+            Increase(r.Next(30, 60) / 100.0, 10, -1000, player); //alkohol boldogság pénz
+            string[] options = new string[] { "Ivás", "Vissza a városba", };
+            int choice;
+            if (player.Alcohol >= 2.0)
+            {
+                options = new string[] { "Ivás", "Vissza a városba", "Duhajkodás" };
+                choice = Display("Hořící kostra söröző", "Lementél a föld alatti kocsmába, és megcsapta egy vicces illat az orrodat.", "A magas véralkoholszinted felszámolta az összes morális és etikai korlátodat.", "Mit teszel?", player, timeStopped, index, options);
+            }
+            else
+            {
+                choice = Display("Hořící kostra söröző", "Lementél a föld alatti kocsmába, és megcsapta egy vicces illat az orrodat. Nem láttad a forrását a sűrű füsttől.", " ", "Mit teszel?", player, timeStopped, index, options);
+            }
+            switch (choice)
+            {
+                case 1:
+                    CsehSorozo();
+                    break;
+                case 2:
+                    Csehorszag();
+                    break;
+                case 3:
+                    Fight("városba", "Hořící kostra söröző");
+                    CsehSorozo();
+                    break;
+            }
+        }
+
+        #endregion //kulfold
 
 
 
