@@ -133,24 +133,26 @@ namespace Pentekesteszimulator
                 Console.Write(new string(' ', (Console.WindowWidth - len) / 4));
                 Console.Write(words[0] + " ");
 
+                Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Black;
 
                 if (int.Parse(words[1]) >= 4000)
                 {
-                    Console.ForegroundColor= ConsoleColor.Green;
+                    Console.BackgroundColor= ConsoleColor.Green;
                 }
                 else if (int.Parse(words[1]) <= 2000)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.BackgroundColor = ConsoleColor.Red;
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.White;
                 }
 
                 Console.Write(words[1] + " ");
                 Console.Write(words[2]);
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
 
             }
             else if (text[text.Length - 1] == 'k') // alkohol
@@ -160,61 +162,76 @@ namespace Pentekesteszimulator
                 Console.Write(words[0] + " ");
                 Console.Write(words[1] + " ");
 
+                Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Black;
 
                 if (double.Parse(words[2]) >= 4)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.BackgroundColor = ConsoleColor.Red;
                 }
                 else if (double.Parse(words[2]) >= 3)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.BackgroundColor = ConsoleColor.DarkYellow;
                 }
                 else if (double.Parse(words[2]) >= 1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.BackgroundColor = ConsoleColor.Yellow;
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.White;
                 }
 
                 Console.Write(words[2] + " ");
                 Console.Write(words[3]);
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
 
             }
             else // boldogság
             {
                 string[] words = text.Split(' ');
                 Console.Write(new string(' ', (Console.WindowWidth - len) / 4));
-                Console.Write(words[0] + " ");
+                int happLen = text.Length;
+                ConsoleColor happCol;
 
                 Console.ForegroundColor = ConsoleColor.Black;
 
                 if (int.Parse(words[1]) >= 80)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    happCol = ConsoleColor.DarkGreen;
                 }
                 else if (int.Parse(words[1]) >= 60)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                }
-                else if (int.Parse(words[1]) >= 40)
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
+                    happCol = ConsoleColor.Green;
                 }
                 else if (int.Parse(words[1]) >= 20)
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    happCol = ConsoleColor.Yellow;
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    happCol = ConsoleColor.Red;
                 }
 
-                Console.Write(words[1]);
+                double color = Math.Round(13.0 / 100.0 * player.Happiness, MidpointRounding.AwayFromZero);
+
+                for (int i = 0; i < happLen; i++)
+                {
+                    if (i <= color)
+                    {
+                        Console.BackgroundColor = happCol;
+                        Console.Write(text[i]);
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.Write(text[i]);
+                    }
+                }
+
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
             }
         }
 
