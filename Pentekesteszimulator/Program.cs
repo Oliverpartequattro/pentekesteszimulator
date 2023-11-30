@@ -7,6 +7,8 @@ using System.ComponentModel;
 
 namespace Pentekesteszimulator
 {
+
+    //nem kibelezett class
     internal partial class Program
     {
         private static Player1 player = new Player1();
@@ -17,6 +19,8 @@ namespace Pentekesteszimulator
         private static int beerCount = 0;
         private static string opponent;
         private static bool boughtBeer = false;
+
+        
 
         public static void Main(string[] args)
         {
@@ -29,7 +33,7 @@ namespace Pentekesteszimulator
         public static void Otthon()
         {
             string[] options = new string[] { "Busz", "Autó", "Bicikli" };
-            int choice = Display("Győrzámoly, Szerencse utca 22", "Fájó fejjel kelsz fel egy fura középkorban játszódó álom után, úgy érzed, mintha 2000 évet időutaztál volna, ezért úgy döntesz, hogy berúgsz.", " ", "Milyen járművel indulsz el?", player, timeStopped, index, options);
+            int choice = Display("Győrzámoly, Szerencse utca 22/B", "Fájó fejjel kelsz fel egy fura középkorban játszódó álom után, úgy érzed, mintha 2000 évet időutaztál volna, ezért úgy döntesz, hogy berúgsz.", " ", "Milyen járművel indulsz el?", player, timeStopped, index, options);
             if (choice <= 0 || choice >= 4)
             {
                 DisplayEnd(true, "", "bjan vam");
@@ -200,11 +204,11 @@ namespace Pentekesteszimulator
             {
                 case 1:
                    if(chance <= 10) { 
-                    DisplayEnd(false, "Győrzámoly, Szerencse utca 22", $"A helyes lány titokban egy szerb bérgyilkos volt, akit {RandomPerson()} küldött rád, kitömött emberi próbababát csinált belőled.");
+                    DisplayEnd(false, "Győrzámoly, Szerencse utca 22/B", $"A helyes lány titokban egy szerb bérgyilkos volt, akit {RandomPerson()} küldött rád, kitömött emberi próbababát csinált belőled.");
                     }
                     else
                     {
-                        DisplayEnd(true, "Győrzámoly, Szerencse utca 22", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
+                        DisplayEnd(true, "Győrzámoly, Szerencse utca 22/B", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
                     }
                     break;
                 case 2:
@@ -438,11 +442,11 @@ namespace Pentekesteszimulator
                 case 1:
                     if (chance <= 10)
                     {
-                        DisplayEnd(false, "Győrzámoly, Szerencse utca 22", $"Az alter lány titokban egy szerb bérgyilkos volt, akit {RandomPerson()} küldött rád, kitömött emberi próbababát csinált belőled.");
+                        DisplayEnd(false, "Győrzámoly, Szerencse utca 22/B", $"Az alter lány titokban egy szerb bérgyilkos volt, akit {RandomPerson()} küldött rád, kitömött emberi próbababát csinált belőled.");
                     }
                     else
                     {
-                        DisplayEnd(true, "Győrzámoly, Szerencse utca 22", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
+                        DisplayEnd(true, "Győrzámoly, Szerencse utca 22/B", "A kellemes kamatyolás után egymás mellett keltetek fel, majd elment az első busszal.");
                     }
                     break;
                     case 2:
@@ -474,11 +478,11 @@ namespace Pentekesteszimulator
             if (chance <= 10)
             {
                 options = new string[] { "Sarki bolt", "Haverok", "Falusi kocsma", "Maradok vele inni" };
-                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat letekerve a faluközpontba jutsz.", $"Egy {drinkMan} \"vegyes házit\" kínál.", "Hová mész tovább?", player, true, index, options);
+                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat végigszenvedve a faluközpontba jutsz.", $"Egy {drinkMan} \"vegyes házit\" kínál.", "Hová mész tovább?", player, true, index, options);
             }
             else
             {
-                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat letekerve a faluközpontba jutsz.", " ", "Hová mész tovább?", player, true, index, options);
+                choice = Display("Dorozsmai faluközpont", "A 20km-es főútat végigszenvedve a faluközpontba jutsz.", " ", "Hová mész tovább?", player, true, index, options);
             }
             switch (choice)
             {
@@ -758,22 +762,22 @@ namespace Pentekesteszimulator
             {
                 options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", $"Duhajkodás" };
                 choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat. ", "Mit teszel?", player, true, index, options);
-                //if(char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
-                //{
-                //    alcPlusTime = true;
-                //    options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", "Duhajkodás", "Elmész az éjféli misére" };
-                //    choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat.\nLehetőséged van elmenni az éjféli misére.", "Mit teszel?", player, true, index, options);
-                //}
+                if(char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
+                {
+                    alcPlusTime = true;
+                    options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", "Duhajkodás", "Elmész az éjféli misére" };
+                    choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat.\nLehetőséged van elmenni az éjféli misére.", "Mit teszel?", player, true, index, options);
+                }
             }
             else
             {
                 choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", " ", "Mit teszel?", player, true, index, options);
-                //if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
-                //{
-                //    onlyTime = true;
-                //    options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", "Elmész az éjféli misére" };
-                //    choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "Lehetőséged van elmenni az éjféli misére.", "Mit teszel?", player, true, index, options);
-                //}
+                if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
+                {
+                    onlyTime = true;
+                    options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", "Elmész az éjféli misére" };
+                    choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "Lehetőséged van elmenni az éjféli misére.", "Mit teszel?", player, true, index, options);
+                }
             }
             switch (choice)
             {
@@ -786,6 +790,11 @@ namespace Pentekesteszimulator
                 case 3:
                     Falu();
                     break;
+
+                    //if (alcPlusTime)
+                    //{
+
+                    //}
                 case 4:
                     Fight("faluba", "Dorozsmai határvégi borvirág kocsma");
                     Falu();
@@ -825,7 +834,7 @@ namespace Pentekesteszimulator
                     Console.Write(c);
                     Thread.Sleep(delay);
                 }
-                Console.WriteLine("$\nA rendőrség visszavisz a {placeBack}....");
+                Console.WriteLine($"\nA rendőrség visszavisz a {placeBack}....");
                 Console.ReadKey();
             }
         }
@@ -930,7 +939,7 @@ namespace Pentekesteszimulator
         #endregion //kulfold
 
 
-
+        //document pont áőáőáőőáőőáőáő
 
     }
 }

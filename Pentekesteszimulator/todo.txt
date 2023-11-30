@@ -6,6 +6,8 @@ Mindenkepp meg lesz csinalva/bugfix:
 	ha bemesz barhova ne azonnal igyal
 	csehország valami random történés prágában (csöves?)
 	fuvezes csehorszagban
+	VAN EGY É BETŰ AMI Á BETŰ DE NEM TUDO HOL
+	csehországban cseh emberek array ugyanígy a többi ország
 
 
 Opcionalis ha sok idonk van:
@@ -20,6 +22,7 @@ Opcionalis ha sok idonk van:
 	szövegek legyenek érdekesebbek  --- a const haláloknál is legyenek frappánsak !!array!!
 	ha az option nagyon hosszú nem tabbal kezdi az új sort  --- nehéz
 	ha magas a véralkohol szint ne menjen oda ahova a játékos akarja
+	legyen smooth a menu valasztas
 
 
 Folyamatban:
@@ -27,4 +30,4 @@ Folyamatban:
 	csúszkák
 	blackjack/darts
 	lottó ne lehessen 3szor ugyanaz
-	falusi kocsma ejfeli mise es duhajkodas egyszerre
+	falusi kocsma ejfeli mise es duhajkodas egyszerre benedek segics
