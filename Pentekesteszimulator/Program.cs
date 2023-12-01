@@ -560,19 +560,42 @@ namespace Pentekesteszimulator
         {
             Increase(0, 0, -500, player);
             Console.WriteLine("Vettél egy lottószelvényt 500Ft-ért.");
-            int[] winNums = { r.Next(1, 11), r.Next(1, 11), r.Next(1, 11) };
-            int[] guesses = new int[3];
+            int[] winNums = new int[3];
+            for (int i = 0; i < 3; i++)
+            {
+                int rand = r.Next(1, 11);
+                if (winNums.Count(s => s == rand) == 0)
+                {
+                   winNums[i] = rand;
+                }
+                else
+                {
+                    Console.WriteLine("fsfddfsfds");
+                    i -=1;
+                }
+            }
 
+            int[] guesses = new int[3];
             for (int i = 0; i < 3; i++)
             {
                 Console.WriteLine($"\n{i + 1}. szám (1-10): ");
                 string input = Console.ReadLine();
+                int loteryNum;
 
-                if (int.TryParse(input, out guesses[i]))
+                if (int.TryParse(input, out loteryNum))
                 {
-                    if (guesses[i] <= 0 || guesses[i] > 10)
+                    if (loteryNum <= 0 || loteryNum > 10)
                     {
                         Console.WriteLine($"Ez nem 1 és 10 között van te {RandomInsult()}");
+                        i--;
+                    }
+                    else if (guesses.Count(s => s == loteryNum) == 0)
+                    {
+                        guesses[i] = loteryNum;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Ezt már tippelted te {RandomInsult()}");
                         i--;
                     }
                 }
