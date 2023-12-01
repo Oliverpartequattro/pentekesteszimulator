@@ -349,11 +349,36 @@ namespace Pentekesteszimulator
              "a melletted űlő államtársadat visszakézből orron vágtad, mert alsóbbrendű",
              "a földre köptél egyet, ami átmarta a padlót",
              "irdatlan nagyot fingottál, majd meggyújtottad",
-             "elnyomtál a szomszédoDon egy csikket, mert Heinekent ivott",
+             "elnyomtál a szomszédodon egy csikket, mert Heinekent ivott",
              "lereszelted a bőrt a sarkadról, majd levest főztél belőle",
 
             };
             return scandals[r.Next(0, scandals.Length)];
+        }
+
+        public static string[] BadWords()
+        {
+            string[] badWords = {
+                "kurva",
+                "fasz",
+                "beka",
+                "nigger"
+            };
+            return badWords;
+        }
+
+        public static string[] GoodWords()
+        {
+            string[] goodWords = {
+                "legyszi",
+                "kerlek",
+                "legyszives",
+                "szeretlek",
+                "imadlak",
+                "szeretnek",
+
+            };
+            return goodWords;
         }
 
     }

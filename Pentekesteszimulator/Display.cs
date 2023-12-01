@@ -10,7 +10,7 @@ namespace Pentekesteszimulator
 {
     internal partial class Program
     {
-        public static int Display(string location, string description, string extra, string question, Player1 player, bool timeStopped, int index, double timeMultiplier, string[] options)
+        public static int Display(string location, string description, string extra, string question, Player1 player, int index, double timeMultiplier, string[] options)
         {
             Console.Clear();
             Console.WriteLine(new string(textCenter("   ___  _        _       _                _                 _                 _   _   _             ")));
@@ -45,10 +45,7 @@ namespace Pentekesteszimulator
                     Console.WriteLine($"{question}\n");
             }
 
-            if (!timeStopped)
-            {
                 Time(timeMultiplier, player);
-            }
 
             for (int i = 0; i < options.Length; i++)
             {
@@ -117,9 +114,9 @@ namespace Pentekesteszimulator
             switch (ret)
             {
                 case (ConsoleKey.DownArrow):
-                    return Display(location, description, extra, question, player, true, index+1, 1, options);
+                    return Display(location, description, extra, question, player, index+1, 0, options);
                 case (ConsoleKey.UpArrow):
-                    return Display(location, description, extra, question, player, true, index-1, 1, options);
+                    return Display(location, description, extra, question, player, index-1, 0, options);
             }
 
             return index;
