@@ -76,7 +76,7 @@ namespace Pentekesteszimulator
         {
             int chance = r.Next(0, 100);
             string[] options = new string[] { "Sör", "Bor", "Vodka", "\"Vegyes házi 2006\" feliratú átlátszó folyadék műanyagpalackban", "Etil alkohol", "Fagyálló", "Útnak indulsz" };
-            int choice = Display("Győrzámoly, Szerencse utca 22/B", "A hűtőt kinyitva szinte már el sem tudod dönteni mit igyál.", " ", "Mit választasz?", player, timeStopped, index, 10, options);
+            int choice = Display("Győrzámoly, Szerencse utca 22/B", "A hűtőt kinyitva szinte már el sem tudod dönteni mit igyál.", " ", "Mit választasz?", player, timeStopped, index, 0, options);
             switch (choice)
             {
                 case 1:
