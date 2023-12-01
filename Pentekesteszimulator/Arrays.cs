@@ -407,23 +407,86 @@ namespace Pentekesteszimulator
         public static string[] BadWords()
         {
             string[] badWords = {
-                "kurva",
-                "fasz",
-                "beka",
-                "nigger"
-            };
+    "kurva", "kúrva",
+    "fasz", "fasz",
+    "nigger", "n*gger",
+    "utallak", "utállak",
+    "adj", "ádj",
+    "adjal", "ádjal",
+    "kuki", "kúki",
+    "kell", "kéll",
+    "akarok", "akárok",
+    "neger", "néger",
+    "mivan", "mi van",
+    "idióta", "idióta",
+    "eszetlen", "eszetlén",
+    "nyomorult", "nyomorúlt",
+    "szerencsétlen", "szerencsétlén",
+    "agyhalott", "agyhallott",
+    "sajátos nevelést igénylő", "sajátos nevelést igénylő",
+    "nemnormális", "nem normális",
+    "droid", "dróid",
+    "debil", "debil",
+    "agyilag nem ép", "agyilag nem ép",
+    "majom", "májom",
+    "elmeroggyant", "elmeroggyánt",
+    "akusztikus", "akusztikus",
+    "fityfiritty", "fityfiritty",
+    "ördög fia", "ördög fia",
+    "korlátolt elméjű", "korlátolt elméjű",
+    "hibbant", "hibbánt",
+    "szűk látókörű", "szűk látókörű",
+    "csőlátású", "csőlátású",
+    "kókler", "kókler",
+    "elmebeteg", "elmebeteg",
+    "mentálisan korlátolt", "mentálisan korlátolt",
+    "mentálisan visszamaradott", "mentálisan visszamaradott",
+    "visszafogott", "visszafogott",
+    "normáltalan", "normáltalan",
+    "zavarodott", "zavárodott",
+    "intellektuálisatlan", "intellektuálisatlan",
+    "szellemileg kihívott", "szellemileg kihívott",
+    "agyirokkant", "agyírókkant",
+    "halvány eszű", "halvány eszű",
+    "agycsavarodott", "agycsavarodott",
+    "konzervdoboz", "konzervdoboz",
+    "akadályozott", "akadályozott",
+    "csirkefogó", "csirkefogó",
+    "csöves", "csöves",
+    "intellektuális vakvágány", "intellektuális vakvágány",
+    "agyi zsákutca", "agyi zsákutca",
+    "bohóc", "bohóc",
+    "agyalágyult", "agyalágyult",
+    "fertőszentmiklósi", "fertőszentmiklósi",
+    "félkegyelmű", "félkegyelmű",
+    "suttyó", "suttyó",
+    "amőba", "amőba",
+    "egysejtű", "egysejtű",
+    "komplex gondolkodásra képtelen", "komplex gondolkodásra képtelen",
+    "csalódás", "csalódás",
+    "tudatlan", "tudatlan",
+    "agybaj", "agybaj",
+    "Linux felhasználó", "Linux felhasználó",
+    "isten csapása", "isten csapása",
+    "isten ostora", "isten ostora"
+};
+
             return badWords;
         }
 
         public static string[] GoodWords()
         {
             string[] goodWords = {
-                "legyszi",
-                "kerlek",
-                "legyszives",
-                "szeretlek",
-                "imadlak",
-                "szeretnek",
+    "legyszi", "legyszíves",
+    "kerlek", "kérlek",
+    "legyszives", "legyszíves",
+    "szeretlek", "szeretlek", "szeretlek",
+    "imadlak", "imádlak",
+    "szeretnek", "szeretnék",
+    "kerek", "kérek",
+    "szepen", "szépen",
+    "puszi", "puszi",
+    "kaphatnek", "kaphatnék"
 
             };
             return goodWords;

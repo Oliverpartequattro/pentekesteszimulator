@@ -350,7 +350,7 @@ namespace Pentekesteszimulator
                     IvasOtthon();
                     break;
                 case 6:
-                    DisplayEnd(false, "Győrzámoly, Szerencse utca 22/B", $"Megittad a fagyállót, te {RandomInsult()}");
+                    DisplayEnd(false, "Győrzámoly, Szerencse utca 22/B", $"Megittad a fagyállót, ezért leálltak a veséid, te {RandomInsult()}");
                     break;
                 case 7:
                     Start();
