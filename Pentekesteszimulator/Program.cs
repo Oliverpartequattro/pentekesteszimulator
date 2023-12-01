@@ -12,12 +12,12 @@ namespace Pentekesteszimulator
     internal partial class Program
     {
         private static Player1 player = new Player1();
-        private static bool timeStopped = false;
-        private static int index = 1;
         private static Random r = new Random();
+        private static int index = 1;
         private static int allBeer = r.Next(6, 31);
         private static int beerCount = 0;
         private static string opponent;
+        private static bool timeStopped = false;
         private static bool boughtBeer = false;
         private static bool alcPlusTime = false;
 
@@ -30,11 +30,71 @@ namespace Pentekesteszimulator
 
             Otthon();
         }
-
         public static void Otthon()
         {
+            string[] options = new string[] { "Kérsz valakitől egy kis pénzt", "Iszol egyet", "Útnak indulsz" };
+            int choice = Display("Győrzámoly, Szerencse utca 22/B", "Fájó fejjel kelsz fel egy fura középkorban játszódó álom után, úgy érzed, mintha 2000 évet időutaztál volna, ezért úgy döntesz, hogy berúgsz.", " ", "Hogyan készülsz fel az éjszakára indulás előtt?", player, true, index, options);
+            if (choice <= 0 || choice >= 4)
+            {
+                DisplayEnd(true, "", "bjan vam");
+            }
+            switch (choice)
+            {
+                case 1:
+                    //PenzKeres();
+                    break;
+                case 2:
+                    IvasOtthon();
+                    break;
+                case 3:
+                    Start();
+                    break;
+            }
+
+        }
+
+        public static void IvasOtthon()
+        {
+            int chance = r.Next(0, 100);
+            string[] options = new string[] { "Sör", "Bor", "Vodka", "\"Vegyes házi 2006\" feliratú átlátszó folyadék műanyagpalackban", "Etil alkohol", "Fagyálló", "Útnak indulsz" };
+            int choice = Display("Győrzámoly, Szerencse utca 22/B", "A hűtőt kinyitva szinte már el sem tudod dönteni mit igyál.", " ", "Mit választasz?", player, true, index, options);
+            switch (choice)
+            {
+                case 1:
+                    Increase(r.Next(30, 50) / 100.0, 5, 0, player);
+                    IvasOtthon();
+                    break;
+                case 2:
+                    Increase(r.Next(50, 70) / 100.0, 5, 0, player);
+                    IvasOtthon();
+                    break;
+                case 3:
+                    Increase(r.Next(80, 110) / 100.0, 5, 0, player);
+                    IvasOtthon();
+                    break;
+                case 4:
+                    Increase(r.Next(0, 200) / 100.0, 5, 0, player);
+                    IvasOtthon();
+                    break;
+                case 5:
+                    Increase(r.Next(110, 180) / 100.0, 5, 0, player);
+                    IvasOtthon();
+                    break;
+                case 6:
+                    DisplayEnd(false, "Győrzámoly, Szerencse utca 22/B", $"Megittad a fagyállót, te {RandomInsult()}");
+                    break;
+                case 7:
+                    Start();
+                    break;
+            }
+
+        }
+
+
+        public static void Start()
+        {
             string[] options = new string[] { "Busz", "Autó", "Bicikli" };
-            int choice = Display("Győrzámoly, Szerencse utca 22/B", "Fájó fejjel kelsz fel egy fura középkorban játszódó álom után, úgy érzed, mintha 2000 évet időutaztál volna, ezért úgy döntesz, hogy berúgsz.", " ", "Milyen járművel indulsz el?", player, timeStopped, index, options);
+            int choice = Display("Győrzámoly, Szerencse utca 22/B", "Úgy döntöttél elindulsz már, mert nem érünk rá egész nap.", " ", "Milyen járművel kezded meg utadat?", player, timeStopped, index, options);
             if (choice <= 0 || choice >= 4)
             {
                 DisplayEnd(true, "", "bjan vam");
@@ -849,7 +909,7 @@ namespace Pentekesteszimulator
             Increase(0, -30, -pickpocket, player); //alkohol boldogság pénz
             Console.WriteLine("\nKelj fel");
             Console.ReadKey();
-            if (chance <= 0)
+            if (chance <= 60)
             {
                 DisplayEnd(false, $"{endPlace}", $"{opponent} annyira összevert, hogy belehaltál a sérüléseidbe.");
             }

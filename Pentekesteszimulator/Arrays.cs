@@ -87,6 +87,10 @@ namespace Pentekesteszimulator
              "Erős kéz",
              "Fortnite játékos",
              "John Wick a Fortniteból",
+             "Kárpátia rajongó",
+             "Jó LaciBetyár",
+             "Holokauszt tagadó",
+             "Fertőszentmiklósi"
             };
             return people[r.Next(0, people.Length)];
     }
@@ -172,6 +176,7 @@ namespace Pentekesteszimulator
                 "az ádámcsutkáját",
                 "a gerincoszlopát",
                 "a lelkét",
+                "a fülcimpáját"
             };
             return prefixes[r.Next(0, prefixes.Length)] + moves[r.Next(0, moves.Length)] + " " + bodyParts[r.Next(0, bodyParts.Length)];
         }
@@ -257,6 +262,8 @@ namespace Pentekesteszimulator
                 "az ádámcsutkádat",
                 "a gerincoszlopodat",
                 "a lelkedet",
+                "a fülcimpádat",
+
          };
             return prefixes[r.Next(0, prefixes.Length)] + moves[r.Next(0, moves.Length)] + " " + bodyParts[r.Next(0, bodyParts.Length)];
         }
@@ -311,6 +318,11 @@ namespace Pentekesteszimulator
                     "egysejtű",
                     "komplex gondolkodásra képtelen",
                     "csalódás",
+                    "tudatlan",
+                    "agybaj",
+                    "Linux felhasználó",
+                    "isten csapása",
+                    "isten ostora",
                     
             };
             return insults[r.Next(0, insults.Length)];
@@ -326,15 +338,16 @@ namespace Pentekesteszimulator
              "széles mosollyal az arcodon önkényuralmi jelképeket mutogattál",
              "elkezdtél üvöltve mulatós slágereket énekelni",
              "különböző bandajeleket mutogattál",
-             "örömmel összeraktál egy kalapácsot és egy sarlót, miközben üvöltve hirdetted a proletárdiktatúrát",
-             "felgyújtottál egy melegzászlót, és a hamuból önkényuralmi jelképeket raktál ki",
+             "örömmel összeraktál egy kalapácsot egy sarlóval, miközben üvöltve hirdetted a proletárdiktatúrát",
+             "felgyújtottál egy melegzászlót, melynek a hamujából önkényuralmi jelképeket raktál ki",
              "hangosan és büszkén homofób kifejezéseket kiáltottál",
              "kimondtad az \"n betűs szót\"",
              "vérben forgó szemekkel elkezdted Jákob népét derogáló nyelvezettel illetni",
              "a melletted űlő államtársadat visszakézből orron vágtad, mert alsóbbrendű",
-             "a földre köptél egyet, és átmarta a padlót",
-             "irdatlan nagyot fingottál, és meggyújtottad",
-             "elnyomtam a szomszédomon egy csikket, mert Kőbányait ivott",
+             "a földre köptél egyet, ami átmarta a padlót",
+             "irdatlan nagyot fingottál, majd meggyújtottad",
+             "elnyomtál a szomszédoDon egy csikket, mert Heinekent ivott",
+             "lereszelted a bőrt a sarkadról, majd levest főztél belőle",
 
             };
             return scandals[r.Next(0, scandals.Length)];
