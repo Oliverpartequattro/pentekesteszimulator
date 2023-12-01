@@ -24,9 +24,7 @@ namespace Pentekesteszimulator
         private static bool alcPlusTime = false;
         private static bool beatenByFather = false;
         private static bool beatenByMother = false;
-        private static bool beatenByGrandma = false;
-        private static bool beatenByDog = false;
-        private static bool beatenByBro = false;
+        private static bool requested = false;
 
         public static void Main(string[] args)
         {
@@ -60,13 +58,25 @@ namespace Pentekesteszimulator
         {
             BadWords();
             GoodWords();
-            string[] options = new string[] { "Apádtól", "Anyádtól", "Mamádtól", "Kutyádtól", "Nagytestódtól" };
-            int choice = Display("Győrzámoly, Szerencse utca 22/B", "Kevésnek érzed a jelenlegi pénzed, ezért az egyik családtagodtól kérsz.", " ", "Kitől akarsz kunyerálni?", player, index, 0, options);
+            string[] options = new string[] { "Apádtól", "Anyádtól", "Mamádtól", "Kutyádtól", "Iszol inkább", "Mész az utadra" };
+            int choice = Display("Győrzámoly, Szerencse utca 22/B", "Kevésnek érzed a jelenlegi pénzed, ezért az egyik családtagodtól kérsz.", " ", "Kitől szeretnél kunyerálni?", player, index, 0, options);
             switch (choice)
             {
                 case 1:
+                    if (beatenByFather)
+                    {
+                        Console.WriteLine("Apád még mindig mérges az előbbi incidens után, ezért inkább kétszer meggondolod, és megfordulsz.");
+                        Console.ReadKey();
+                        PenzKeres();
+                    }
+                    if (requested)
+                    {
+                        Console.WriteLine("Már kértél az egyik családtagodtól pénzt, ezért nem kaspz többet.");
+                        Console.ReadKey();
+                        PenzKeres();
+                    }
                     int request;
-                    Console.WriteLine("A konyhában apukád éppen mákos tésztát eszik. Mennyi pénzt szeretnél kérni tőle?");
+                    Console.WriteLine($"{RandomRoom()} apukád éppen {RandomAction()}. Mennyi pénzt szeretnél kérni tőle?");
                     string money = Console.ReadLine();
 
                     while(!(int.TryParse(money, out request))){
@@ -121,21 +131,192 @@ namespace Pentekesteszimulator
                                 Increase(0, -30, 0, player);
                                 beatenByFather = true;
                             }
-
+                        }
+                        else
+                        {
+                            Console.WriteLine("Túl sok pénzt kértél apádtól, ezért egy hasított bőr övvel 23 alkalommal hátonvágott.");
+                            Increase(0, -30, 0, player);
+                            beatenByFather = true;
                         }
 
-                        Console.WriteLine(badCount);
-                        Console.WriteLine(goodCount);
+                        requested = true;
+
+
                         Console.ReadKey();
+                        PenzKeres();
                     }
-
-
-
                     break;
                 case 2:
-                    IvasOtthon();
+                    if (beatenByMother)
+                    {
+                        Console.WriteLine("Anyukád még mindig mérges az előbbi incidens után, ezért inkább kétszer meggondolod, és megfordulsz.");
+                        Console.ReadKey();
+                        PenzKeres();
+                    }
+                    if (requested)
+                    {
+                        Console.WriteLine("Már kértél az egyik családtagodtól pénzt, ezért nem kaspz többet.");
+                        Console.ReadKey();
+                        PenzKeres();
+                    }
+
+                    Console.WriteLine($"{RandomRoom()} anyukád éppen {RandomAction()}. Mennyi pénzt szeretnél kérni tőle?");
+                    money = Console.ReadLine();
+
+                    while (!(int.TryParse(money, out request)))
+                    {
+                        Console.WriteLine($"Ez nem egy összeg, te {RandomInsult()}\n");
+                        Console.WriteLine("Mennyi pénzt szeretnél kérni tőle?");
+                        money = Console.ReadLine();
+
+                    }
+                    if (int.TryParse(money, out request))
+                    {
+                        Console.WriteLine("Mit fogsz mondani neki?");
+                        string[] badWords = BadWords();
+                        string[] goodWords = GoodWords();
+                        string input = Console.ReadLine().ToLower();
+
+
+                        foreach (string badWord in badWords)
+                        {
+                            if (input.Contains(badWord))
+                            {
+                                badCount++;
+                            }
+                        }
+
+                        foreach (string goodWord in goodWords)
+                        {
+                            if (input.Contains(goodWord))
+                            {
+                                goodCount++;
+                            }
+                        }
+
+                        int finalMoney = request + (goodCount * 1500) - (badCount * 1000);
+
+                        if (request <= 10000)
+                        {
+                            if (badCount == 0)
+                            {
+                                Console.WriteLine($"Szépen beszéltél apunyukáddal, ezért minden kedves szavadért hozzárakott 1500 Ft-ot a kért összeghez.");
+                                Console.WriteLine($"{finalMoney} Ft-ot adott, és kérte, hogy vigyázz magadra..");
+                                Increase(0, 15, finalMoney, player);
+                            }
+                            else if (badCount > 0 || badCount <= 4)
+                            {
+                                Console.WriteLine("Elfogadhatóan beszéltél anyukáddal, ezért még megadta a kért összeget, de minden csúnya szóért levont 1000Ft-ot, a kedvesekért pedig hozzátett 1500-at.");
+                                Console.WriteLine($"{finalMoney} Ft-ot adott neked.");
+                                Increase(0, 10, finalMoney, player);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Édesanyád egy serpenyőt elhajlított a hátadon, mert csúnyán beszéltél vele.");
+                                Increase(0, -30, 0, player);
+                                beatenByMother = true;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Túl sok pénzt kértél anyukádtól, ezért egy serpenyőt elhajlított a hátadon.");
+                            Increase(0, -30, 0, player);
+                            beatenByMother = true;
+                        }
+
+                        requested = true;
+                        Console.ReadKey();
+                        PenzKeres();
+                    }
                     break;
                 case 3:
+                    if (requested)
+                    {
+                        Console.WriteLine("Már kértél az egyik családtagodtól pénzt, ezért nem kaspz többet.");
+                        Console.ReadKey();
+                        PenzKeres();
+                    }
+
+                    Console.WriteLine($"{RandomRoom()} mamád éppen {RandomAction()}. Mennyi pénzt szeretnél kérni tőle?");
+                    money = Console.ReadLine();
+
+                    while (!(int.TryParse(money, out request)))
+                    {
+                        Console.WriteLine($"Ez nem egy összeg, te {RandomInsult()}\n");
+                        Console.WriteLine("Mennyi pénzt szeretnél kérni tőle?");
+                        money = Console.ReadLine();
+
+                    }
+                    if (int.TryParse(money, out request))
+                    {
+                        Console.WriteLine("Mit fogsz mondani neki?");
+                        string[] badWords = BadWords();
+                        string[] goodWords = GoodWords();
+                        string input = Console.ReadLine().ToLower();
+
+
+                        foreach (string badWord in badWords)
+                        {
+                            if (input.Contains(badWord))
+                            {
+                                badCount++;
+                            }
+                        }
+
+                        foreach (string goodWord in goodWords)
+                        {
+                            if (input.Contains(goodWord))
+                            {
+                                goodCount++;
+                            }
+                        }
+
+                        int finalMoney = request + (goodCount * 200) - (badCount * 1000);
+
+                        if (request <= 100000)
+                        {
+                            if (badCount == 0)
+                            {
+                                Console.WriteLine($"Szépen beszéltél a mamáddal, ezért minden kedves szavadért hozzárakott 2000 Ft-ot a kért összeghez.");
+                                Console.WriteLine($"{finalMoney} Ft-ot adott, és egy kekszet.");
+                                Increase(0, 15, finalMoney, player);
+                            }
+                            else if (badCount > 0 || badCount <= 4)
+                            {
+                                Console.WriteLine("Elfogadhatóan beszéltél a mamáddal, ezért még megadta a kért összeget, de minden csúnya szóért levont 1000Ft-ot, a kedvesekért pedig hozzátett 2000-et.");
+                                Console.WriteLine($"{finalMoney} Ft-ot adott neked.");
+                                Increase(0, 10, finalMoney, player);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Mamád előhúzta a botjába rejtett titkos kardot, és átszúrta a mellkasodon, mert csúnyán beszéltél vele.");
+                                Increase(0, -30, 0, player);
+                                Console.ReadKey();
+                                DisplayEnd(false, "Győrzámoly, Szerencse utca 22/B", "Elvéreztél miután leszúrt a mamád, ezután eltüntette a családod a bizonyítékokat, és elástak a kertbe.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Túl sok pénzt kértél a mamádtól, ezért előhúzta a botjába rejtett titkos kardot, és átszúrta a mellkasodon.");
+                            Increase(0, -30, 0, player);
+                            Console.ReadKey();
+                            DisplayEnd(false, "Győrzámoly, Szerencse utca 22/B", "Elvéreztél miután leszúrt a mamád, ezután eltüntette a családod a bizonyítékokat, és elástak a kertbe.");
+                        }
+                        requested = true;
+                        Console.ReadKey();
+                        PenzKeres();
+                    }
+                    break;
+
+                case 4:
+                    Console.WriteLine("Ezt te sem gondoltad komolyan, ugye?");
+                    Console.ReadKey();
+                    PenzKeres();
+                    break;
+                case 5:
+                    IvasOtthon();
+                    break;
+                case 6:
                     Start();
                     break;
             }
@@ -726,18 +907,18 @@ namespace Pentekesteszimulator
             {
                 Console.WriteLine($"\n{i + 1}. szám (1-10): ");
                 string input = Console.ReadLine();
-                int loteryNum;
+                int lotteryNum;
 
-                if (int.TryParse(input, out loteryNum))
+                if (int.TryParse(input, out lotteryNum))
                 {
-                    if (loteryNum <= 0 || loteryNum > 10)
+                    if (lotteryNum <= 0 || lotteryNum > 10)
                     {
                         Console.WriteLine($"Ez nem 1 és 10 között van te {RandomInsult()}");
                         i--;
                     }
-                    else if (guesses.Count(s => s == loteryNum) == 0)
+                    else if (guesses.Count(s => s == lotteryNum) == 0)
                     {
-                        guesses[i] = loteryNum;
+                        guesses[i] = lotteryNum;
                     }
                     else
                     {
@@ -787,9 +968,9 @@ namespace Pentekesteszimulator
             if (count >= 1) 
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"{count} számot találtál el, nyertél {500 * count * 10}Ft-ot!");
+                Console.WriteLine($"{count} számot találtál el, nyertél {5000 * count }Ft-ot!");
                 Console.ForegroundColor = ConsoleColor.White;
-                Increase(0, 50, 500 * count * 10, player);
+                Increase(0, 50, 5000 * count, player);
                 Console.WriteLine("Vissza a boltba...");
                 Console.ReadKey();
                 SarkiBolt();

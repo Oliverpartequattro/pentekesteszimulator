@@ -351,9 +351,57 @@ namespace Pentekesteszimulator
              "irdatlan nagyot fingottál, majd meggyújtottad",
              "elnyomtál a szomszédodon egy csikket, mert Heinekent ivott",
              "lereszelted a bőrt a sarkadról, majd levest főztél belőle",
+             "megfogtál egy gyermeket, majd a lábánál fogva pörgetted a levegőben"
 
             };
             return scandals[r.Next(0, scandals.Length)];
+        }
+
+        public static string RandomAction()
+        {
+            string[] actions =
+            {
+                "mákos tésztát eszik",
+                "vakolja a falat",
+                "fugázza a csempét",
+                "csömöszköli a betont",
+                "ekével veri a földet",
+                "mákos tésztát készít",
+                "szemcseppet, higítót és mákvirágot kever össze",
+                "fehér csíkokat szív fel az asztalról",
+                "Fortikázik",
+                "césárpot programozik",
+                "ostort csattogtat a levegőben",
+                "kalapáccsal veri a falat",
+                "Obama vezetéknevét kutatja",
+                "Viktória titkait tárja fel",
+                "dinoszauruszokat szelidít",
+                "keresi ki kérdezte",
+                "keresi Régi-Zélandot",
+                "tervezi, hogy az apja után megy tejért",
+                "bizonyítja, hogy a Föld lapos",
+                "lóháton ostorral a kezében hadonászik",
+
+            };
+            return actions[r.Next(0, actions.Length)];
+        }
+
+        public static string RandomRoom()
+        {
+            string[] rooms =
+            {
+                "A konyhában",
+                "A nappaliban",
+                "A skanzenben",
+                "A hálószobában",
+                "Az ebédlőben",
+                "A sufniban",
+                "A saját szobádban",
+                "A budiban",
+                "A kazánházban",
+                "A kutyaházban"
+            };
+            return rooms[r.Next(0, rooms.Length)];
         }
 
         public static string[] BadWords()
