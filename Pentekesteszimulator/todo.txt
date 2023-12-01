@@ -1,9 +1,7 @@
 Mindenkepp meg lesz csinalva/bugfix:
 	console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
 	jelenleg nincs hiba - keresni kell, mert biztos hogy van.
-	kizsebeled, ha nyersz a verekedésben, rendőrök elvisznek
 	kulon fajl a variabeleknek
-	ha bemesz barhova ne azonnal igyal
 	csehország valami random történés prágában (csöves?)
 	fuvezes csehorszagban
 	VAN EGY É BETŰ AMI Á BETŰ DE NEM TUDO HOL
@@ -28,5 +26,4 @@ Opcionalis ha sok idonk van:
 Folyamatban:
 	figyelmeztető az alkohol halálról stb.   ---extra?
 	blackjack/darts
-	lottó ne lehessen 3szor ugyanaz  --- kijavítottam de szerintem tul könnyű nyerni
 	hogy kell hogy ne teljen az iő hogyha veszek sört

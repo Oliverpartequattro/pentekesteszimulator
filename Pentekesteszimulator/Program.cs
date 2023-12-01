@@ -132,7 +132,6 @@ namespace Pentekesteszimulator
         static void Szorakozohely()
         {
             int chance = r.Next(0, 100);
-            Increase(r.Next(30, 60) / 100.0, 10, -1190, player); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Az \"éj hölgye\" ", "Vissza a városba" };
             int choice;
             if (chance <= 40)
@@ -151,6 +150,7 @@ namespace Pentekesteszimulator
                     {
                         VarazsGomba();
                     }
+                    Increase(r.Next(30, 60) / 100.0, 10, -1190, player); //alkohol boldogság pénz
                     Szorakozohely();
                     break;
                 case 2:
@@ -222,13 +222,13 @@ namespace Pentekesteszimulator
         #region kocsma
         static void Kocsma()
         {
-            Increase(r.Next(30, 60) / 100.0, 10, -800, player); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Fej vagy írás", "Vissza a városba" };
             int choice = Display("Vörös Farkas Pub", "A kocsmában vagy.", " ", "Mit teszel?", player, timeStopped, index, options);
 
             switch (choice)
             {
                 case 1:
+                    Increase(r.Next(30, 60) / 100.0, 10, -800, player); //alkohol boldogság pénz
                     Kocsma();
                     break;
 
@@ -394,7 +394,6 @@ namespace Pentekesteszimulator
         static void Supermarket()
         {
             int chance = r.Next(0, 100);
-            Increase(r.Next(30, 60) / 100.0, 10, -300, player); //alkohol boldogság pénz
             string[] options = new string[] { "Veszel egy sört", "Vissza a városba" };
             int choice;
             if (chance <= 70)
@@ -410,6 +409,7 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
+                    Increase(r.Next(30, 60) / 100.0, 10, -300, player); //alkohol boldogság pénz
                     Supermarket();
                     break;
 
@@ -524,11 +524,7 @@ namespace Pentekesteszimulator
         #region SarkiBolt
         static void SarkiBolt()
         {
-            boughtBeer = true;
-            beerCount++;
-            allBeer ++;
             Time(player);
-            Increase(0, 1, -500, player); //alkohol boldogság pénz
             string[] options = new string[] { "Veszel egy sört", "Kitöltesz egy lottószelvényt", "Visszamész a faluközpontba" };
             int choice;
             if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
@@ -543,6 +539,10 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
+                    boughtBeer = true;
+                    beerCount++;
+                    allBeer++;
+                    Increase(0, 1, -500, player); //alkohol boldogság pénz
                     SarkiBolt();
                     break;
                 case 2:
@@ -778,7 +778,7 @@ namespace Pentekesteszimulator
             Time(player);
             opponent = RandomPerson();
             int chance = r.Next(0, 100);
-            Increase(r.Next(30, 60) / 100.0, 10, -700, player); //alkohol boldogság pénz
+
             string[] options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba" };
             int choice;
             if (player.Alcohol >= 2.0)
@@ -804,6 +804,7 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
+                    Increase(r.Next(30, 60) / 100.0, 10, -700, player); //alkohol boldogság pénz
                     FalusiKocsma();
                     break;
                 case 2:
