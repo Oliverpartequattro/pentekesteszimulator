@@ -29,5 +29,4 @@ Folyamatban:
 	figyelmeztető az alkohol halálról stb.   ---extra?
 	blackjack/darts
 	lottó ne lehessen 3szor ugyanaz  --- kijavítottam de szerintem tul könnyű nyerni
-	falusi kocsma ejfeli mise es duhajkodas egyszerre benedek segics
 	hogy kell hogy ne teljen az iő hogyha veszek sört

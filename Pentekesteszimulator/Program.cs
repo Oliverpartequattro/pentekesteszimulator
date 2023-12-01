@@ -19,8 +19,9 @@ namespace Pentekesteszimulator
         private static int beerCount = 0;
         private static string opponent;
         private static bool boughtBeer = false;
+        private static bool alcPlusTime = false;
 
-        
+
 
         public static void Main(string[] args)
         {
@@ -773,8 +774,7 @@ namespace Pentekesteszimulator
         #region falusikocsma
         static void FalusiKocsma()
         {
-            bool alcPlusTime = false;
-            bool onlyTime = false;
+
             Time(player);
             opponent = RandomPerson();
             int chance = r.Next(0, 100);
@@ -783,13 +783,13 @@ namespace Pentekesteszimulator
             int choice;
             if (player.Alcohol >= 2.0)
             {
+                alcPlusTime = true;
                 options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", $"Duhajkodás" };
                 choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat. ", "Mit teszel?", player, true, index, options);
                 if(char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
                 {
-                    alcPlusTime = true;
                     options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", "Duhajkodás", "Elmész az éjféli misére" };
-                    choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat.\nLehetőséged van elmenni az éjféli misére.", "Mit teszel?", player, true, index, options);
+                    choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat.\n\nLehetőséged van elmenni az éjféli misére.", "Mit teszel?", player, true, index, options);
                 }
             }
             else
@@ -797,7 +797,6 @@ namespace Pentekesteszimulator
                 choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", " ", "Mit teszel?", player, true, index, options);
                 if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
                 {
-                    onlyTime = true;
                     options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", "Elmész az éjféli misére" };
                     choice = Display("Dorozsmai határvégi borvirág kocsma", "Valahogyan eljutottál a határvégi kocsmához", "Lehetőséged van elmenni az éjféli misére.", "Mit teszel?", player, true, index, options);
                 }
@@ -814,13 +813,20 @@ namespace Pentekesteszimulator
                     Falu();
                     break;
 
-                    //if (alcPlusTime)
-                    //{
-
-                    //}
                 case 4:
-                    Fight("faluba", "Dorozsmai határvégi borvirág kocsma");
-                    Falu();
+                    if(alcPlusTime)
+                    {
+                     Fight("faluba", "Dorozsmai határvégi borvirág kocsma");
+                     Falu();
+                    }
+                    else
+                    {
+                        EjfeliMise();
+                    }
+                    break;
+
+                case 5:
+                    EjfeliMise();
                     break;
             }
         }
@@ -832,7 +838,8 @@ namespace Pentekesteszimulator
             int pickpocket = r.Next(0, 1501);
             Thread.Sleep(5000);
             Console.WriteLine($"{opponent} a beszólásod hallatán {RandomMoveOpponent()}.");
-            Thread.Sleep(500);
+            Console.WriteLine("Nyomj Entert a támadáshoz..");
+            Console.ReadKey();
             Console.WriteLine($"Válaszul {RandomMove()}");
             Thread.Sleep(500);
             Console.WriteLine($"\nAz örjöngő verekedés után mindketten földre kerültetek.");
@@ -841,14 +848,12 @@ namespace Pentekesteszimulator
             Increase(0, -30, -pickpocket, player); //alkohol boldogság pénz
             Console.WriteLine("\nKelj fel");
             Console.ReadKey();
-            if (chance <= 60)
+            if (chance <= 0)
             {
                 DisplayEnd(false, $"{endPlace}", $"{opponent} annyira összevert, hogy belehaltál a sérüléseidbe.");
             }
             else
             {
-                Thread.Sleep(1000);
-
                 Console.Write("\nMost kelsz fel");
                 string text = "...............";
                 int delay = 300;
@@ -857,7 +862,62 @@ namespace Pentekesteszimulator
                     Console.Write(c);
                     Thread.Sleep(delay);
                 }
-                Console.WriteLine($"\nA rendőrség visszavisz a {placeBack}....");
+
+                pickpocket = r.Next(1, 1500);
+                chance = r.Next(0, 100);
+                string[] options = new string[] { "I", "N"};
+                string userInput;
+                Console.WriteLine("Kizsebeled? (I)/(N)");
+                userInput = Console.ReadLine();
+
+                while (userInput.ToLower() != "i" && userInput.ToLower() != "n")
+                {
+                    Console.WriteLine($"Ez nem \"I\", és nem is \"N\", te {RandomInsult()}");
+                    Console.WriteLine("Kizsebeled? (I)/(N)");
+                    userInput = Console.ReadLine();
+                }
+
+                switch (userInput.ToLower())
+                {
+                    case "i":
+                        Console.Write("\nÁtkutatod a zsebeit");
+                        text = "...............";
+                        delay = 300;
+                        foreach (char c in text)
+                        {
+                            Console.Write(c);
+                            Thread.Sleep(delay);
+                        }
+                        Console.WriteLine($"Találtál a zsebében {pickpocket} Ft-ot!");
+                        Increase(0, 10, pickpocket, player);
+
+                        Console.WriteLine("Elhagyod a helyszínt...");
+                        Console.ReadKey();
+
+                        if (chance <= 30)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("A rendőrség menekülés közben elkapott.");
+                            Console.ReadKey();
+                            DisplayEnd(false, placeBack, "Sajnos a részegséged miatt megcsúsztál egy banánhéjon a menekülés közben, ezért elfogott a rendőrség.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Sikeresen visszamenekültél a {placeBack}");
+                        }
+                        break;
+
+                    case "n":
+                        Console.WriteLine("Úgy döntöttél nem zsebeled ki.");
+                        Console.WriteLine($"\nA rendőrség megérkezett a helyszínre, és visszavisz a {placeBack}....");
+                    break;
+
+                    default:
+                    Console.WriteLine("Ez nem");
+                    break;
+                }
+
+            
                 Console.ReadKey();
             }
         }
