@@ -90,7 +90,10 @@ namespace Pentekesteszimulator
              "Kárpátia rajongó",
              "Jó LaciBetyár",
              "Holokauszt tagadó",
-             "Fertőszentmiklósi"
+             "Fertőszentmiklósi",
+             "Lapos Föld hívő",
+             "Nyomorult",
+
             };
             return people[r.Next(0, people.Length)];
     }

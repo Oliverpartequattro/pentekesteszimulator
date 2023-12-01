@@ -26,3 +26,4 @@ Folyamatban:
 	csehországban cseh emberek array ugyanígy a többi ország
 	csehország valami random történés prágában (csöves?)
 	Pénz kérés az elején
+	timestoppedet ki lehet venni csainaltam szorzot

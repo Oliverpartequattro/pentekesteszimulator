@@ -8,10 +8,10 @@ namespace Pentekesteszimulator
 {
     internal partial class Program
     {
-        public static void Time(Player1 player)
+        public static void Time(double multiplier, Player1 player)
         {
             Random r = new Random();
-            int time = r.Next(30, 51);
+            double time = Math.Round( r.Next(30, 51) * multiplier);
 
             int cardiacArrest = r.Next(0, 201);
             if (cardiacArrest == 42) //fortika
@@ -20,11 +20,11 @@ namespace Pentekesteszimulator
             }
 
             string[] arr = player.Time.Split(":");
-            int min = time % 60;
-            int hour = time / 60;
+            double min = Math.Round(time % 60);
+            double hour = Math.Round(time / 60);
 
-            int newHour = Convert.ToInt32(arr[0]) + hour;
-            int newMin = Convert.ToInt32(arr[1]) + min;
+            double newHour = Convert.ToInt32(arr[0]) + hour;
+            double newMin = Convert.ToInt32(arr[1]) + min;
 
             if (newMin >= 60)
             {
