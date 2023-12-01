@@ -12,7 +12,7 @@ Opcionalis ha sok idonk van:
 	elmentek kocsmázni a haverokkal (30% hogy te fizetsz de akkor 3x ár)
 	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
 	szebb kiírás formázások
-	másik játék referenciák
+	másik játék referenciák - !!osszehanyod a wct!!
 	szövegek legyenek érdekesebbek  --- a const haláloknál is legyenek frappánsak !!array!!
 	ha az option nagyon hosszú nem tabbal kezdi az új sort  --- nehéz
 	ha magas a véralkohol szint ne menjen oda ahova a játékos akarja
@@ -25,4 +25,3 @@ Folyamatban:
 	blackjack/darts
 	csehországban cseh emberek array ugyanígy a többi ország
 	csehország valami random történés prágában (csöves?)
-	Pénz kérés az elején
