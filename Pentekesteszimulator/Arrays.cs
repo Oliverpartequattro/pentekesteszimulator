@@ -140,6 +140,9 @@ namespace Pentekesteszimulator
                 "tépted",
                 "csiklandoztad",
                 "flexelted",
+                "körfűrészelted",
+                "reszelted",
+                "daráltad"
 
             };
 
@@ -226,6 +229,9 @@ namespace Pentekesteszimulator
                 "tépte",
                 "csiklandozta",
                 "flexelte",
+                "körfűrászelte",
+                "resztelte",
+                "darálta"
 
             };
 
@@ -340,18 +346,21 @@ namespace Pentekesteszimulator
              "levizelted a falat, miközben 360 fokban pörögtél",
              "széles mosollyal az arcodon önkényuralmi jelképeket mutogattál",
              "elkezdtél üvöltve mulatós slágereket énekelni",
-             "különböző bandajeleket mutogattál",
+             "felvetted az albán zászlós arcmaszkodat, és különböző bandajeleket mutogattál",
              "örömmel összeraktál egy kalapácsot egy sarlóval, miközben üvöltve hirdetted a proletárdiktatúrát",
              "felgyújtottál egy melegzászlót, melynek a hamujából önkényuralmi jelképeket raktál ki",
              "hangosan és büszkén homofób kifejezéseket kiáltottál",
-             "kimondtad az \"n betűs szót\"",
+             "széles mosollyal az arcodon kimondtad az \"n betűs szót\"",
              "vérben forgó szemekkel elkezdted Jákob népét derogáló nyelvezettel illetni",
              "a melletted űlő államtársadat visszakézből orron vágtad, mert alsóbbrendű",
              "a földre köptél egyet, ami átmarta a padlót",
              "irdatlan nagyot fingottál, majd meggyújtottad",
              "elnyomtál a szomszédodon egy csikket, mert Heinekent ivott",
-             "lereszelted a bőrt a sarkadról, majd levest főztél belőle",
-             "megfogtál egy gyermeket, majd a lábánál fogva pörgetted a levegőben"
+             "lereszelted a bőrt a sarkadról, majd sajtlevest főztél belőle",
+             "megfogtál egy gyermeket, majd a lábánál fogva pörgetted a levegőben",
+             "egy nem létező istenhez fohászkodtál a negyedik utolsó italod után",
+             "a hangszóródon hangosan náci indulót játszottál",
+             "rácsatlakoztál egy államtársad mobileszközére \"mögötted vagyok\" BlueTooth névvel",
 
             };
             return scandals[r.Next(0, scandals.Length)];
@@ -365,6 +374,7 @@ namespace Pentekesteszimulator
                 "vakolja a falat",
                 "fugázza a csempét",
                 "csömöszköli a betont",
+                "töcsköli a vájlingot",
                 "ekével veri a földet",
                 "mákos tésztát készít",
                 "szemcseppet, higítót és mákvirágot kever össze",
@@ -399,9 +409,10 @@ namespace Pentekesteszimulator
                 "A saját szobádban",
                 "A budiban",
                 "A kazánházban",
-                "A kutyaházban"
+                "A kutyaházban",
+                "A vájlingban"
             };
-            return rooms[r.Next(0, rooms.Length)];
+            return rooms[r.Next(0, rooms.Length)]; 
         }
 
         public static string[] BadWords()
@@ -409,7 +420,7 @@ namespace Pentekesteszimulator
             string[] badWords = {
     "kurva", "kúrva",
     "fasz", "fasz",
-    "nigger", "n*gger",
+    "nigger", "nigger",
     "utallak", "utállak",
     "adj", "ádj",
     "adjal", "ádjal",
@@ -468,7 +479,8 @@ namespace Pentekesteszimulator
     "agybaj", "agybaj",
     "Linux felhasználó", "Linux felhasználó",
     "isten csapása", "isten csapása",
-    "isten ostora", "isten ostora"
+    "isten ostora", "isten ostora",
+    "bazdmeg"
 };
 
             return badWords;
@@ -490,6 +502,26 @@ namespace Pentekesteszimulator
 
             };
             return goodWords;
+        }
+
+        public static string RandomQuestion()
+        {
+            string[] questions = 
+            {
+                "Mit teszel?",
+                "Mit fogsz tenni?",
+                "Mi a terved?",
+                "Mi a következő lépésed?",
+                "Mi lesz a következő cselekedeted?",
+                "Milyen lépést tervezel?",
+                "Mi a következő lépés a tervben?",
+                "Mik a terveid?",
+                "Hogyan fogod folytatni?",
+                "Milyen intézkedéseket fogsz hozni?",
+                "Mivel folytatod?",
+                "Mit szándékozol tenni?"
+            };
+            return questions[r.Next(0, questions.Length)];
         }
 
     }
