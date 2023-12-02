@@ -7,6 +7,7 @@ Mindenkepp meg lesz csinalva/bugfix:
 
 
 Opcionalis ha sok idonk van:
+	otthon ivas ml választás véralk. szorzó
 	közös éjféli mise/kocsmai verekedés haverokkal (70% esely a nyeresre)
 	sarki bolt rablás haverokkal!!!!
 	elmentek kocsmázni a haverokkal (30% hogy te fizetsz de akkor 3x ár)
@@ -18,6 +19,10 @@ Opcionalis ha sok idonk van:
 	ha magas a véralkohol szint ne menjen oda ahova a játékos akarja
 	legyen smooth a menu valasztas
 	érdekesebb fantasyworldok lehessen dolgokat csinalni
+	námbör sziksz örréj
+	hogyha nincs elég pénzed nem displayend csak kiirja hogy nem csinalhatod
+	a menu valasztas miatt mindig meghijja a display fg ezert nagy az esely a szivrohamra -- kevesebb esely????
+	hogyha legfelso opcioban meg feljebb nyomunk dobjon az uccsora vica versa
 
 
 Folyamatban:
@@ -25,4 +30,3 @@ Folyamatban:
 	blackjack/darts
 	csehországban cseh emberek array ugyanígy a többi ország
 	csehország valami random történés prágában (csöves?)
-	Pénz kérés az elején
