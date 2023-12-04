@@ -1,32 +1,31 @@
 Mindenkepp meg lesz csinalva/bugfix:
 	console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
-	jelenleg nincs hiba - keresni kell, mert biztos hogy van.
 	kulon fajl a variabeleknek
 	fuvezes csehorszagban
-	VAN EGY É BETŰ AMI Á BETŰ DE NEM TUDO HOL
 
 
 Opcionalis ha sok idonk van:
 	otthon ivas ml választás véralk. szorzó
 	közös éjféli mise/kocsmai verekedés haverokkal (70% esely a nyeresre)
 	sarki bolt rablás haverokkal!!!!
+	ha magas a véralkohol szint ne menjen oda ahova a játékos akarja
 	elmentek kocsmázni a haverokkal (30% hogy te fizetsz de akkor 3x ár)
 	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
 	szebb kiírás formázások
-	másik játék referenciák - !!osszehanyod a wct!!
+	másik játék referenciák - !!osszehanyod a wct!!   --- behugyozol
 	szövegek legyenek érdekesebbek  --- a const haláloknál is legyenek frappánsak !!array!!
 	ha az option nagyon hosszú nem tabbal kezdi az új sort  --- nehéz
-	ha magas a véralkohol szint ne menjen oda ahova a játékos akarja
-	legyen smooth a menu valasztas
 	érdekesebb fantasyworldok lehessen dolgokat csinalni
-	námbör sziksz örréj
+	námbör sziksz örréj --- ???
 	hogyha nincs elég pénzed nem displayend csak kiirja hogy nem csinalhatod
-	a menu valasztas miatt mindig meghijja a display fg ezert nagy az esely a szivrohamra -- kevesebb esely????
-	hogyha legfelso opcioban meg feljebb nyomunk dobjon az uccsora vica versa
 
 
 Folyamatban:
-	figyelmeztető az alkohol halálról stb.   ---extra?
+	kulfold
+	legyen smooth a menu valasztas
+	hogyha legfelso opcioban meg feljebb nyomunk dobjon az uccsora vica versa
+	figyelmeztető az alkohol halálról stb. display if
+	csúszka cússzon
 	blackjack/darts
 	csehországban cseh emberek array ugyanígy a többi ország
 	csehország valami random történés prágában (csöves?)
