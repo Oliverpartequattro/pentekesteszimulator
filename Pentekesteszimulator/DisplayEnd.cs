@@ -10,9 +10,13 @@ namespace Pentekesteszimulator
 {
     internal partial class Program
     {
-        public static void DisplayEnd(bool good, string location, string description)
+        public static void DisplayEnd(bool good, string location, string description, ConsoleColor colorDefault = ConsoleColor.Red)
         {
-            if (good)
+            if (colorDefault != ConsoleColor.Red)
+            {
+                Console.ForegroundColor = colorDefault;
+            }
+            else if (good)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }

@@ -19,8 +19,10 @@ namespace Pentekesteszimulator
                 if (cardiacArrest == 42) //fortika
                 {
                     DisplayEnd(false, "None", "Hirtelen szúró fájdalmat érzel a mellkasod bal oldalán. Szívrohamban eltávozol.");
+                }
             }
-            }
+
+            player.Alcohol -= 0.1 * (time/60);
 
             string[] arr = player.Time.Split(":");
             int min = (int)Math.Floor(time % 60);
