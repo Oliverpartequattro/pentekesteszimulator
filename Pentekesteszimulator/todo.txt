@@ -3,7 +3,8 @@ Mindenkepp meg lesz csinalva/bugfix:
 	jelenleg nincs hiba - keresni kell, mert biztos hogy van.
 	kulon fajl a variabeleknek
 	fuvezes csehorszagban
-	VAN EGY É BETŰ AMI Á BETŰ DE NEM TUDO HOL
+	VAN EGY É BETŰ AMI Á BETŰ DE NEM TUDO HOL VAGY FORDÍTVA
+	nem kaspz pénzt!!!!!!!!!
 
 
 Opcionalis ha sok idonk van:
