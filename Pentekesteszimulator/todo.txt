@@ -8,7 +8,6 @@ Opcionalis ha sok idonk van:
 	busz miert csak falu? - nem
 	frissitse a displayt amikor kap pénzt a rablásbol vagy kirabolják
 	legyen smooth a menu valasztas --- nehez(nem egy nap szerintem) - masold ki a hubatol
-	ha ittasan indulsz el otthonrol kocsival van esely hogy rendor szondáztat
 	hogyha nincs elég pénzed nem displayend csak kiirja hogy nem csinalhatod
 	nem tetszik a szöveg az elejen - Csongorral beszéld meg nekem a pinter balint resze nem tetszik 
 	otthon ivas ml választás véralk. szorzó
@@ -22,8 +21,10 @@ Opcionalis ha sok idonk van:
 
 
 Folyamatban:
+	quick time event fura (de mukodik) mert folyamatosan cleareli magat a display 
 	kulfold
-	blackjack/darts
+	van egy falu(asd) ha nem javitanam ki
+	blackjack/darts vagy valami kocsmai jatek
 	csehország valami random történés prágában (csöves?)
 	csehországban cseh emberek array ugyanígy a többi ország
-	par fuggvenynek (pl. start, varos, otthon, falu "desc" parameter, hogy ne uyganazt irja ki, ha kulonbozo helyekrol hivjuk meg) odairtam hova + mindig ha valahonnan visszamegy
+

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.ComponentModel;
 using System.Diagnostics.Metrics;
+using System.Drawing;
+using System.Reflection;
 
 namespace Pentekesteszimulator
 {
@@ -36,14 +38,14 @@ namespace Pentekesteszimulator
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
 
-            Otthon();
+            Otthon("Pintér Bálint vagy, egy 18 éves Jedlikes diák.Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
         }
 
         #region otthon
-        public static void Otthon()
+        public static void Otthon(string desc)
         {
             string[] options = new string[] { "Kérsz valakitől egy kis pénzt", "Iszol egyet", "Útnak indulsz" };
-            int choice = Display("Győrzámoly, Szerencse utca 22/B", "Pintér Bálint vagy, egy 18 éves Jedlikes diák. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!", " ", "Hogyan készülsz fel az éjszakára indulás előtt?", player, index, 0, options);
+            int choice = Display("Győrzámoly, Szerencse utca 22/B", $"{desc}", " ", "Hogyan készülsz fel az éjszakára indulás előtt?", player, index, 0, options);
             switch (choice)
             {
                 case 1:
@@ -330,7 +332,7 @@ namespace Pentekesteszimulator
         public static void IvasOtthon()
         {
             int chance = r.Next(0, 100);
-            string[] options = new string[] { "Sör", "Bor", "Vodka", "\"Vegyes házi 2006\" feliratú átlátszó folyadék műanyagpalackban", "Etil alkohol", "Fagyálló", "Útnak indulsz" };
+            string[] options = new string[] { "Sör", "Bor", "Vodka", "\"Vegyes házi 2006\" feliratú átlátszó folyadék műanyagpalackban", "Etil alkohol", "Fagyálló", "Visszamész a szobádba", "Útnak indulsz" };
             int choice = Display("Győrzámoly, Szerencse utca 22/B", "A hűtőt kinyitva szinte már el sem tudod dönteni mit igyál.", " ", "Mit választasz?", player, index, 0, options);
             
 
@@ -381,6 +383,9 @@ namespace Pentekesteszimulator
                     DisplayEnd(false, "Győrzámoly, Szerencse utca 22/B", $"Megittad a fagyállót, ezért leálltak a veséid, te {RandomInsult()}");
                     break;
                 case 7:
+                    Otthon("Visszamentél a hűtőtöl a szobádba.");
+                    break;
+                case 8:
                     Start();
                     break;
             }
@@ -417,10 +422,10 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
-                    Varos();
+                    Varos("Egy szakadt Icarus elvitt egészen a Putri Pályaudvarig.");
                     break;
                 case 2:
-                    Falu();
+                    Falu("Felszálltál az egyetlen szakadt Icarusra, ami elvisz Dorozsmába.");
                     break;
             }
         }
@@ -433,7 +438,7 @@ namespace Pentekesteszimulator
             Increase(0, 0, -300, player);
             string[] options = new string[] { "Város", "Falu", "Elhagyod az országot" };
             int choice;
-            if(chance <= 300)
+            if(chance <= 30)
             {
                 szonda = true;
                 options = new string[] { "Lepadlózod", "Félrehúzódsz"};
@@ -457,15 +462,15 @@ namespace Pentekesteszimulator
                             Console.ReadKey();
                             if (randomPlace == 0)
                             {
-                                Varos();
+                                Varos("A városi pályaudvaron kötöttél ki.");
                             }
                             else if (randomPlace == 1)
                             {
-                                Falu(); //erre a 3ra pl kell parameter fix
+                                Falu("Dorozsmába jutottál."); //erre a 3ra pl kell parameter fix
                             }
                             else
                             {
-                                Kulfold();
+                                Kulfold("Valahogyan a Legendás Hármashatáron kötöttél ki.");
                             }
                         }
                         else
@@ -475,7 +480,7 @@ namespace Pentekesteszimulator
                     }
                     else
                     {
-                        Varos();
+                        Varos("Elautókáztál a pályaudvarig, majd leparkoltál.");
                     }
 
                     break;
@@ -484,10 +489,10 @@ namespace Pentekesteszimulator
                     {
                         Igazoltatas();
                     }
-                    Falu();
+                    Falu("Elautokáztál egészen Dorozsmáig, végigmentél a 20km-es főúton, majd megálltál elakadásjelzővel az út szélén, és elhagytad a járműved.");
                     break;
                 case 3:
-                    Kulfold();
+                    Kulfold("Elautókáztál a Legendás Hármas Határig.");
                     break;
             }
         }
@@ -590,13 +595,13 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
-                    Varos();
+                    Varos("Sikeresen elmenekültél egészen a Putri Pályaudvarig, majd leparkoltál.");
                     break;
                 case 2:
-                    Falu(); //ide is kell parameter
+                    Falu("Elmenekültél Dorozsma kicsiny falváig"); //ide is kell parameter
                     break;
                 case 3:
-                    Kulfold();
+                    Kulfold("Úgy döntöttél, külföldre menekülsz.\nA Legendás Hármas Határnál vagy.");
                     break;
             }
         }
@@ -632,18 +637,18 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
-                    Falu();
+                    Falu("Eltekertél a főút végéből egészen a faluközpontig.");
                     break;
             }
         }
 
 
         #region varos
-        static void Varos()
+        static void Varos(string desc)
         {
             Increase(0, 2, 0, player);
             string[] options = new string[] { "Szórakozóhely", "Kocsma", "Supermarket" };
-            int choice = Display("Putri Pályaudvar", "A Putri Pályaudvaron vagy.", " ", "Hová mész tovább?", player, index, 1, options);
+            int choice = Display("Putri Pályaudvar", $"{desc}", " ", "Hová mész tovább?", player, index, 1, options);
 
             switch (choice)
             {
@@ -690,7 +695,7 @@ namespace Pentekesteszimulator
                     EjHolgye();
                     break;
                 case 3:
-                    Varos();
+                    Varos("A szórakozóhelyből kisétálva a városba jutottál.");
                     break;
                 case 4:
                     IngyenesNeni();
@@ -722,7 +727,7 @@ namespace Pentekesteszimulator
                     DisplayEnd(false, "Cigiszagú panel", "Az incidens után alig tudtál menni, annyira fájt a hátsó feled, megbántad az estét.");
                     break;
                 case 3:
-                    Varos();
+                    Varos("Sikeresen elmenekültél a thai férfi elől, és a városban vagy.");
                     break;
             }
         }
@@ -770,7 +775,7 @@ namespace Pentekesteszimulator
                     break;
 
                 case 3:
-                    Varos();
+                    Varos("Kisétáltál a kocsmából, és a városban vagy.");
                     break;
             }
         }
@@ -947,7 +952,7 @@ namespace Pentekesteszimulator
                     break;
 
                 case 2:
-                    Varos();
+                    Varos("Kisétáltál a supermarketből, és a városban vagy.");
                     break;
 
                 case 3:
@@ -1002,7 +1007,7 @@ namespace Pentekesteszimulator
         #endregion //varos
 
             #region falu
-            static void Falu()
+            static void Falu(string desc)
             {
                 string drinkMan = RandomPerson();
                 int chance = r.Next(0, 100);
@@ -1012,7 +1017,7 @@ namespace Pentekesteszimulator
                 if (chance <= 10)
                 {
                     options = new string[] { "Sarki bolt", "Haverokhoz", "Falusi kocsma", "Maradok vele inni" };
-                    choice = Display("Dorozsmai faluközpont", "A 20km-es főútat végigszenvedve a faluközpontba jutsz.", $"Egy {drinkMan} \"vegyes házit\" kínál.", "Hová mész tovább?", player, index, 0, options);
+                    choice = Display("Dorozsmai faluközpont", $"{desc}", $"Egy {drinkMan} \"vegyes házit\" kínál.", "Hová mész tovább?", player, index, 0, options);
                 }
                 else
                 {
@@ -1033,7 +1038,7 @@ namespace Pentekesteszimulator
                             Console.WriteLine("Nem vettél sört a sarki boltban, üres kézzel nem illik beállítani!");
                             Console.WriteLine("Visszamész a faluba...");
                             Console.ReadKey();
-                            Falu();
+                            Falu("Visszamentél a faluba.");
                         }
                     
                         break;
@@ -1048,7 +1053,7 @@ namespace Pentekesteszimulator
                         else 
                         {
                             Increase(r.Next(70, 120) / 100.0, 20, 0, player);
-                            Falu();
+                            Falu("Igazán jól esett a vegyes házi, sokkal boldogabb vagy.");
                         }
                         break;
                 }
@@ -1063,7 +1068,7 @@ namespace Pentekesteszimulator
                 if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
                 {
                     options = new string[] { "Veszel egy sört", "Kitöltesz egy lottószelvényt", "Visszamész a faluközpontba", "Elmész a templomba" };
-                    choice = Display("Putri kisbolt", "Eljutottál a 0-24-es Putri Kisbolthoz.", "Lehetőságed van elmenni az éjféli misére", $"{RandomQuestion()}", player, index, 1, options);       
+                    choice = Display("Putri kisbolt", "Eljutottál a 0-24-es Putri Kisbolthoz.", "Lehetőséged van elmenni az éjféli misére", $"{RandomQuestion()}", player, index, 1, options);       
                 }
                 else
                 {
@@ -1082,7 +1087,7 @@ namespace Pentekesteszimulator
                         Lotto();
                         break;
                     case 3:
-                        Falu();
+                        Falu("A boltból visszasétáltál a faluközpontba");
                         break;
                     case 4:
                         EjfeliMise();
@@ -1218,7 +1223,7 @@ namespace Pentekesteszimulator
                         DisplayEnd(true, "Templom", "Az éjféli mise után kijózanodtál, és megtérve hazaértél, túlélve az estét.");
                         break;
                     case 2:
-                        Falu();
+                        Falu("Nem hittél a pap hablatyolásának, ezért inkább kimentél a templomból.");
                         break;
                     case 3:
                         opponent = RandomPerson();
@@ -1245,7 +1250,7 @@ namespace Pentekesteszimulator
                         }
                         Console.WriteLine("\nA rendőrség visszavisz a faluba....");
                         Console.ReadKey();
-                        Falu();
+                        Falu("Egy rendőrautó hátsóülésén visszajutottál a faluba");
                         break;
                 }
             }
@@ -1295,7 +1300,7 @@ namespace Pentekesteszimulator
                         //DrunkDriving();
                         break;
                     case 4:
-                        Falu();
+                        Falu("Otthagytad a haverokat, és visszamentél a faluba.");
                         break;
                     case 5:
                         EjfeliMise();
@@ -1344,14 +1349,14 @@ namespace Pentekesteszimulator
                        // Darts();
                         break;
                     case 3:
-                        Falu();
+                        Falu("A kocsmából visszasétáltál a faluba.");
                         break;
 
                     case 4:
                         if(alcPlusTime)
                         {
                          Fight("faluba", "Dorozsmai határvégi borvirág kocsma");
-                         Falu();
+                         Falu("asd");
                         }
                         else
                         {
@@ -1461,10 +1466,10 @@ namespace Pentekesteszimulator
             #endregion //falu
 
         #region kulfold
-        public static void Kulfold()
+        public static void Kulfold(string desc)
         {
             string[] options = new string[] { "Csehország", "Szlovákia", "Szerbia" };
-            int choice = Display("Legendás hármashatár", "Eljutottál a hármas határig.", " ", "Melyik országba folytatod utadat?", player, index, 1, options);
+            int choice = Display("Legendás hármashatár", $"{desc}", " ", "Melyik országba folytatod utadat?", player, index, 1, options);
             switch (choice)
             {
                 case 1:
@@ -1534,7 +1539,7 @@ namespace Pentekesteszimulator
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey(true);
 
-            Kulfold();
+            Kulfold("Te most komolyan szlovákiába (magyarul FELVIDÉKRE) akartál volna menni??? VÁLASSZ MÁST");
         }
 
         public static void Szerbia()
