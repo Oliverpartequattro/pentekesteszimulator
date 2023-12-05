@@ -19,23 +19,24 @@ namespace Pentekesteszimulator
         public static int beerCount = 0;
         public static int badCount = 0;
         public static int goodCount = 0;
+        public static int beersInRow = 0;
         public static string opponent;
         public static bool boughtBeer = false;
         public static bool alcPlusTime = false;
         public static bool beatenByFather = false;
         public static bool beatenByMother = false;
         public static bool requested = false;
-        public static List<List<int>> cursorPositions = new List<List<int>>();
         public static bool metil = r.Next(1, 4) == 1;
-        public static int beersInRow = 0;
+        public static bool stopCountdown = false;
+        public static bool bloodAlc = false;
+        public static List<List<int>> cursorPositions = new List<List<int>>();
 
         public static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
 
-            Szerbia();
-            Szerbia();
+            Otthon();
         }
 
         #region otthon
@@ -56,7 +57,7 @@ namespace Pentekesteszimulator
                     break;
             }
 
-        }
+        } //otthon fv kell parameter hogy a hutotol vissza lehessen menni   
 
         public static void PenzKeres()
         {
@@ -342,7 +343,7 @@ namespace Pentekesteszimulator
                     if (beersInRow > 4)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"Most ittad meg az {beersInRow}-ödik sörödet egy huzamban. Ennek következtében összehugyoztad magad. Gyorsan gatyát cserélsz és úgy döntessz hogy útnak indulsz.\n");
+                        Console.WriteLine($"Most ittad meg az {beersInRow}-ödik sörödet egy huzamban. Ennek következtében összehugyoztad magad. Gyorsan gatyát cserélsz és úgy döntesz hogy útnak indulsz.\n");
                         Console.ForegroundColor = ConsoleColor.White;
                         beersInRow = 0;
 
@@ -363,7 +364,7 @@ namespace Pentekesteszimulator
                 case 4:
                     if (metil)
                     {
-                        DisplayEnd(false, " ", "A \"Vegyes házi 2006\" feliratú átlátszó folyadék műanyagpalack metil alkoholt tartalmazott ezért megvakultál.", ConsoleColor.DarkGray);
+                        DisplayEnd(false, "Győrzámoly, Szerencse utca 22/B", "A \"Vegyes házi 2006\" feliratú átlátszó folyadék műanyagpalack metil alkoholt tartalmazott ezért megvakultál.", ConsoleColor.DarkGray);
                         break;
                     }
                     else
@@ -388,6 +389,7 @@ namespace Pentekesteszimulator
 
         public static void Start()
         {
+
             string[] options = new string[] { "Busz", "Autó", "Bicikli" };
             int choice = Display("Győrzámoly, Szerencse utca 22/B", "Úgy döntöttél elindulsz már, mert nem érünk rá egész nap.", " ", "Milyen járművel kezded meg utadat?", player, index, 1, options);
             switch (choice)
@@ -412,7 +414,6 @@ namespace Pentekesteszimulator
             Increase(0, -10, -300, player);
             string[] options = new string[] { "Város", "Falu" };
             int choice = Display("Buszmegálló", "Úgy döntöttél busszal indulsz útnak.", " ", "Hová mész tovább?", player, index, 1, options);
-
             switch (choice)
             {
                 case 1:
@@ -424,18 +425,65 @@ namespace Pentekesteszimulator
             }
         }
 
+        #region auto - rendorseg
         static void Auto()
         {
+            bool szonda = false;
+            int chance = r.Next(0, 101);
             Increase(0, 0, -300, player);
             string[] options = new string[] { "Város", "Falu", "Elhagyod az országot" };
-            int choice = Display("Garázs", "Úgy döntöttél autóval indulsz útnak.", " ", "Hová mész tovább?", player, index, 1, options);
+            int choice;
+            if(chance <= 300)
+            {
+                szonda = true;
+                options = new string[] { "Lepadlózod", "Félrehúzódsz"};
+                choice = Display("Főút", "Beugrottál a kocsidba, és útnak indultál.", $"A mögötted levő fekete A6-os Audi felkapcsolta a kék villogóit.", $"{RandomQuestion()}", player, index, 0, options);
+            }
+            else
+            {
+                choice = Display("Garázs", "Úgy döntöttél autóval indulsz útnak.", " ", "Hová mész tovább?", player, index, 1, options);
+            }
 
             switch (choice)
             {
                 case 1:
-                    Varos();
+                    if(szonda == true)
+                    {
+                        int escapeChance = r.Next(0, 101);
+                        int randomPlace = r.Next(0, 3);
+                        if (escapeChance <= 60)
+                        {
+                            Console.WriteLine("Sikeresen elmenekültél a rendőr elől, de sajnos fogalmad sem volt merre mentél, ezért kénytelen vagy a péntek estédet a célállomáson tölteni.\nKiszállás...");
+                            Console.ReadKey();
+                            if (randomPlace == 0)
+                            {
+                                Varos();
+                            }
+                            else if (randomPlace == 1)
+                            {
+                                Falu(); //erre a 3ra pl kell parameter fix
+                            }
+                            else
+                            {
+                                Kulfold();
+                            }
+                        }
+                        else
+                        {
+                            DisplayEnd(false, "Főút", "Túl gyenge sofőrnek bizonyultál, ezért a rendőr megfogott téged");
+                        }
+                    }
+                    else
+                    {
+                        Varos();
+                    }
+
                     break;
                 case 2:
+                    if(szonda  == true)
+                    {
+                        Igazoltatas();
+                    }
                     Falu();
                     break;
                 case 3:
@@ -444,6 +492,137 @@ namespace Pentekesteszimulator
             }
         }
 
+        public static void Igazoltatas()
+        {
+            string[] options = new string[] { "Lehúzod az ablakot", "Padlógázzal továbbhajtasz"};
+            int choice;
+            if(player.Alcohol > 0.0)
+            {
+                bloodAlc = true;
+                choice = Display("Főút", "Félreállítottak közúti igazoltatásra, csak remélni tudod, hogy nincs nála szonda.", "Tisztában vagy azzal, hogy ittál indulás előtt.\nMég van esélyed elmenekülni.", $"{RandomQuestion()}", player, index, 0, options);
+            }
+            else
+            {
+                choice = Display("Főút", "Félreállítottak közúti igazoltatásra. Szerencsére nem ittál még, ezért viszonylag biztonságban vagy..", " ", $"{RandomQuestion()}", player, index, 0, options);
+            }
+            switch (choice)
+            {
+                case 1:
+                    Szondaztatas();
+                    break;
+                case 2:
+                    QuickTime();
+                    break;
+            }
+        }
+
+        public static void Szondaztatas()
+        {
+            string[] options = new string[] { "Belefújsz", "Lefizeted" };
+            int choice = Display("Út széle", "Kiszáll a rendőr az autójából, benyújt egy szondát az ablakodon, majd kéri, hogy fújd meg.", " ", $"{RandomQuestion()}", player, index, 0, options);
+            switch (choice)
+            {
+                case 1:
+                    Console.WriteLine("\nFújod");
+                    string text = "...............";
+                    int delay = 300;
+                    foreach (char c in text)
+                    {
+                        Console.Write(c);
+                        Thread.Sleep(delay);
+                    }
+                    if (bloodAlc)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"\nA szonda {Math.Round(player.Alcohol, 2)}-t mutatott.");
+                        Console.ReadKey();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        DisplayEnd(false, "Szegedi csillagbörtön", $"Sajnos a rendőr nem nézte el a részeg vezetésedet.\nPontosabb vizsgálat után bizonyította tagságodat több terrorszervezetben,\nezért helyszíni halálbüntetést szabott ki.\nKivégzés ideje: {r.Next(2023, 2027)}.{r.Next(0, 13)}.{r.Next(1, 28)}");
+                    }
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"\nA szonda {player.Alcohol}-t mutatott.");
+                    Console.WriteLine("A rendőr eltette a szondát, és jó utat kívánt.");
+                    Console.ReadKey();
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Auto(); //PARAMETER AAAAAAAA
+                    break;
+                case 2:
+                    int bribe;
+                    Console.WriteLine($"Mennyi az annyi?");
+                    string money = Console.ReadLine();
+
+                    while (!(int.TryParse(money, out bribe)))
+                    {
+                        Console.WriteLine($"Ez nem egy összeg, te {RandomInsult()}\n");
+                        Console.WriteLine("Mennyi az annyi?");
+                        money = Console.ReadLine();
+                    }
+
+                    if(bribe > r.Next(28000, 35000))
+                    {
+                        Increase(0, 0, -bribe, player);
+                        Console.WriteLine("A rendőr elrakta a zsebébe a szondát, és jó utat kívánt.");
+                        Console.ReadKey();
+                        Auto(); //IDE IS KELL PARAMETER
+                    }
+                    else
+                    {
+                        DisplayEnd(false, "Út széle", "A rendőr kinevette a gyenge kísérletedet a korrupcióra, kirángatott a kocsiból, rávágott a motorháztetődre, majd megbilincselt.");
+                    }
+                    
+
+                    Console.ReadKey();
+                    break;
+            }
+        }
+
+        public static void QuickTime()
+        {
+            var countdownThread = new Thread(() => Countdown(5));
+
+            countdownThread.Start();
+
+            string[] options = new string[] { "Város", "Falu", "Elhagyod az országot" };
+            int choice = Display("Út széle", $"GYORSAN!! 5 másodperced van eldönteni, hová menekülsz!", " ", "HOVA MÉSZ?!?!?!?!", player, index, 1, options);
+
+            stopCountdown = true;
+
+            switch (choice)
+            {
+                case 1:
+                    Varos();
+                    break;
+                case 2:
+                    Falu(); //ide is kell parameter
+                    break;
+                case 3:
+                    Kulfold();
+                    break;
+            }
+        }
+
+        public static void Countdown(int seconds)
+        {
+            for (int i = seconds; i > -2; i--)
+            {
+                if (stopCountdown)
+                {
+                    break;
+                }
+
+                if(i > -1)
+                {
+                    Console.WriteLine(i);
+                    Thread.Sleep(1000);
+                }
+                else
+                {
+                    DisplayEnd(false, "Út széle", "Túl lassú volt a reakcióidőd, ezért odaért a rendőr a kocsidhoz.\nTelepátiával megfejtette, hogy el akartál menekülni, ezért kirángatott a kocsidból, és letartóztatott.");
+                }
+            }
+        }
+
+        #endregion //auto - rendorseg
         static void Bicikli()
         {
             Increase(0, 2, 0, player);
@@ -457,6 +636,7 @@ namespace Pentekesteszimulator
                     break;
             }
         }
+
 
         #region varos
         static void Varos()
