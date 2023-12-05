@@ -21,6 +21,15 @@ namespace Pentekesteszimulator
                 player.Happiness += happ;
             }
 
+            if (player.Alcohol + alc < 0)
+            {
+                player.Alcohol = 0;
+            }
+            else
+            {
+                player.Alcohol += alc;
+            }
+
         }
     }
 }
