@@ -22,7 +22,7 @@ namespace Pentekesteszimulator
                 }
             }
 
-            player.Alcohol -= 0.1 * (time/60);
+            Increase((-0.1 * (time / 60)), 0, 0, player);
 
             string[] arr = player.Time.Split(":");
             int min = (int)Math.Floor(time % 60);

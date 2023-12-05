@@ -5,6 +5,8 @@ Mindenkepp meg lesz csinalva/bugfix:
 
 
 Opcionalis ha sok idonk van:
+	busz miert csak falu?
+	frissitse a displayt amikor kap pénzt a rablásbol vagy kirabolják
 	legyen smooth a menu valasztas --- nehez(nem egy nap szerintem)
 	ha ittasan indulsz el otthonrol kocsival van esely hogy rendor szondáztat
 	hogyha nincs elég pénzed nem displayend csak kiirja hogy nem csinalhatod

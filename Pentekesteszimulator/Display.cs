@@ -21,10 +21,14 @@ namespace Pentekesteszimulator
 
             Console.WriteLine("\n");
 
-            Console.Write($"Helyszín: ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"{location}\n");
-            Console.ForegroundColor = ConsoleColor.White;
+
+            if (location != "")
+            {
+                Console.Write($"Helyszín: ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"{location}\n");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
 
             if(player.Alcohol > 4.0)
             {
@@ -56,17 +60,6 @@ namespace Pentekesteszimulator
                 Console.WriteLine($"{extra}\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
-
-            //else if (extra[0] == '\\' && extra[1] == 'p')
-            //{
-            //    Console.WriteLine($"{description}\n");
-
-            //    Console.ForegroundColor = ConsoleColor.Red;
-            //    Console.WriteLine($"{extra}\n");
-            //    Console.ForegroundColor = ConsoleColor.White;
-
-            //    Console.WriteLine($"{question}\n");
-            //}
 
             Console.WriteLine($"{question}\n");
             Time(timeMultiplier, player);

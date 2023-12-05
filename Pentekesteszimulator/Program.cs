@@ -34,14 +34,15 @@ namespace Pentekesteszimulator
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
 
-            Otthon();
+            Szerbia();
+            Szerbia();
         }
 
         #region otthon
         public static void Otthon()
         {
             string[] options = new string[] { "Kérsz valakitől egy kis pénzt", "Iszol egyet", "Útnak indulsz" };
-            int choice = Display("Győrzámoly, Szerencse utca 22/B", "Pintér Bálint vagy, egy 18 éves Jedlikes diák. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\n A CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!", " ", "Hogyan készülsz fel az éjszakára indulás előtt?", player, index, 0, options);
+            int choice = Display("Győrzámoly, Szerencse utca 22/B", "Pintér Bálint vagy, egy 18 éves Jedlikes diák. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!", " ", "Hogyan készülsz fel az éjszakára indulás előtt?", player, index, 0, options);
             switch (choice)
             {
                 case 1:
@@ -826,11 +827,11 @@ namespace Pentekesteszimulator
                 string drinkMan = RandomPerson();
                 int chance = r.Next(0, 100);
                 Increase(0, 5, 0, player); //alkohol boldogság pénz
-                string[] options = new string[] { "Sarki bolt", "Haverok", "Falusi kocsma" };
+                string[] options = new string[] { "Sarki bolt", "Haverokhoz", "Falusi kocsma" };
                 int choice;
                 if (chance <= 10)
                 {
-                    options = new string[] { "Sarki bolt", "Haverok", "Falusi kocsma", "Maradok vele inni" };
+                    options = new string[] { "Sarki bolt", "Haverokhoz", "Falusi kocsma", "Maradok vele inni" };
                     choice = Display("Dorozsmai faluközpont", "A 20km-es főútat végigszenvedve a faluközpontba jutsz.", $"Egy {drinkMan} \"vegyes házit\" kínál.", "Hová mész tovább?", player, index, 0, options);
                 }
                 else
@@ -1290,10 +1291,10 @@ namespace Pentekesteszimulator
                     Csehorszag();
                     break;
                 case 2:
-                    //Szlovakia();
+                    Szlovakia();
                     break;
                 case 3:
-                    //Szerbia();
+                    Szerbia();
                     break;
             }
         }
@@ -1342,6 +1343,80 @@ namespace Pentekesteszimulator
                     Fight("városba", "Hořící kostra pub");
                     CsehSorozo();
                     break;
+            }
+        }
+
+        public static void Szlovakia()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Ezt most te se gondoltad komolyan ugye?");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey(true);
+
+            Kulfold();
+        }
+
+        public static void Szerbia()
+        {
+            string[] options = new string[] { "Betérsz a \"iznuđena klasa\" feliratú Szerb sörözőbe", "Meglátogatod a világszrete híres Szerb fekete piacot", };
+            int choice = Display("Belgrád", "Egy összehugyozott benzikúti wc és 5 óra autózás után. Végre Szerbia fővárosába jutsz.", " ", $"{RandomQuestion()}", player, index, 1, options);
+            switch (choice)
+            {
+                case 1:
+                    SzerbSorozo();
+                    break;
+                case 2:
+                    FeketePiac();
+                    break;
+                
+            }
+        }
+
+        public static void SzerbSorozo()
+        {
+            opponent = RandomPerson();
+            Increase(r.Next(30, 60) / 100.0, 10, -1000, player); //alkohol boldogság pénz
+            string[] options = new string[] { "Ivás", "Vissza a városba", };
+            int choice;
+            if (player.Alcohol >= 2.0)
+            {
+                options = new string[] { "Ivás", "Vissza a városba", "Duhajkodás" };
+                choice = Display("iznuđena klasa pub", "Lementél a föld alatti kocsmába, és megcsapta egy vicces illat az orrodat.", "A magas véralkoholszinted felszámolta az összes morális és etikai korlátodat.", $"{RandomQuestion()}", player, index, 1, options);
+            }
+            else
+            {
+                choice = Display("iznuđena klasa pub", "Lementél a föld alatti kocsmába, és megcsapta egy vicces illat az orrodat. Nem láttad a forrását a sűrű füsttől.", " ", $"{RandomQuestion()}", player, index, 1, options);
+            }
+            switch (choice)
+            {
+                case 1:
+                    SzerbSorozo();
+                    break;
+                case 2:
+                    Szerbia();
+                    break;
+                case 3:
+                    Fight("városba", "Hořící kostra pub");
+                    SzerbSorozo();
+                    break;
+            }
+        }
+
+        public static void FeketePiac()
+        {
+            string opp = RandomPerson();
+            string[] options = new string[] { "Zastava CZ99", "Steyr SSG 69", "AK-47", "M79 Osa(rakétavető)", "TMA-5-ös taposó akna", $"Nem fogadod el {opp} ajánlatát."};
+            int choice = Display("Egy sötét sikátor", $"{opp} félrehúz és megmutatja neked.\nAzt mondja nem kell fizetned ha megteszel neki valamit.", " ", $"Elviszed valamelyiket?", player, index, 1, options);
+            switch (choice)
+            {
+                case 1:
+                    SzerbSorozo();
+                    break;
+                case 2:
+                    FeketePiac();
+                    break;
+
             }
         }
 
