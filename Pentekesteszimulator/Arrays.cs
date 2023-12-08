@@ -333,6 +333,8 @@ namespace Pentekesteszimulator
                     "Linux felhasználó",
                     "isten csapása",
                     "isten ostora",
+                    "mentálisan megerőltetett",
+                    "zokni"
                     
             };
             return insults[r.Next(0, insults.Length)];

@@ -16,13 +16,13 @@ namespace Pentekesteszimulator
     {
         public static Player1 player = new Player1();
         public static Random r = new Random();
+        public static string opponent;
         public static int index = 1;
         public static int allBeer = r.Next(6, 31);
         public static int beerCount = 0;
         public static int badCount = 0;
         public static int goodCount = 0;
         public static int beersInRow = 0;
-        public static string opponent;
         public static bool boughtBeer = false;
         public static bool alcPlusTime = false;
         public static bool beatenByFather = false;
@@ -32,6 +32,8 @@ namespace Pentekesteszimulator
         public static bool stopCountdown = false;
         public static bool bloodAlc = false;
         public static List<List<int>> cursorPositions = new List<List<int>>();
+        public static string[] wheel = { "0", "32", "15", "19", "4", "21", "2", "25", "17", "34", "6", "27", "13", "36", "11", "30", "8", "23", "10", "5", "24", "16", "33", "1", "20", "14", "31", "9", "22", "18", "29", "7", "28", "12", "35", "3", "26" };
+
 
         public static void Main(string[] args)
         {
@@ -1021,7 +1023,7 @@ namespace Pentekesteszimulator
                 }
                 else
                 {
-                    choice = Display("Dorozsmai faluközpont", "A 20km-es főútat végigszenvedve a faluközpontba jutsz.", " ", "Hová mész tovább?", player, index, 0, options);
+                    choice = Display("Dorozsmai faluközpont", $"{desc}", " ", "Hová mész tovább?", player, index, 0, options);
                 }
                 switch (choice)
                 {
@@ -1038,7 +1040,7 @@ namespace Pentekesteszimulator
                             Console.WriteLine("Nem vettél sört a sarki boltban, üres kézzel nem illik beállítani!");
                             Console.WriteLine("Visszamész a faluba...");
                             Console.ReadKey();
-                            Falu("Visszamentél a faluba.");
+                            Falu("Visszamentél a faluba, mert nem vettél sört a haveroknak.");
                         }
                     
                         break;
@@ -1346,7 +1348,7 @@ namespace Pentekesteszimulator
                         FalusiKocsma();
                         break;
                     case 2:
-                       // Darts();
+                       Roulette();
                         break;
                     case 3:
                         Falu("A kocsmából visszasétáltál a faluba.");
@@ -1370,7 +1372,161 @@ namespace Pentekesteszimulator
                 }
             }
 
-            static void Fight(string placeBack, string endPlace)
+            static void Roulette()
+            {
+            string opponent = RandomPerson();
+            Increase(0, 0, 0, player); //alkohol boldogság pénz
+            string[] options = new string[] { "Játék", "Vissza a pulthoz" };
+            int choice = Display("Csévi Szilva Pub roulette asztala", $"Úgy gondolod, jó ötlet feltenni az összes pénzedet a rouletten, amiről már lekoptak a színek.", " ", $"{RandomQuestion()}", player, index, 0, options);
+
+            static string SpinRoulette(string[] wheel)
+            {
+                int i = r.Next(wheel.Length);
+                return wheel[i];
+            }
+
+            switch (choice)
+            {
+                case 1:
+                    bool bigNumTwice = false;
+                    bool notNumTwice = false;
+                    bool isValid = false;
+                    int bet;
+                    ulong bigNum;
+                    Console.WriteLine("Mennyi pénzt raksz fel?");
+                    string input = Console.ReadLine();
+
+                    while (int.TryParse(input, out bet) && bet > player.Money)
+                    {
+                        Console.WriteLine($"Nincs is ennyi pénzed, te {RandomInsult()}");
+                        Console.WriteLine("Mennyi pénzt raksz fel?");
+                        input = Console.ReadLine();
+
+                    }
+
+                    if (int.TryParse(input, out bet))
+                    {
+                        Console.WriteLine($"{bet} Ft-ot tettél fel.\n");
+
+                        Console.WriteLine("Válassz egy számot! (0-36)");
+                        string userNum = Console.ReadLine();
+
+                        while (!isValid)
+                        {
+                            Console.WriteLine($"Ez nincs rajta a keréken, te {RandomInsult()}");
+                            Console.WriteLine("Válassz egy számot! (0-36)");
+                            userNum = Console.ReadLine();
+
+                            if (Array.IndexOf(wheel, userNum) != -1)
+                            {
+                                isValid = true;
+                            }
+                        }
+
+                        if (isValid)
+                        {
+                            string result = SpinRoulette(wheel);
+                            Console.WriteLine("\nAz eredmény:");
+                            string text = $"............... {result} --> ";
+                            int delay = 300;
+                            foreach (char c in text)
+                            {
+                                Console.Write(c);
+                                Thread.Sleep(delay);
+                            }
+
+                            if (userNum == result)  
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine($"Nyertél {bet} Ft-ot!");
+                                Console.ResetColor();
+                                Increase(0, 30, bet, player); //alkohol boldogság pénz
+                                Thread.Sleep(1000);
+                                Console.ReadKey(true);
+
+                                Roulette();
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine($"Vesztettél {bet} Ft-ot!");
+                                Console.ResetColor();
+                                Increase(0, -30, -bet, player); //alkohol boldogság pénz
+                                Thread.Sleep(2000);
+                                Console.ReadKey(true);
+
+                                Roulette(); //PARAMETER
+                            }
+                        }
+
+                    }
+                    else if (ulong.TryParse(input, out bigNum))
+                    {
+                        
+                        {
+                            if (bigNumTwice)
+                            {
+                                int pickpocket = r.Next(0, 1501);
+                                Console.WriteLine($"{opponent}, aki a biztonságiőr {RandomMoveOpponent()} , mert megint feldolgozhatatlanul nagy számot adtál meg.\nMíg feltápászkodtál, kivett a zsebedből {pickpocket} Ft-ot");
+                                Increase(0, -30, -pickpocket, player); //alkohol boldogság pénz
+                                Thread.Sleep(50);
+
+                                Console.Write("Most kelsz fel");
+                                string text = "...............";
+                                int delay = 300;
+                                foreach (char c in text)
+                                {
+                                    Console.Write(c);
+                                    Thread.Sleep(delay);
+                                }
+                                Console.ReadKey(true);
+                            }
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($"Mégegyszer feldolgozhatatlanul nagy számot raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Roulette(); //PARAMETER
+                        }
+
+                    }
+                    else
+                    {
+                        if (notNumTwice)
+                        {
+                            int pickpocket = r.Next(0, 1501);
+                            Console.WriteLine($"{opponent}, aki a biztonságiőr {RandomMoveOpponent()}, mert másodszorra sem vagy hajlandó számot feltenni tétnek.\nMíg feltápászkodtál, kivett a zsebedből {pickpocket} Ft-ot");
+                            Increase(0, -30, -pickpocket, player); //alkohol boldogság pénz
+                            Thread.Sleep(50);
+
+                            Console.Write("Most kelsz fel");
+                            string text = "...............";
+                            int delay = 300;
+                            foreach (char c in text)
+                            {
+                                Console.Write(c);
+                                Thread.Sleep(delay);
+                            }
+                            Console.ReadKey(true);
+                        }
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Mégegyszer számon kívül mást raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Roulette(); //PARAMETER
+                    }
+                    break;
+
+                case 2:
+                    FalusiKocsma(); //PARAMETER
+                    break;
+
+            }
+
+        }
+
+            
+
+
+
+        static void Fight(string placeBack, string endPlace)
             {
                 int chance = r.Next(0, 100);
                 Console.WriteLine($"A kocsmában részegen {RandomScandal()}, és {opponent} -t {RandomInsult()}-nak/nek hívtad.\n");
@@ -1539,13 +1695,13 @@ namespace Pentekesteszimulator
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey(true);
 
-            Kulfold("Te most komolyan szlovákiába (magyarul FELVIDÉKRE) akartál volna menni??? VÁLASSZ MÁST");
+            Kulfold("Te most komolyan szlovákiába akartál volna menni??? Válassz újra.");
         }
 
         public static void Szerbia()
         {
             string[] options = new string[] { "Betérsz a \"iznuđena klasa\" feliratú Szerb sörözőbe", "Meglátogatod a világszrete híres Szerb fekete piacot", };
-            int choice = Display("Belgrád", "Egy összehugyozott benzikúti wc és 5 óra autózás után. Végre Szerbia fővárosába jutsz.", " ", $"{RandomQuestion()}", player, index, 1, options);
+            int choice = Display("Belgrád", "Egy összehugyozott benzinkúti wc és 5 óra autózás után. Végre Szerbia fővárosába jutsz.", " ", $"{RandomQuestion()}", player, index, 1, options);
             switch (choice)
             {
                 case 1:
