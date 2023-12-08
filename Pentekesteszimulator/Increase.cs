@@ -14,7 +14,7 @@ namespace Pentekesteszimulator
 
             if (player.Happiness + happ >= 100)
             {
-                player.Happiness = 100;
+                player.Happiness = 100; //goto
             }
             else
             {

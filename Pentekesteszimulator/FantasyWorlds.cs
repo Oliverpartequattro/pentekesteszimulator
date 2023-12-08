@@ -13,6 +13,7 @@ namespace Pentekesteszimulator
             FantasyWorld3,
             FantasyWorld4,
             FantasyWorld5,
+            //goto
         };
 
         public static void FantasyWorld()
