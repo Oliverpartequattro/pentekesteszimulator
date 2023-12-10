@@ -17,6 +17,7 @@ namespace Pentekesteszimulator
         public static Player1 player = new Player1();
         public static Random r = new Random();
         public static string opponent;
+        public static string weapon;
         public static int index = 1;
         public static int allBeer = r.Next(6, 31);
         public static int beerCount = 0;
@@ -31,7 +32,11 @@ namespace Pentekesteszimulator
         public static bool metil = r.Next(1, 4) == 1;
         public static bool stopCountdown = false;
         public static bool bloodAlc = false;
-        public static List<List<int>> cursorPositions = new List<List<int>>();
+        public static int greenRowThatWillBeWhite;
+        public static int whiteRowThatWillBeGreen;
+        public static int firstRow;
+        public static int lastIndex;
+        public static int returnCursorTo;
         public static string[] wheel = { "0", "32", "15", "19", "4", "21", "2", "25", "17", "34", "6", "27", "13", "36", "11", "30", "8", "23", "10", "5", "24", "16", "33", "1", "20", "14", "31", "9", "22", "18", "29", "7", "28", "12", "35", "3", "26" };
 
 
@@ -39,8 +44,7 @@ namespace Pentekesteszimulator
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
-
-            Otthon("Pintér Bálint vagy, egy 18 éves Jedlikes diák.Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
+            Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
         }
 
         #region otthon
@@ -419,7 +423,7 @@ namespace Pentekesteszimulator
         static void Busz()
         {
             Increase(0, -10, -300, player);
-            string[] options = new string[] { "Város", "Falu" };
+            string[] options = new string[] { "Város", "Falu" }; //öɹɹéj
             int choice = Display("Buszmegálló", "Úgy döntöttél busszal indulsz útnak.", " ", "Hová mész tovább?", player, index, 1, options);
             switch (choice)
             {
@@ -1076,6 +1080,7 @@ namespace Pentekesteszimulator
                 {
                     choice = Display("Putri kisbolt", "Eljutottál a 0-24-es Putri Kisbolthoz.", " ", $"{RandomQuestion()}", player, index, 1, options);
                 }
+
                 switch (choice)
                 {
                     case 1:
@@ -1751,8 +1756,32 @@ namespace Pentekesteszimulator
             int choice = Display("Egy sötét sikátor", $"{opp} félrehúz és megmutatja neked.\nAzt mondja nem kell fizetned ha megteszel neki valamit.", " ", $"Elviszed valamelyiket?", player, index, 1, options);
             switch (choice)
             {
+                default:
+                    weapon = options[choice - 1];
+                    Bankrablas();
+                    break;
+                case 6:
+                    Szerbia();
+                    break;
+
+            }
+        }
+
+        public static void Bankrablas()
+        {
+            string[] options = new string[] { "Halgattsz az ösztöneidre", "Túl felkészületlen vagy ehhez a manőverhez", };
+            int choice = Display("Belgrádi Nemzeti Bank előtti tér", "Hirtelen egy gondolatod támad ahogy rápillantassz a Belgrádi Nemzeti Bankra.\nAz újjonnan beszerzett fegyverrel ki tudnád rabolni a bankot.", " ", $"{RandomQuestion()}", player, index, 1, options);
+            switch (choice)
+            {
                 case 1:
-                    SzerbSorozo();
+                    if(r.Next(1, 101) >= 80)
+                    {
+                        DisplayEnd(true, " ", $"Csodával határos módon sikerült a 3 és fél perc alatt kigondolt terved. Rámutattad a {weapon}-edet/adat a szerb pénztárosra és ő odatta a pénzt. Visszafutottál az autódig és meg se álltál hazáig még ha be is kellett hugyoznod.");
+                    }
+                    else
+                    {
+                        DisplayEnd(false, "Belgrádi Nemzeti Bank", $"Nem meglepően, nem jött be a terved. Percek alatt elkaptak a szerb rendőrök és még a bankban rátérdeltek a nyakadra és elkobozták a {weapon}-edet/adat.");
+                    }
                     break;
                 case 2:
                     FeketePiac();

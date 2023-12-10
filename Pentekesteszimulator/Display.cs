@@ -66,34 +66,37 @@ namespace Pentekesteszimulator
 
             for (int i = 0; i < options.Length; i++)
             {
-                if (i+1 == index)
+                if (i == 0)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.Write($"\t> ");
-
-                    cursorPositions.Add(new List<int> { Console.CursorLeft, Console.CursorTop });
-
-                    Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write($"{options[i]}");
-
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.WriteLine($" <");
-
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.White;
+                    firstRow = Console.CursorTop;
                 }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write($"\t  ");
+                //if (i+1 == index)
+                //{
+                //    greenRowThatWillBeWhite = Console.CursorTop;
 
-                    cursorPositions.Add(new List<int> { Console.CursorLeft, Console.CursorTop });
+                //    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                //    Console.BackgroundColor = ConsoleColor.Black;
+                //    Console.Write($"\t> ");
 
-                    Console.WriteLine($"{options[i]}");
-                }
+                //    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                //    Console.ForegroundColor = ConsoleColor.Black;
+                //    Console.Write($"{options[i]}");
+
+                //    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                //    Console.BackgroundColor = ConsoleColor.Black;
+                //    Console.WriteLine($" <");
+
+                //    Console.BackgroundColor = ConsoleColor.Black;
+                //    Console.ForegroundColor = ConsoleColor.White;
+                //}
+                //else
+                //{
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write($"\t  ");
+
+
+                Console.WriteLine($"{options[i]}");
+                //}
             }
 
             Console.WriteLine("\n" + new string('-', Console.WindowWidth));
@@ -110,6 +113,11 @@ namespace Pentekesteszimulator
 
             Console.WriteLine();
 
+            returnCursorTo = Console.CursorTop;
+
+            //Console.WriteLine(greenRow);
+            //Console.WriteLine(index);
+
             if (player.Alcohol >= 5.2)
             {
                 DisplayEnd(false, "None", "Hányingered van és akadozik a beszéded. Egyensúlyérzéked bizonytalan, könnyen megbotlassz és össze esel a földön. A pulzusod lassulni kezd és habzó szájjal meghalsz a földön.");
@@ -123,49 +131,161 @@ namespace Pentekesteszimulator
                 DisplayEnd(false, "None", "Elfogyott az összes pénzed. Még időben elindulsz hogy gyalog hazaérj.");
             }
 
+            //Start:  //goto hihihi
+            //ConsoleKey ret;
+            //do
+            //{
+            //    ret = Console.ReadKey(true).Key;
+            //} while (ret != ConsoleKey.DownArrow && ret != ConsoleKey.UpArrow && ret != ConsoleKey.Enter);
+
+            ////if(index == 1)
+            ////{
+            ////    switch (ret)
+            ////    {
+            ////        case (ConsoleKey.UpArrow):
+            ////            return Display(location, description, extra, question, player, options.Length, 0, options);
+            ////        case (ConsoleKey.DownArrow):
+            ////            return Display(location, description, extra, question, player, index + 1, 0, options);
+            ////    }
+            ////}
+            ////else if (index == options.Length) 
+            ////{
+            ////    switch (ret)
+            ////    {
+            ////        case (ConsoleKey.UpArrow):
+            ////            return Display(location, description, extra, question, player, index - 1, 0, options);
+            ////        case (ConsoleKey.DownArrow):
+            ////            return Display(location, description, extra, question, player, 1, 0, options);
+            ////    }
+            ////}
+            ////else
+            ////{
+            //    switch (ret)
+            //    {
+            //        case (ConsoleKey.UpArrow):
+            //            index -= 1;
+            //            goto Start;
+            //            break;
+
+            //        //return Display(location, description, extra, question, player, index-1, 0, options);
+            //        case (ConsoleKey.DownArrow):
+            //            index += 1;
+            //            goto Start;
+
+            //            break;
+            //    //return Display(location, description, extra, question, player, index+1, 0, options);
+
+            //        case (ConsoleKey.Enter):
+            //        if (player.Alcohol > 4 && r.Next(1, 5) == 3)
+            //        {
+            //            index = r.Next(1, options.Length + 1);
+            //        }
+
+            //        return index;
+
+
+            //    }
+            //}
+
+
+            //if (player.Alcohol > 4 && r.Next(1, 5) == 3)
+            //{
+            //    index = r.Next(1, options.Length + 1);
+            //}
+
+            greenRowThatWillBeWhite = firstRow;
+            lastIndex = index;
+
+            rePaint(index, greenRowThatWillBeWhite, whiteRowThatWillBeGreen, options);
             ConsoleKey ret;
+            bool continueLoop = true;
+
             do
             {
                 ret = Console.ReadKey(true).Key;
-            } while (ret != ConsoleKey.DownArrow && ret != ConsoleKey.UpArrow && ret != ConsoleKey.Enter);
 
-            if(index == 1)
-            {
                 switch (ret)
                 {
-                    case (ConsoleKey.UpArrow):
-                        return Display(location, description, extra, question, player, options.Length, 0, options);
-                    case (ConsoleKey.DownArrow):
-                        return Display(location, description, extra, question, player, index + 1, 0, options);
-                }
-            }
-            else if (index == options.Length) 
-            {
-                switch (ret)
-                {
-                    case (ConsoleKey.UpArrow):
-                        return Display(location, description, extra, question, player, index - 1, 0, options);
-                    case (ConsoleKey.DownArrow):
-                        return Display(location, description, extra, question, player, 1, 0, options);
-                }
-            }
-            else
-            {
-                switch (ret)
-                {
-                    case (ConsoleKey.UpArrow):
-                        return Display(location, description, extra, question, player, index-1, 0, options);
-                    case (ConsoleKey.DownArrow):
-                        return Display(location, description, extra, question, player, index+1, 0, options);
-                }
-            }
+                    case ConsoleKey.DownArrow:
+                        whiteRowThatWillBeGreen = greenRowThatWillBeWhite;
+                        lastIndex = index;
+                        index += 1;
 
-            if (player.Alcohol > 4 && r.Next(1, 5) == 3)
-            {
-                index = r.Next(1, options.Length + 1);
-            }
+                        if (index > options.Length) //lefele tul nagy ezert visszaugrik az elejere
+                        {
+                            index = 1;
+                        }
 
+                        greenRowThatWillBeWhite = index - 1 + firstRow;
+
+                        rePaint(index, greenRowThatWillBeWhite, whiteRowThatWillBeGreen, options);
+                        break;
+
+                    case ConsoleKey.UpArrow:
+                        whiteRowThatWillBeGreen = greenRowThatWillBeWhite;
+                        lastIndex = index;
+                        index -= 1;
+
+                        if (index < 1)
+                        {
+                            index = options.Length;
+
+                        }
+
+                        greenRowThatWillBeWhite = index - 1 + firstRow;
+
+                        rePaint(index, greenRowThatWillBeWhite, whiteRowThatWillBeGreen, options);
+                        break;
+
+
+                    case ConsoleKey.Enter:
+                        if (player.Alcohol > 4 && r.Next(1, 5) == 3)
+                        {
+                            index = r.Next(1, options.Length + 1);
+                        }
+
+                        continueLoop = false;
+                        break;
+                }
+
+            } while (continueLoop);
+
+            whiteRowThatWillBeGreen = 0;
             return index;
+        }
+
+        static void rePaint(int index, int greenToWhiteRow, int whiteToGreenRow, string[] options)
+        {
+            Console.CursorVisible = false;
+
+            if (whiteRowThatWillBeGreen != 0)
+            {
+                Console.SetCursorPosition(0, whiteToGreenRow);
+
+                Console.Write($"\t  {options[lastIndex - 1]}  ");
+            }
+
+            Console.SetCursorPosition(0, greenToWhiteRow);//zölddé írás koordinátái
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write($"\t> ");
+
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write($"{options[index - 1]}");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write($" <");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+
+
+            Console.SetCursorPosition(0, returnCursorTo);
+
+            Console.CursorVisible = true;
         }
 
         static void writePlayer(string text, int len)

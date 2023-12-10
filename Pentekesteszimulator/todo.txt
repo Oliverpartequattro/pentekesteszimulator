@@ -1,14 +1,14 @@
 Mindenkepp meg lesz csinalva/bugfix:
+	telik az ido ha veszel sört  --- nem tudom hogy lehet kijavíttani
 	console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
 	kulon fajl a variabeleknek  --- nem lehetseges erre van a program class
 	fuvezes csehorszagban
-	ascii forgo bp
+	frissitse a displayt amikor kap pénzt a rablásbol vagy kirabolják
 
 
 Opcionalis ha sok idonk van:
-	busz miert csak falu? - nem
-	frissitse a displayt amikor kap pénzt a rablásbol vagy kirabolják
-	legyen smooth a menu valasztas --- nehez(nem egy nap szerintem) - masold ki a hubatol
+	legyen smooth a menu valasztas --- nehez(nem egy nap szerintem) - masold ki a hubatol --- nem ilyen egyszerü
+	ascii forgo bp
 	hogyha nincs elég pénzed nem displayend csak kiirja hogy nem csinalhatod
 	nem tetszik a szöveg az elejen - Csongorral beszéld meg nekem a pinter balint resze nem tetszik 
 	otthon ivas ml választás véralk. szorzó
