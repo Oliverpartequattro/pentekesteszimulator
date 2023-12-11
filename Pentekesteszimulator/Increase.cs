@@ -8,7 +8,7 @@ namespace Pentekesteszimulator
 {
     internal partial class Program
     {
-        public static void Increase(double alc, int happ, int mon, Player1 player) {
+        public static void Increase(double alc, int happ, int mon) {
             player.Alcohol += alc;
             player.Money += mon;
 

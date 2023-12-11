@@ -8,13 +8,13 @@ namespace Pentekesteszimulator
 {
     internal partial class Program
     {
-        public static void Time(double multiplier, Player1 player)
+        public static void Time(double multiplier)
         {
             Random r = new Random();
             double time = Math.Floor( r.Next(30, 51) * multiplier);
 
 
-            Increase((-0.1 * (time / 60)), 0, 0, player);
+            Increase((-0.1 * (time / 60)), 0, 0);
 
             string[] arr = player.Time.Split(":");
             int min = (int)Math.Floor(time % 60);

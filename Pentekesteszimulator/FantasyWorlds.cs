@@ -29,7 +29,7 @@ namespace Pentekesteszimulator
 
         public static void FantasyWorld1()
         {
-            Increase(0, 100, 0, player);
+            Increase(0, 100, 0);
             string[] options = new string[] {
                 "Beleugrasz az üvöltve égő lelkek tüzébe",
                 "Az éneklő démonok karaoke bulijába belépsz, és a pokoli refrénbe kezdesz bele, miközben a lángoló fityfirittyesek tapsolnak.", 
@@ -43,7 +43,7 @@ namespace Pentekesteszimulator
 
         public static void FantasyWorld2()
         {
-            Increase(0, 100, 0, player);
+            Increase(0, 100, 0);
             string[] options = new string[]
              {
                 "Megpróbálsz hűs kávét főzni a bágyogszováti síremlékek között, miközben az árnyak közt beszélgető koporsókra próbálsz figyelni.",
@@ -60,7 +60,7 @@ namespace Pentekesteszimulator
 
         public static void FantasyWorld3()
         {
-            Increase(0, 100, 0, player);
+            Increase(0, 100, 0);
             string[] options = new string[]
             {
                 "Lángoló delfinekkel támadsz mindenkit, aki nem használja a legújabb horgászfelszerelést.",
@@ -78,7 +78,7 @@ namespace Pentekesteszimulator
 
         public static void FantasyWorld4()
         {
-            Increase(0, 100, 0, player);
+            Increase(0, 100, 0);
             string[] options = new string[]
                 {
                     "Beleugrasz az üvöltve égő lelkek tüzébe, majd karddal a kezedben eloltod a lángokat, miközben kacagva táncolsz.",
@@ -97,7 +97,7 @@ namespace Pentekesteszimulator
 
         public static void FantasyWorld5()
         {
-            Increase(0, 100, 0, player);
+            Increase(0, 100, 0);
             string[] options = new string[]
                  {
                     "Belevetsz egy tűzgömböt az égő lelkek közé, közben nevetve a szenvedésükön.",

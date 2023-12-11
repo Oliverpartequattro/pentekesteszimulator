@@ -13,6 +13,8 @@ namespace Pentekesteszimulator
         public static int Display(string location, string description, string extra, string question, Player1 player, int index, double timeMultiplier, string[] options)
         {
             Console.Clear();
+            Console.CursorVisible = false;
+
             Console.WriteLine(new string(textCenter("   ___  _        _       _                _                 _                 _   _   _             ")));
             Console.WriteLine(new string(textCenter("  / _ \\/_/ _ __ | |_ ___| | __   ___  ___| |_ ___   ___ ___(_)_ __ ___  _   _| | /_/_| |_ ___  _ __ ")));
             Console.WriteLine(new string(textCenter(" / /_)/ _ \\ '_ \\| __/ _ \\ |/ /  / _ \\/ __| __/ _ \\ / __|_  / | '_ ` _ \\| | | | |/ _` | __/ _ \\| '__|")));
@@ -62,7 +64,7 @@ namespace Pentekesteszimulator
             }
 
             Console.WriteLine($"{question}\n");
-            Time(timeMultiplier, player);
+            Time(timeMultiplier);
 
             for (int i = 0; i < options.Length; i++)
             {
@@ -99,19 +101,9 @@ namespace Pentekesteszimulator
                 //}
             }
 
-            Console.WriteLine("\n" + new string('-', Console.WindowWidth));
-            Console.WriteLine(textCenter("Játékos Tulajdonságai:") + "\n");
+            attributeRow = Console.CursorTop;
 
-            int length = $"Pénz: {Convert.ToString(player.Money)} Ft".Length + $"Véralkohol szint: {Convert.ToString(Math.Round(player.Alcohol, 2))} ezrelék".Length + $"Boldogság: {Convert.ToString(player.Happiness)}".Length;
-            
-            writePlayer($"Pénz: {Convert.ToString(player.Money)} Ft", length);
-            writePlayer($"Véralkohol szint: {Convert.ToString(Math.Round(player.Alcohol, 2))} ezrelék", length);
-            writePlayer($"Boldogság: {Convert.ToString(player.Happiness)}", length);
-
-            Console.WriteLine("\n");
-            Console.WriteLine(textCenter("Idő: " + player.Time));
-
-            Console.WriteLine();
+            updateAttributeDisplay();
 
             returnCursorTo = Console.CursorTop;
 
@@ -251,8 +243,11 @@ namespace Pentekesteszimulator
             } while (continueLoop);
 
             whiteRowThatWillBeGreen = 0;
+            Console.CursorVisible = true;
             return index;
         }
+
+        
 
         static void rePaint(int index, int greenToWhiteRow, int whiteToGreenRow, string[] options)
         {
@@ -285,7 +280,6 @@ namespace Pentekesteszimulator
 
             Console.SetCursorPosition(0, returnCursorTo);
 
-            Console.CursorVisible = true;
         }
 
         static void writePlayer(string text, int len)
