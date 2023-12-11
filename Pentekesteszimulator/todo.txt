@@ -3,10 +3,7 @@ Mindenkepp meg lesz csinalva/bugfix:
 	fuvezes csehorszagban
 	kulon fajl a variabeleknek --- hubatol
 	frissitse a displayt amikor kap pénzt a rablásbol vagy kirabolják
-	time multiplier nem mindenhil van áttírva
-	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
-
-
+	r.next 0-100ig van mindenhol de a 100 nem szamit at kell irni 0-101
 
 Opcionalis ha sok idonk van:
 	hogyha nincs elég pénzed nem displayend csak kiirja hogy nem csinalhatod
@@ -20,8 +17,10 @@ Opcionalis ha sok idonk van:
 
 
 Folyamatban:
-	van egy falu(asd) ha nem javitanam ki
+	time multiplier nem mindenhil van áttírva
 	blackjack/darts vagy valami kocsmai jatek -- roulette readkey while
 	csehország valami random történés prágában (csöves?)
 	csehországban cseh emberek array ugyanígy a többi ország
+	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
+	halal keplet auto loero veralkoholszint
 

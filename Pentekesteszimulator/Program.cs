@@ -444,7 +444,7 @@ namespace Pentekesteszimulator
             Increase(0, 0, -300, player);
             string[] options = new string[] { "Város", "Falu", "Elhagyod az országot" };
             int choice;
-            if(chance <= 30000)
+            if(chance <= 300)
             {
                 szonda = true;
                 options = new string[] { "Lepadlózod", "Félrehúzódsz"};
@@ -452,7 +452,7 @@ namespace Pentekesteszimulator
             }
             else
             {
-                choice = Display("Garázs", "Úgy döntöttél autóval indulsz útnak.", " ", "Hová mész tovább?", player, index, 1, options);
+                choice = Display("Garázs", "Úgy döntöttél, autóval indulsz útnak.", " ", "Hová mész tovább?", player, index, 1, options);
             }
 
             switch (choice)
@@ -1305,7 +1305,7 @@ namespace Pentekesteszimulator
                         VarazsGomba();
                         break;
                     case 3:
-                        //DrunkDriving();
+                        DrunkDriving();
                         break;
                     case 4:
                         Falu("Otthagytad a haverokat, és visszamentél a faluba.");
@@ -1315,10 +1315,26 @@ namespace Pentekesteszimulator
                         break;
                 }
             }
-            #endregion //haverok
 
-            #region falusikocsma
-            static void FalusiKocsma()
+        static void DrunkDriving()
+        {
+            Increase(0, 2, 0, player);
+            Vehicle Vehicle1 = RandomVehicle();
+
+            string[] options = new string[] { "Falu" };
+            int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", " ", $"{Vehicle1}", player, index, 1, options);
+
+            switch (choice)
+            {
+                case 1:
+                    Falu("Eltekertél a főút végéből egészen a faluközpontig.");
+                    break;
+            }
+        }
+        #endregion //haverok
+
+        #region falusikocsma
+        static void FalusiKocsma()
             {
 
                 Time(1, player);
