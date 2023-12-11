@@ -1387,8 +1387,7 @@ namespace Pentekesteszimulator
 
             static string SpinRoulette(string[] wheel)
             {
-                int i = r.Next(wheel.Length);
-                return wheel[i];
+                return wheel[r.Next(0, wheel.Length)];
             }
 
             switch (choice)
