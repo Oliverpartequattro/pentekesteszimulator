@@ -444,7 +444,7 @@ namespace Pentekesteszimulator
             Increase(0, 0, -300, player);
             string[] options = new string[] { "Város", "Falu", "Elhagyod az országot" };
             int choice;
-            if(chance <= 30)
+            if(chance <= 30000)
             {
                 szonda = true;
                 options = new string[] { "Lepadlózod", "Félrehúzódsz"};
@@ -628,7 +628,9 @@ namespace Pentekesteszimulator
                 }
                 else
                 {
+                    
                     DisplayEnd(false, "Út széle", "Túl lassú volt a reakcióidőd, ezért odaért a rendőr a kocsidhoz.\nTelepátiával megfejtette, hogy el akartál menekülni, ezért kirángatott a kocsidból, és letartóztatott.");
+                    Environment.Exit(0);
                 }
             }
         }
@@ -767,7 +769,7 @@ namespace Pentekesteszimulator
         static void Kocsma()
         {
             string[] options = new string[] { "Ivás", "Fej vagy írás", "Vissza a városba" };
-            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy.", " ", $"{RandomQuestion()}", player, index, 1, options);
+            int choice = Display("Vörös Farkas Pub", "A kocsmában vagy.", " ", $"{RandomQuestion()}", player, index, 0, options);
 
             switch (choice)
             {
@@ -1068,17 +1070,16 @@ namespace Pentekesteszimulator
             #region SarkiBolt
             static void SarkiBolt()
             {
-                Time(1, player);
                 string[] options = new string[] { "Veszel egy sört", "Kitöltesz egy lottószelvényt", "Visszamész a faluközpontba" };
                 int choice;
                 if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
                 {
                     options = new string[] { "Veszel egy sört", "Kitöltesz egy lottószelvényt", "Visszamész a faluközpontba", "Elmész a templomba" };
-                    choice = Display("Putri kisbolt", "Eljutottál a 0-24-es Putri Kisbolthoz.", "Lehetőséged van elmenni az éjféli misére", $"{RandomQuestion()}", player, index, 1, options);       
+                    choice = Display("Putri kisbolt", "Eljutottál a 0-24-es Putri Kisbolthoz.", "Lehetőséged van elmenni az éjféli misére", $"{RandomQuestion()}", player, index, 0.1, options);       
                 }
                 else
                 {
-                    choice = Display("Putri kisbolt", "Eljutottál a 0-24-es Putri Kisbolthoz.", " ", $"{RandomQuestion()}", player, index, 1, options);
+                    choice = Display("Putri kisbolt", "Eljutottál a 0-24-es Putri Kisbolthoz.", " ", $"{RandomQuestion()}", player, index, 0.1, options);
                 }
 
                 switch (choice)

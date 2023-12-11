@@ -4,18 +4,21 @@ Mindenkepp meg lesz csinalva/bugfix:
 	kulon fajl a variabeleknek  --- nem lehetseges erre van a program class
 	fuvezes csehorszagban
 	frissitse a displayt amikor kap pénzt a rablásbol vagy kirabolják
+	time multiplier
+	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
+	nyomj enterta kilepeshez (reszletkerdes)
+
 
 
 Opcionalis ha sok idonk van:
-	legyen smooth a menu valasztas --- nehez(nem egy nap szerintem) - masold ki a hubatol --- nem ilyen egyszerü
 	ascii forgo bp
+	legyen smooth a menu valasztas --- nehez(nem egy nap szerintem) - masold ki a hubatol --- nem ilyen egyszerü
 	hogyha nincs elég pénzed nem displayend csak kiirja hogy nem csinalhatod
 	nem tetszik a szöveg az elejen - Csongorral beszéld meg nekem a pinter balint resze nem tetszik 
 	otthon ivas ml választás véralk. szorzó
 	közös éjféli mise/kocsmai verekedés haverokkal (70% esely a nyeresre)
 	sarki bolt rablás haverokkal!!!!
 	elmentek kocsmázni a haverokkal (30% hogy te fizetsz de akkor 3x ár)
-	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
 	másik játék referenciák - !!osszehanyod a wct!! --- behugyozol
 	ha az option nagyon hosszú nem tabbal kezdi az új sort --- .replace(".". ".\n")
 	érdekesebb fantasyworldok lehessen dolgokat csinalni

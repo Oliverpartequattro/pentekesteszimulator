@@ -67,6 +67,7 @@ namespace Pentekesteszimulator
 
             Console.WriteLine($"A játék végének oka: {description}\n");
 
+            Console.CursorVisible = false;
             
             Console.WriteLine("Nyomj entert a kilépéshez!\n");
             ConsoleKey ret;
@@ -76,16 +77,17 @@ namespace Pentekesteszimulator
             } while (ret != ConsoleKey.Enter);
 
             Console.WriteLine("Bezárhatod a programot.");
+            
+
             Console.ForegroundColor = ConsoleColor.Black;
             Environment.Exit(0);
-
 
             //Console.WriteLine("Szeretnél újrakezdeni? (I/N)");
             //string valasz = Console.ReadLine().ToLower();
 
             //if (valasz == "i")
             //{
-            //    goto Otthon;
+            //    goto Paibá háza;
             //}
 
         }
