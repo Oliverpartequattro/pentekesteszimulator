@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Reflection;
+using System;
 
 namespace Pentekesteszimulator
 {
@@ -18,9 +19,17 @@ namespace Pentekesteszimulator
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
+            // Set the console window size to the desired dimensions
+            // Set your desired height
+            Console.SetWindowSize(Console.LargestWindowWidth - 4, Console.LargestWindowHeight - 4);
 
-            Roulette();
-            //Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
+            // Calculate the position to center the console window
+
+            // Set the console window position
+            Console.SetWindowPosition(0, 0);
+            //VarazsGomba();
+
+            Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
         }
 
         #region otthon
@@ -1636,7 +1645,7 @@ namespace Pentekesteszimulator
         #region kulfold
         public static void Kulfold(string desc)
         {
-            string[] options = new string[] { "Csehország", "Szlovákia", "Szerbia" };
+            string[] options = new string[] { "Csehország", "Slovákia", "Szerbia" };
             int choice = Display("Legendás hármashatár", $"{desc}", " ", "Melyik országba folytatod utadat?", player, index, 1, options);
             switch (choice)
             {
