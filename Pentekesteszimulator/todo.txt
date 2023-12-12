@@ -23,4 +23,4 @@ Folyamatban:
 	csehországban cseh emberek array ugyanígy a többi ország
 	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
 	halal keplet auto loero veralkoholszint
-
+	haverok sor ivas azonnal von le
