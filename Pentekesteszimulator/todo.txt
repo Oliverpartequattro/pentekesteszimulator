@@ -27,11 +27,11 @@ Ezt meg en:
 	blackjack/darts vagy valami kocsmai jatek -- roulette readkey while
 	time multiplier nem mindenhol van áttírva
 	csehországban cseh emberek array ugyanígy a többi ország 
+	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
 
 
 En csinalom:
-	menu regi dolog
 	console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
-	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
+	menu regi dolog
 	halal keplet auto loero veralkoholszint
 	haverok sor ivas azonnal von le
