@@ -1,26 +1,31 @@
 Bugfix:
-	másik játék referenciák - !!osszehanyod a wct!! --- hibás hibás hibás
-	time multiplier nem mindenhol van áttírva
+	másik játék referenciák - !!osszehanyod a wct!! --- hibás hibás hibás --- Slovákia
 
 Új hely ötletek:
-	fuvezes csehorszagban
-		brownie, hajléktalan
-	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
-	otthon ivas ml választás véralk. szorzó
-	sarki bolt rablás haverokkal!!!
 	közös éjféli mise/kocsmai verekedés haverokkal (70% esely a nyeresre)
 	elmentek kocsmázni a haverokkal (30% hogy te fizetsz de akkor 3x ár)
-	érdekesebb fantasyworldok lehessen dolgokat csinalni
+	csehország valami ra ndom történés prágában (csöves?)
+	sarki bolt rablás haverokkal!!!
 
 Opcionalis ha sok idonk van:
-	hogyha nincs elég pénzed nem displayend csak kiirja hogy nem csinalhatod
+	érdekesebb fantasyworldok lehessen dolgokat csinalni
+	ha sokat spamel akkor kiírja hogy ne usse azt a billenytyűzetet
+	hogyha nincs elég pénzed nem displayend csak kiirja hogy nem csinalhatod	
 
-Folyamatban:
-	van egy falu(asd) ha nem javitanam ki
-	blackjack/darts vagy valami kocsmai jatek -- roulette readkey while
-	csehország valami random történés prágában (csöves?)
+Ezt meg en:
 	csehországban cseh emberek array ugyanígy a többi ország
+	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
+	blackjack/darts vagy valami kocsmai jatek -- roulette readkey break nem
+	parameter!!	
+	otthon ivas ml választás véralk. szorzó
+	r.next 0-100ig van mindenhol de a 100 nem szamit at kell irni 0-101
+	time multiplier nem mindenhol van áttírva
+
 
 En csinalom:
-	menu regi dolog
+	hajléktalan
+	fuvezes csehorszagban
 	console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
+	halal keplet auto loero veralkoholszint int szazalék
+	haverok sor ivas azonnal von le
+
