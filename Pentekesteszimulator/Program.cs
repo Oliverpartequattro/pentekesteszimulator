@@ -19,9 +19,7 @@ namespace Pentekesteszimulator
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
 
-            VarazsGomba();
-
-            //Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
+            Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
         }
 
         #region otthon
@@ -1295,7 +1293,7 @@ namespace Pentekesteszimulator
 
         static void DrunkDriving()
         {
-            Increase(0, 2, 0, player);
+            Increase(0, 2, 0);
             Vehicle Vehicle1 = RandomVehicle();
 
             string[] options = new string[] { "Falu" };
@@ -1388,6 +1386,7 @@ namespace Pentekesteszimulator
                 case 1:
                     bool bigNumTwice = false;
                     bool notNumTwice = false;
+                    bool notNum = false;
                     bool isValid = false;
                     int bet;
                     ulong bigNum;
@@ -1402,12 +1401,17 @@ namespace Pentekesteszimulator
 
                     }
 
-                    if (int.TryParse(input, out bet))
+                    while (int.TryParse(input, out bet))
                     {
                         Console.WriteLine($"{bet} Ft-ot tettél fel.\n");
 
                         Console.WriteLine("Válassz egy számot! (0-36)");
                         string userNum = Console.ReadLine();
+
+                        if (Array.IndexOf(wheel, userNum) != -1)
+                        {
+                            isValid = true;
+                        }
 
                         while (!isValid)
                         {
@@ -1458,7 +1462,7 @@ namespace Pentekesteszimulator
                         }
 
                     }
-                    else if (ulong.TryParse(input, out bigNum))
+                    if (ulong.TryParse(input, out bigNum))
                     {
                         
                         {
@@ -1488,6 +1492,15 @@ namespace Pentekesteszimulator
                     }
                     else
                     {
+
+                        
+                     notNumTwice = true;
+                     Console.ForegroundColor = ConsoleColor.Red;
+                     Console.WriteLine($"Mégegyszer számon kívül mást raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
+                     Console.ForegroundColor = ConsoleColor.White;
+                     Console.WriteLine("Mennyi pénzt raksz fel?");
+                     input = Console.ReadLine();
+                        
                         if (notNumTwice)
                         {
                             int pickpocket = r.Next(0, 1501);
@@ -1505,10 +1518,8 @@ namespace Pentekesteszimulator
                             }
                             Console.ReadKey(true);
                         }
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"Mégegyszer számon kívül mást raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Roulette(); //PARAMETER
+
+
                     }
                     break;
 
