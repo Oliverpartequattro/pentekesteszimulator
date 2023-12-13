@@ -21,12 +21,16 @@ namespace Pentekesteszimulator
             Console.BackgroundColor = ConsoleColor.Black;
             // Set the console window size to the desired dimensions
             // Set your desired height
+#pragma warning disable CA1416 // Validate platform compatibility
             Console.SetWindowSize(Console.LargestWindowWidth - 4, Console.LargestWindowHeight - 4);
+#pragma warning restore CA1416 // Validate platform compatibility
 
             // Calculate the position to center the console window
 
             // Set the console window position
+#pragma warning disable CA1416 // Validate platform compatibility
             Console.SetWindowPosition(0, 0);
+#pragma warning restore CA1416 // Validate platform compatibility
             //VarazsGomba();
 
             Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
@@ -198,7 +202,7 @@ namespace Pentekesteszimulator
                         {
                             if (badCount == 0)
                             {
-                                Console.WriteLine($"Szépen beszéltél apunyukáddal, ezért minden kedves szavadért hozzárakott 1500 Ft-ot a kért összeghez.");
+                                Console.WriteLine($"Szépen beszéltél anyukáddal, ezért minden kedves szavadért hozzárakott 1500 Ft-ot a kért összeghez.");
                                 Console.WriteLine($"{finalMoney} Ft-ot adott, és kérte, hogy vigyázz magadra..");
                                 Increase(0, 15, finalMoney);
                             }
@@ -429,7 +433,7 @@ namespace Pentekesteszimulator
             Increase(0, 0, -300);
             string[] options = new string[] { "Város", "Falu", "Elhagyod az országot" };
             int choice;
-            if(chance <= 300)
+            if(chance <= 30)
             {
                 szonda = true;
                 options = new string[] { "Lepadlózod", "Félrehúzódsz"};
@@ -1256,11 +1260,6 @@ namespace Pentekesteszimulator
                 {
                     Increase(0, 3, 0); //alkohol boldogság pénz
                 }
-                else
-                {
-                    allBeer -= 3;
-                    Increase(r.Next(30, 60) / 100.0, 15, 0); //alkohol boldogság pénz
-                }
                 string[] options = new string[] { "Isztok egy kört", "Viccesgombáztok", "Autókáztok egyet", "Visszamész a faluközpontba" };
                 int choice;
                 if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
@@ -1283,6 +1282,8 @@ namespace Pentekesteszimulator
                         }
                         else
                         {
+                            allBeer -= 3;
+                            Increase(r.Next(30, 60) / 100.0, 15, 0); //alkohol boldogság pénz
                             Haverok();
                         }
                         break;
@@ -1326,16 +1327,16 @@ namespace Pentekesteszimulator
                 opponent = RandomPerson();
                 int chance = r.Next(0, 100);
 
-                string[] options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba" };
+                string[] options = new string[] { "Ivás", "Roulette", "Vissza a faluközpontba" };
                 int choice;
                 if (player.Alcohol >= 2.0)
                 {
                     alcPlusTime = true;
-                    options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", $"Duhajkodás" };
+                    options = new string[] { "Ivás", "Roulette", "Vissza a faluközpontba", $"Duhajkodás" };
                     choice = Display("Csévi Szilva Kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat. ", $"{RandomQuestion()}", player, index, 0, options);
                     if(char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
                     {
-                        options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", "Duhajkodás", "Elmész az éjféli misére" };
+                        options = new string[] { "Ivás", "Roulette", "Vissza a faluközpontba", "Duhajkodás", "Elmész az éjféli misére" };
                         choice = Display("Csévi Szilva Kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat.\n\nLehetőséged van elmenni az éjféli misére.", $"{RandomQuestion()}", player, index, 0, options);
                     }
                 }
@@ -1344,7 +1345,7 @@ namespace Pentekesteszimulator
                     choice = Display("Csévi Szilva Kocsma", "Valahogyan eljutottál a határvégi kocsmához", " ", $"{RandomQuestion()}", player, index, 0, options);
                     if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
                     {
-                        options = new string[] { "Ivás", "Darts", "Vissza a faluközpontba", "Elmész az éjféli misére" };
+                        options = new string[] { "Ivás", "Roulette", "Vissza a faluközpontba", "Elmész az éjféli misére" };
                         choice = Display("Csévi Szilva kocsma", "Valahogyan eljutottál a határvégi kocsmához", "Lehetőséged van elmenni az éjféli misére.", $"{RandomQuestion()}", player, index, 0, options);
                     }
                 }
@@ -1365,7 +1366,7 @@ namespace Pentekesteszimulator
                         if(alcPlusTime)
                         {
                              Fight("faluba", "Dorozsmai határvégi borvirág kocsma");
-                             Falu("asd");
+                             Falu("A rendőrség visszavitt a faluközpontba.");
                         }
                         else
                         {
@@ -1394,9 +1395,6 @@ namespace Pentekesteszimulator
             switch (choice)
             {
                 case 1:
-                    bool bigNumTwice = false;
-                    bool notNumTwice = false;
-                    bool notNum = false;
                     bool isValid = false;
                     int bet;
                     ulong bigNum;
@@ -1413,6 +1411,8 @@ namespace Pentekesteszimulator
 
                     while (int.TryParse(input, out bet))
                     {
+                        notNumTwice = false;
+                        bigNumTwice = false;
                         Console.WriteLine($"{bet} Ft-ot tettél fel.\n");
 
                         Console.WriteLine("Válassz egy számot! (0-36)");
@@ -1493,23 +1493,17 @@ namespace Pentekesteszimulator
                                 }
                                 Console.ReadKey(true);
                             }
+                            bigNumTwice = true;
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine($"Mégegyszer feldolgozhatatlanul nagy számot raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
                             Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadKey();
                             Roulette(); //PARAMETER
                         }
 
                     }
                     else
                     {
-
-                        
-                     notNumTwice = true;
-                     Console.ForegroundColor = ConsoleColor.Red;
-                     Console.WriteLine($"Mégegyszer számon kívül mást raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
-                     Console.ForegroundColor = ConsoleColor.White;
-                     Console.WriteLine("Mennyi pénzt raksz fel?");
-                     input = Console.ReadLine();
                         
                         if (notNumTwice)
                         {
@@ -1528,7 +1522,12 @@ namespace Pentekesteszimulator
                             }
                             Console.ReadKey(true);
                         }
-
+                        notNumTwice = true;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Mégegyszer számon kívül mást raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadKey();
+                        Roulette();
 
                     }
                     break;
