@@ -26,6 +26,7 @@ namespace Pentekesteszimulator
         public static bool metil = r.Next(1, 4) == 1;
         public static bool stopCountdown = false;
         public static bool bloodAlc = false;
+        public static bool voltCsoves = false;
         public static bool notNumTwice = false;
         public static bool bigNumTwice = false;
         public static int greenRowThatWillBeWhite;

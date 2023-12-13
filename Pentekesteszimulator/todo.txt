@@ -1,5 +1,5 @@
 Bugfix:
-	másik játék referenciák - !!osszehanyod a wct!! --- hibás hibás hibás --- Slovákia
+	másik játék referenciák - !!osszehanyod a wct!! --- hibás hibás hibás
 
 Új hely ötletek:
 	közös éjféli mise/kocsmai verekedés haverokkal (70% esely a nyeresre)
@@ -24,9 +24,6 @@ Ezt meg en:
 
 
 En csinalom:
-	hajléktalan
 	fuvezes csehorszagban
-	console color random valtakozik folyamatosan ha a fantasywolrdben vagy --- nem tudom hogy lehet megcsinálni talán egy uj parameterrel a displayben. egyszerubb lenne ha csak a stack overflowos 255 színből választanánk randomot
-	halal keplet auto loero veralkoholszint int szazalék
 	haverok sor ivas azonnal von le
 

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Reflection.Emit;
 
 namespace Pentekesteszimulator
 {
@@ -12,6 +14,7 @@ namespace Pentekesteszimulator
     {
         public static void DisplayEnd(bool good, string location, string description, ConsoleColor colorDefault = ConsoleColor.Red)
         {
+
             if (colorDefault != ConsoleColor.Red)
             {
                 Console.ForegroundColor = colorDefault;
@@ -23,6 +26,11 @@ namespace Pentekesteszimulator
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
+            }
+
+            if (colorDefault == ConsoleColor.Green)
+            {
+                Console.ForegroundColor = GetRandomConsoleColor();
             }
             Console.Clear();
 
@@ -67,8 +75,18 @@ namespace Pentekesteszimulator
 
             Console.WriteLine($"A játék végének oka: {description}\n");
 
+
+            if (colorDefault == ConsoleColor.Green)
+            {
+                Console.WriteLine("Bezárhatod a programot.");
+                Thread.Sleep(1500);
+
+                DisplayEnd(good, location, description, ConsoleColor.Green);
+
+            }
+
             Console.CursorVisible = false;
-            
+
             Console.WriteLine("Nyomj entert a kilépéshez!\n");
             ConsoleKey ret;
             do
@@ -77,7 +95,7 @@ namespace Pentekesteszimulator
             } while (ret != ConsoleKey.Enter);
 
             Console.WriteLine("Bezárhatod a programot.");
-            
+
 
             Console.ForegroundColor = ConsoleColor.Black;
             Environment.Exit(0);
@@ -90,6 +108,22 @@ namespace Pentekesteszimulator
             //    goto Paibá háza;
             //}
 
+        }
+
+        public static ConsoleColor GetRandomConsoleColor()
+        {
+            // Get all available console colors
+            ConsoleColor[] consoleColors = (ConsoleColor[])Enum.GetValues(typeof(ConsoleColor));
+
+            // Exclude the two dark colors (black and dark blue)
+            consoleColors = Array.FindAll(consoleColors, c => c != ConsoleColor.Black && c != ConsoleColor.DarkBlue);
+
+            // Generate a random index
+            Random random = new Random();
+            int randomIndex = random.Next(consoleColors.Length);
+
+            // Return the random color
+            return consoleColors[randomIndex];
         }
     }
 }

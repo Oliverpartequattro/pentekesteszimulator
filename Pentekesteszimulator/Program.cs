@@ -19,21 +19,22 @@ namespace Pentekesteszimulator
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
-            // Set the console window size to the desired dimensions
-            // Set your desired height
-#pragma warning disable CA1416 // Validate platform compatibility
             Console.SetWindowSize(Console.LargestWindowWidth - 4, Console.LargestWindowHeight - 4);
-#pragma warning restore CA1416 // Validate platform compatibility
 
-            // Calculate the position to center the console window
-
-            // Set the console window position
-#pragma warning disable CA1416 // Validate platform compatibility
             Console.SetWindowPosition(0, 0);
-#pragma warning restore CA1416 // Validate platform compatibility
-            //VarazsGomba();
 
-            Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
+            //Console.WriteLine(carDeath(0.1, 120));
+            //Console.WriteLine(carDeath(0.2, 120));
+            //Console.WriteLine(carDeath(0.3, 120));
+            //Console.WriteLine(carDeath(0.4, 120));
+            //Console.WriteLine(carDeath(0.2, 120));
+            //Console.WriteLine(carDeath(0.2, 220));
+            //Console.WriteLine(carDeath(0.2, 320));
+            //Console.WriteLine(carDeath(0.2, 420));
+
+            //Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
+
+            Kulfold("das");
         }
 
         #region otthon
@@ -1672,13 +1673,15 @@ namespace Pentekesteszimulator
                 case 2:
                     //Brownie();
                     break;
-                case 3:
-                    //Hajlektalan();
-                    break;
             }
         }
         public static void CsehSorozo()
         {
+            if (!voltCsoves)
+            {
+                Hajlektalan();
+            }
+
             opponent = RandomPerson();
             Increase(r.Next(30, 60) / 100.0, 10, -1000); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Vissza a városba", };
@@ -1702,6 +1705,34 @@ namespace Pentekesteszimulator
                     break;
                 case 3:
                     Fight("városba", "Hořící kostra pub");
+                    CsehSorozo();
+                    break;
+            }
+        }
+
+        public static void Hajlektalan()
+        {
+            voltCsoves = true;
+            string[] options = new string[] { "Igen", "Nem"};
+            int choice = Display("Prága", "Prága utcáin sétálgattál úton egy kocsmába, amikor megközelített egy hajléktalan. A csöves kemény drogokat ajánl fel neked.", " ", $"Elfogadod őket?", player, index, 1, options);
+            switch (choice)
+            {
+                case 1:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Egy rozsdás tűt szúrsz a kezedbe.");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    Console.ReadKey(true);
+                    VarazsGomba();
+                    break;
+                case 2:
+                    Console.WriteLine("A hajlétalan szomorúan tovább áll.");
+                    Console.ReadKey(true);
+                    Console.WriteLine("A szemed sarkábol látod hogy a csöves beszáll egy rendőr autóba és elhajt.");
+                    Console.ReadKey(true);
+                    Console.WriteLine("Tovább mész a kocsmába.");
+                    Console.ReadKey(true);
+
                     CsehSorozo();
                     break;
             }

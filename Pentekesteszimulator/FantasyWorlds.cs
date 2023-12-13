@@ -38,7 +38,7 @@ namespace Pentekesteszimulator
                 "Egy lángoló híd mellett pókháló kötögetsz, miközben a fityfirittyes pókok vidáman ugrándoznak körülötted." };
             int choice = Display("Fityfirittyes Tűzpokol", "Elsötétedett a világ, és hirtelen a Fityfirittyes Tűzpokolban találod magad.", " ", $"{RandomQuestion()}",  player, index, 0, options);
 
-            DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Fityfirittyes Tűzpokolba kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.");
+            DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Fityfirittyes Tűzpokolba kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.", ConsoleColor.Green);
         }
 
         public static void FantasyWorld2()
@@ -55,7 +55,7 @@ namespace Pentekesteszimulator
             };
             int choice = Display("Bágyogszováti Temető", "Elsötétedett a világ, és hirtelen a Bágyogszováti Temetőben találod magad. ", " ", $"{RandomQuestion()}",  player, index, 0, options);
 
-            DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Bágyogszováti Temetőbe kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.");
+            DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Bágyogszováti Temetőbe kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.", ConsoleColor.Green);
         }
 
         public static void FantasyWorld3()
@@ -72,7 +72,7 @@ namespace Pentekesteszimulator
             };
             int choice = Display("Down-Kóros Delfin Horgászbolt", "Elsötétedett a világ, és hirtelen a Down-Kóros Delfin Horgászboltban találod magad. ", " ", $"{RandomQuestion()}",  player, index, 0, options);
 
-            DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Down-Kóros Delfin Horgászboltba kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.");
+            DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Down-Kóros Delfin Horgászboltba kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.", ConsoleColor.Green);
             
         }
 
@@ -91,7 +91,7 @@ namespace Pentekesteszimulator
 
             int choice = Display("Retek Taverna", "Elsötétedett a világ, és hirtelen a Retek Tavernában találod magad. ", " ", $"{RandomQuestion()}",  player, index, 0, options);
 
-            DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Retek Tavernába kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.");
+            DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Retek Tavernába kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.", ConsoleColor.Green);
             
         }
 
@@ -109,7 +109,7 @@ namespace Pentekesteszimulator
                  };
             int choice = Display("Purgatórium", "Elsötétedett a világ, és hirtelen a Purgatóriumban találod magad. ", " ", $"{RandomQuestion()}",  player, index, 0, options);
 
-            DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Purgatóriumba kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.");
+            DisplayEnd(false, "Árok", "A vicces gombáktól kiütötted magad, és azt hitted, hogy a Purgatóriumba kerültél. Eközben csak a földön rángatózva összehugyoztad magad, és egy árokban keltél fel.", ConsoleColor.Green);
         }
     }
 }
