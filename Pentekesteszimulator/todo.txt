@@ -1,5 +1,5 @@
 Bugfix:
-	másik játék referenciák - !!osszehanyod a wct!! --- hibás hibás hibás
+	másik játék referenciák - !!osszehanyod a wct!!
 
 Új hely ötletek:
 	közös éjféli mise/kocsmai verekedés haverokkal (70% esely a nyeresre)
@@ -7,23 +7,13 @@ Bugfix:
 	csehország valami ra ndom történés prágában (csöves?)
 	sarki bolt rablás haverokkal!!!
 
-Opcionalis ha sok idonk van:
-	érdekesebb fantasyworldok lehessen dolgokat csinalni
-	ha sokat spamel akkor kiírja hogy ne usse azt a billenytyűzetet
-	hogyha nincs elég pénzed nem displayend csak kiirja hogy nem csinalhatod	
-
 Ezt meg en:
 	csehországban cseh emberek array ugyanígy a többi ország
 	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
-	blackjack/darts vagy valami kocsmai jatek -- roulette readkey break nem
-	parameter!!	
+	parameter
 	otthon ivas ml választás véralk. szorzó
-	r.next 0-100ig van mindenhol de a 100 nem szamit at kell irni 0-101
 	time multiplier nem mindenhol van áttírva
-	utalom a rulettet faszom kurva rulett
 
 
 En csinalom:
 	fuvezes csehorszagban
-	haverok sor ivas azonnal von le
-
