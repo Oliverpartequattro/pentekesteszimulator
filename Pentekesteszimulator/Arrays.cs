@@ -669,7 +669,9 @@ namespace Pentekesteszimulator
                 "Linux felhasználó", "Linux felhasználó",
                 "isten csapása", "isten csapása",
                 "isten ostora", "isten ostora",
-                "bazdmeg"
+                "bazdmeg", "bazmeg",
+                "waze", "vaze",
+                "teso", "tesó",
             };
 
             return badWords;
@@ -873,9 +875,9 @@ namespace Pentekesteszimulator
         public class Vehicle
         {
             public string Model { get; set; }
-            public double Performance { get; set; }
+            public int Performance { get; set; }
 
-            public Vehicle(string model, double performance)
+            public Vehicle(string model, int performance)
             {
                 Model = model;
                 Performance = performance;
@@ -893,10 +895,32 @@ namespace Pentekesteszimulator
 
                 string[] vehicleData = vehicles[i].Split(';');
                 string model = vehicleData[0];
-                double performance = double.Parse(vehicleData[1]);
+                int performance = int.Parse(vehicleData[1]);
 
                 return new Vehicle(model, performance);
             }
+
+        public static string RandomCarPlace()
+        {
+            string[] places =
+            {
+                "Menekültetek a részeg alkoholisták elől a dorozsmai faluközpontban.",
+                "Elmentetek egy sötét erdőbe üvöltő farkasokat hallgatni.",
+                "Kiéltétek nekrofil hajlamaitokat a Nagybajcsi Temetőben.",
+                "240-el hajtottatok a rábapatonai főúton az ismeretlenbe.",
+                "Autóval behajtottatok a szentendrei Spáruház forgóajtaján.",
+                "A villamos sínek között száguldoztatok, miközben Póstás József zenéjére próbáltátok megfejteni az univerzum titkait.",
+                "A Kossuth utcai bevásárlóközpont parkolójában ugrándoztatok az autó körül, mintha egy gigantikus ugrálóvár lenne, és hangosan tapsoltatok a lopott napfényért.",
+                "Az M5-ös autópályán meggyőződtetek arról, hogy az időutazás lehetséges, miközben együléses időgépnek elnevezett járművet vezettetek.",
+                "Fertőszentmiklós belvárosában jeleztetek a gyalogosoknak, hogy átmehetnek, majd padlógázzal áthajtottatok előttük.",
+                "Az igazságszolgáltatás egy hódolója megpróbált félreállítani benneteket, de továbbhajtottatok, mert nektek csak Isten parancsolhat.",
+                "Vonzó erőt éreztek, és követtétek a láthatatlan kék szörnyet, amely az út szélén vezetett benneteket a vörös hold titkaihoz.",
+                "A fekete csillagok földreszálltak körülöttetek, és a kormány mögött ülve érezni lehetett, ahogy az idő és tér megcsavarodik.",
+                "Megpróbáltátok kiszámolni, hány dimenzióban vagytok jelenleg, miközben a hangok az autókerék helyett a gondolataitok körül forogtak.",
+                "240 km/h felett kinyílt egy dimenziókapu az autó csomagtartójában, melyből kezek nyúltak ki."
+            };
+            return places[r.Next(0, places.Length)];
+        }
 
     }
 }

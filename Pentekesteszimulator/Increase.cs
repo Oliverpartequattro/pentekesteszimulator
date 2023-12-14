@@ -34,7 +34,7 @@ namespace Pentekesteszimulator
 
         public static int carDeath(double alc, int hrsprs)
         {
-            double rawResult = (alc * 25 * hrsprs) / (20 * r.Next(80, 121) / 100);
+            double rawResult = (alc * 25 * hrsprs) / (20 * r.Next(80, 121) / 10);
             int roundedResult = (int)Math.Round(rawResult);
             return Math.Min(roundedResult, 100);
         }

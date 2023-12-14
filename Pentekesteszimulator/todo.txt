@@ -8,7 +8,6 @@ Bugfix:
 	sarki bolt rablás haverokkal!!!
 
 Ezt meg en:
-	csehországban cseh emberek array ugyanígy a többi ország
 	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
 	parameter
 	otthon ivas ml választás véralk. szorzó

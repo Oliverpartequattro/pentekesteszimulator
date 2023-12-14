@@ -1322,20 +1322,22 @@ namespace Pentekesteszimulator
         static void DrunkDriving()
         {
             Increase(0, 2, 0);
+            string friend = RandomPerson();
             Vehicle vehicle1 = RandomVehicle();
             Vehicle vehicle2 = RandomVehicle();
             Vehicle vehicle3 = RandomVehicle();
 
-            string[] options = new string[] {$"Feri járgánya: {vehicle1} (milyen Feri?)", $"A karcsú ember járgánya: {vehicle2}", $"{RandomPerson()} járgánya: {vehicle3}"};
+            string[] options = new string[] {$"Feri járgánya: {vehicle1} (milyen Feri?)", $"A karcsú ember járgánya: {vehicle2}", $"{friend} járgánya: {vehicle3}"};
             int choice = Display("Haverod tanyája", "Úgy döntöttetek, elmentek egyet kocsikázni", "", $"Kinek a járgányát választod?", player, index, 1, options);
 
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine($"Beugrottál a haverod {vehicle1}-ébe/ába\nNyomj Entert a vezetéshez...");
+                    Console.WriteLine($"Beugrottál Feri {vehicle1.Model}-ébe/ába\nNyomj Entert a vezetéshez...");
                     Console.ReadKey();
                     Console.WriteLine($"Érzed, ahogy mind a {vehicle1.Performance} ló dübörög alattad.");
-                    Console.WriteLine("\nTovábbmész? (I)/(N)");
+                    deathChance = carDeath(player.Alcohol, vehicle1.Performance);
+                    Console.WriteLine($"\nTovábbmész? ({100- deathChance}% esélyed van túlélni a jelenlegi állapotodban, és járművel.) (I)/(N)");
                     string userInput = Console.ReadLine();
                     while (userInput.ToLower() != "i" && userInput.ToLower() != "n")
                     {
@@ -1343,19 +1345,115 @@ namespace Pentekesteszimulator
                         Console.WriteLine("\nTovábbmész? (I)/(N)");
                         userInput = Console.ReadLine();
                     }
-                    if(userInput.ToLower() == "i")
+                    while(userInput.ToLower() == "i")
                     {
-                        Console.WriteLine("asd");
-                    }
+                        if (ifDie(deathChance))
+                        {
+                            int dead = r.Next(1, 5);
+                            int survived = 4 - dead;
+                            DisplayEnd(false, $"Feri {vehicle1.Model}-a/e", $"Az egyik kanyart sajnos elszámoltad, kisodródtál az útról, és körbecsavartad a járgányt egy fán. {dead} halott, {survived} sebesült.");
+                        }
+                        else
+                        {
+                            Console.WriteLine(RandomCarPlace());
+                        }
+                        Console.WriteLine($"\nTovábbmész? ({100 - deathChance}% esélyed van túlélni a jelenlegi állapotodban, és járművel.) (I)/(N)");
+                        userInput = Console.ReadLine();
+                        while (userInput.ToLower() != "i" && userInput.ToLower() != "n")
+                        {
+                            Console.WriteLine($"Ez nem \"I\", és nem is \"N\", te {RandomInsult()}");
+                            Console.WriteLine("\nTovábbmész? (I)/(N)");
+                            userInput = Console.ReadLine();
+                        }
+                    }    
+                 Haverok($"Úgy döntöttetek, elég volt a kocsikázásból. {allBeer} sörötök van.");              
                     break;
 
                 case 2:
-                    Falu("Eltekertél a főút végéből egészen a faluközpontig.");
+                    Console.WriteLine($"Beugrottál a karcsú ember {vehicle2.Model}-ébe/ába\nNyomj Entert a vezetéshez...");
+                    Console.ReadKey();
+                    Console.WriteLine($"Érzed, ahogy mind a {vehicle2.Performance} ló dübörög alattad.");
+                    deathChance = carDeath(player.Alcohol, vehicle2.Performance);
+                    Console.WriteLine($"\nTovábbmész? ({100 - deathChance}% esélyed van túlélni a jelenlegi állapotodban, és járművel.) (I)/(N)");
+                    userInput = Console.ReadLine();
+                    while (userInput.ToLower() != "i" && userInput.ToLower() != "n")
+                    {
+                        Console.WriteLine($"Ez nem \"I\", és nem is \"N\", te {RandomInsult()}");
+                        Console.WriteLine("\nTovábbmész? (I)/(N)");
+                        userInput = Console.ReadLine();
+                    }
+                    while (userInput.ToLower() == "i")
+                    {
+                        if (ifDie(deathChance))
+                        {
+                            int dead = r.Next(1, 5);
+                            int survived = 4 - dead;
+                            DisplayEnd(false, $"A karcsú ember {vehicle2.Model}-a/e", $"Az egyik kanyart sajnos elszámoltad, kisodródtál az útról, és körbecsavartad a járgányt egy fán. {dead} halott, {survived} sebesült.");
+                        }
+                        else
+                        {
+                            Console.WriteLine(RandomCarPlace());
+                        }
+                        Console.WriteLine($"\nTovábbmész? ({100 - deathChance}% esélyed van túlélni a jelenlegi állapotodban, és járművel.) (I)/(N)");
+                        userInput = Console.ReadLine();
+                        while (userInput.ToLower() != "i" && userInput.ToLower() != "n")
+                        {
+                            Console.WriteLine($"Ez nem \"I\", és nem is \"N\", te {RandomInsult()}");
+                            Console.WriteLine("\nTovábbmész? (I)/(N)");
+                            userInput = Console.ReadLine();
+                        }
+                    }
+                    Haverok($"Úgy döntöttetek, elég volt a kocsikázásból. {allBeer} sörötök van.");
                     break;
 
                 case 3:
-                    Falu("Eltekertél a főút végéből egészen a faluközpontig.");
+                    Console.WriteLine($"Beugrottál a {friend} {vehicle3.Model}-ébe/ába\nNyomj Entert a vezetéshez...");
+                    Console.ReadKey();
+                    Console.WriteLine($"Érzed, ahogy mind a {vehicle3.Performance} ló dübörög alattad.");
+                    deathChance = carDeath(player.Alcohol, vehicle3.Performance);
+                    Console.WriteLine($"\nTovábbmész? ({100 - deathChance}% esélyed van túlélni a jelenlegi állapotodban, és járművel.) (I)/(N)");
+                    userInput = Console.ReadLine();
+                    while (userInput.ToLower() != "i" && userInput.ToLower() != "n")
+                    {
+                        Console.WriteLine($"Ez nem \"I\", és nem is \"N\", te {RandomInsult()}");
+                        Console.WriteLine("\nTovábbmész? (I)/(N)");
+                        userInput = Console.ReadLine();
+                    }
+                    while (userInput.ToLower() == "i")
+                    {
+                        if (ifDie(deathChance))
+                        {
+                            int dead = r.Next(1, 5);
+                            int survived = 4 - dead;
+                            DisplayEnd(false, $"{friend} {vehicle3.Model}-a/e", $"Az egyik kanyart sajnos elszámoltad, kisodródtál az útról, és körbecsavartad a járgányt egy fán. {dead} halott, {survived} sebesült.");
+                        }
+                        else
+                        {
+                            Console.WriteLine(RandomCarPlace());
+                        }
+                        Console.WriteLine($"\nTovábbmész? ({100 - deathChance}% esélyed van túlélni a jelenlegi állapotodban, és járművel.) (I)/(N)");
+                        userInput = Console.ReadLine();
+                        while (userInput.ToLower() != "i" && userInput.ToLower() != "n")
+                        {
+                            Console.WriteLine($"Ez nem \"I\", és nem is \"N\", te {RandomInsult()}");
+                            Console.WriteLine("\nTovábbmész? (I)/(N)");
+                            userInput = Console.ReadLine();
+                        }
+                    }
+                    Haverok($"Úgy döntöttetek, elég volt a kocsikázásból. {allBeer} sörötök van.");
                     break;
+            }
+        }
+
+        static bool ifDie(int deathChance)
+        {
+            if(deathChance > r.Next(0, 100))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         #endregion //haverok
