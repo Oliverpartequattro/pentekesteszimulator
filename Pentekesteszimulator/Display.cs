@@ -419,7 +419,10 @@ namespace Pentekesteszimulator
 
         static string textCenter(string text)
         {
+            //Console.WriteLine(text, align:"center");
             return new string(' ', (Console.WindowWidth - text.Length) / 2) + text;
         }
     }
 }
+
+//enimál tájp

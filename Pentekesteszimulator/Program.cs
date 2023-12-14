@@ -116,6 +116,10 @@ namespace Pentekesteszimulator
                         }
 
                         int finalMoney = request + (goodCount * 500) - (badCount * 2000);
+                        if (finalMoney < 0)
+                        {
+                            finalMoney = 0;
+                        }
 
                         if (request <= 20000)
                         {
@@ -128,7 +132,16 @@ namespace Pentekesteszimulator
                             else if(badCount > 0 || badCount <= 3)
                             {
                                 Console.WriteLine("Elfogadhatóan beszéltél apáddal, ezért még megadta a kért összeget, de minden csúnya szóért levont 2000Ft-ot, a kedvesekért pedig hozzátett 500-at.");
-                                Console.WriteLine($"{finalMoney} Ft-ot adott neked.");
+                                
+                                if (finalMoney == 0)
+                                {
+                                    Console.WriteLine($"Nem adott semmit mert azt modtad neki hogy \"{input}\".");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"{finalMoney} Ft-ot adott neked.");
+                                }
+
                                 Increase(0, 10, finalMoney);
                             }
                             else
@@ -330,7 +343,7 @@ namespace Pentekesteszimulator
 
         public static void IvasOtthon()
         {
-            int chance = r.Next(0, 100);
+            int chance = r.Next(0, 101);
             string[] options = new string[] { "Sör", "Bor", "Vodka", "\"Vegyes házi 2006\" feliratú átlátszó folyadék műanyagpalackban", "Etil alkohol", "Fagyálló", "Visszamész a szobádba", "Útnak indulsz" };
             int choice = Display("Győrzámoly, Szerencse utca 22/B", "A hűtőt kinyitva szinte már el sem tudod dönteni mit igyál.", " ", "Mit választasz?", player, index, 0, options);
             
@@ -670,7 +683,7 @@ namespace Pentekesteszimulator
         #region szorakozohely
         static void Szorakozohely()
         {
-            int chance = r.Next(0, 100);
+            int chance = r.Next(0, 101);
             string[] options = new string[] { "Ivás", "Az \"éj hölgye\" ", "Vissza a városba" };
             int choice;
             if (chance <= 40)
@@ -706,7 +719,7 @@ namespace Pentekesteszimulator
 
         static void EjHolgye()
         {
-            int chance = r.Next(0, 100);
+            int chance = r.Next(0, 101);
             Increase(0, 30, -10000); //alkohol boldogság pénz
             string[] options = new string[]{ "Megmutatom neki a Fortnite Battle Passomat.",};
             int choice;
@@ -735,7 +748,7 @@ namespace Pentekesteszimulator
 
         static void IngyenesNeni()
         {
-            int chance = r.Next(0, 100);
+            int chance = r.Next(0, 101);
             Increase(0, 50, 0); //alkohol boldogság pénz
             string[] options = new string[] { "Hazaviszed", "Elutasítod és inkább iszol egyet"};
             int choice;
@@ -932,7 +945,7 @@ namespace Pentekesteszimulator
         #region supermarket
         static void Supermarket()
         {
-            int chance = r.Next(0, 100);
+            int chance = r.Next(0, 101);
             string[] options = new string[] { "Veszel egy sört", "Vissza a városba" };
             int choice;
             if (chance <= 70)
@@ -1011,7 +1024,7 @@ namespace Pentekesteszimulator
             static void Falu(string desc)
             {
                 string drinkMan = RandomPerson();
-                int chance = r.Next(0, 100);
+                int chance = r.Next(0, 101);
                 Increase(0, 5, 0); //alkohol boldogság pénz
                 string[] options = new string[] { "Sarki bolt", "Haverokhoz", "Falusi kocsma" };
                 int choice;
@@ -1353,7 +1366,7 @@ namespace Pentekesteszimulator
 
                 Time(1);
                 opponent = RandomPerson();
-                int chance = r.Next(0, 100);
+                int chance = r.Next(0, 101);
 
                 string[] options = new string[] { "Ivás", "Roulette", "Vissza a faluközpontba" };
                 int choice;
@@ -1521,18 +1534,20 @@ namespace Pentekesteszimulator
                                 }
                                 Console.ReadKey(true);
                             }
-                            bigNumTwice = true;
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine($"Mégegyszer feldolgozhatatlanul nagy számot raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadKey();
-                            Roulette(); //PARAMETER
+                            else
+                            {
+                                 bigNumTwice = true;
+                                 Console.ForegroundColor = ConsoleColor.Red;
+                                 Console.WriteLine($"Mégegyszer feldolgozhatatlanul nagy számot raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
+                                 Console.ForegroundColor = ConsoleColor.White;
+                                 Console.ReadKey();
+                                 Roulette(); //PARAMETER
+                            }
                         }
 
                     }
                     else
                     {
-                        
                         if (notNumTwice)
                         {
                             int pickpocket = r.Next(0, 1501);
@@ -1550,12 +1565,14 @@ namespace Pentekesteszimulator
                             }
                             Console.ReadKey(true);
                         }
-                        notNumTwice = true;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"Mégegyszer számon kívül mást raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.ReadKey();
-                        Roulette();
+                        else { 
+                            notNumTwice = true;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($"Mégegyszer számon kívül mást raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadKey();
+                            Roulette();
+                        }
 
                     }
                     break;
@@ -1572,9 +1589,9 @@ namespace Pentekesteszimulator
 
 
 
-        static void Fight(string placeBack, string endPlace)
+        static void Fight(string placeBack, string endPlace, string pickPMan = "goblin")
             {
-                int chance = r.Next(0, 100);
+                int chance = r.Next(0, 101);
                 Console.WriteLine($"A kocsmában részegen {RandomScandal()}, és {opponent} -t {RandomInsult()}-nak/nek hívtad.\n");
                 int pickpocket = r.Next(0, 1501);
                 Thread.Sleep(5000);
@@ -1585,7 +1602,7 @@ namespace Pentekesteszimulator
                 Thread.Sleep(500);
                 Console.WriteLine($"\nAz örjöngő verekedés után mindketten földre kerültetek.");
                 Thread.Sleep(500);
-                Console.WriteLine($"Biológiai leleményességét, és a helyzetet kihasználva, egy goblin kivett a zsebedből {pickpocket} Ft-ot.");
+                Console.WriteLine($"Biológiai leleményességét, és a helyzetet kihasználva, egy {pickPMan} kivett a zsebedből {pickpocket} Ft-ot.");
                 Increase(0, -30, -pickpocket); //alkohol boldogság pénz
                 updateAttributeDisplay();
                 Console.WriteLine("\nKelj fel");
@@ -1606,7 +1623,7 @@ namespace Pentekesteszimulator
                     }
 
                     pickpocket = r.Next(1, 1500);
-                    chance = r.Next(0, 100);
+                    chance = r.Next(0, 101);
                     string[] options = new string[] { "I", "N"};
                     string userInput;
                     Console.WriteLine("Kizsebeled? (I)/(N)");
@@ -1709,7 +1726,7 @@ namespace Pentekesteszimulator
                 Hajlektalan();
             }
 
-            opponent = RandomPerson();
+            opponent = RandomCzechPerson();
             Increase(r.Next(30, 60) / 100.0, 10, -1000); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Vissza a városba", };
             int choice;
@@ -1731,7 +1748,7 @@ namespace Pentekesteszimulator
                     Csehorszag();
                     break;
                 case 3:
-                    Fight("városba", "Hořící kostra pub");
+                    Fight("városba", "Hořící kostra pub", "šotek");
                     CsehSorozo();
                     break;
             }
@@ -1794,18 +1811,18 @@ namespace Pentekesteszimulator
 
         public static void SzerbSorozo()
         {
-            opponent = RandomPerson();
+            opponent = RandomSerbianPerson();
             Increase(r.Next(30, 60) / 100.0, 10, -1000); //alkohol boldogság pénz
             string[] options = new string[] { "Ivás", "Vissza a városba", };
             int choice;
             if (player.Alcohol >= 2.0)
             {
                 options = new string[] { "Ivás", "Vissza a városba", "Duhajkodás" };
-                choice = Display("iznuđena klasa pub", "Lementél a föld alatti kocsmába, és megcsapta egy vicces illat az orrodat.", "A magas véralkoholszinted felszámolta az összes morális és etikai korlátodat.", $"{RandomQuestion()}", player, index, 1, options);
+                choice = Display("Iznuđena klasa pub", "Lementél a föld alatti kocsmába, és megcsapta egy vicces illat az orrodat.", "A magas véralkoholszinted felszámolta az összes morális és etikai korlátodat.", $"{RandomQuestion()}", player, index, 1, options);
             }
             else
             {
-                choice = Display("iznuđena klasa pub", "Lementél a föld alatti kocsmába, és megcsapta egy vicces illat az orrodat. Nem láttad a forrását a sűrű füsttől.", " ", $"{RandomQuestion()}", player, index, 1, options);
+                choice = Display("Iznuđena klasa pub", "Lementél a föld alatti kocsmába, és megcsapta egy vicces illat az orrodat. Nem láttad a forrását a sűrű füsttől.", " ", $"{RandomQuestion()}", player, index, 1, options);
             }
             switch (choice)
             {
@@ -1816,7 +1833,7 @@ namespace Pentekesteszimulator
                     Szerbia();
                     break;
                 case 3:
-                    Fight("városba", "Hořící kostra pub");
+                    Fight("városba", "Iznuđena klasa pub", "гоблин");
                     SzerbSorozo();
                     break;
             }
@@ -1868,6 +1885,7 @@ namespace Pentekesteszimulator
 
 
         //document pont áőáőáőőáőőáőáő
+        //hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás
 
     }
 }
