@@ -19,9 +19,13 @@ namespace Pentekesteszimulator
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
+#pragma warning disable CA1416 // Validate platform compatibility
             Console.SetWindowSize(Console.LargestWindowWidth - 4, Console.LargestWindowHeight - 4);
+#pragma warning restore CA1416 // Validate platform compatibility
 
+#pragma warning disable CA1416 // Validate platform compatibility
             Console.SetWindowPosition(0, 0);
+#pragma warning restore CA1416 // Validate platform compatibility
 
             //Console.WriteLine(carDeath(0.1, 120));
             //Console.WriteLine(carDeath(0.2, 120));
@@ -32,9 +36,8 @@ namespace Pentekesteszimulator
             //Console.WriteLine(carDeath(0.2, 320));
             //Console.WriteLine(carDeath(0.2, 420));
 
-            //Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
+            Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
 
-            Kulfold("das");
         }
 
         #region otthon
@@ -399,7 +402,7 @@ namespace Pentekesteszimulator
                     Busz();
                     break;
                 case 2:
-                    Auto();
+                    Auto("Úgy döntöttél, autóval indulsz útnak.");
                     break;
                 case 3:
                     Bicikli();
@@ -427,7 +430,7 @@ namespace Pentekesteszimulator
         }
 
         #region auto - rendorseg
-        static void Auto()
+        static void Auto(string desc)
         {
             bool szonda = false;
             int chance = r.Next(0, 101);
@@ -438,11 +441,11 @@ namespace Pentekesteszimulator
             {
                 szonda = true;
                 options = new string[] { "Lepadlózod", "Félrehúzódsz"};
-                choice = Display("Főút", "Beugrottál a kocsidba, és útnak indultál.", $"A mögötted levő fekete A6-os Audi felkapcsolta a kék villogóit.", $"{RandomQuestion()}", player, index, 0, options);
+                choice = Display("2002 Opel Astra G", "Beugrottál a kocsidba, és útnak indultál.", $"A mögötted levő fekete A6-os Audi felkapcsolta a kék villogóit.", $"{RandomQuestion()}", player, index, 0, options);
             }
             else
             {
-                choice = Display("Garázs", "Úgy döntöttél, autóval indulsz útnak.", " ", "Hová mész tovább?", player, index, 1, options);
+                choice = Display("2002 Opel Astra G", $"{desc}", " ", "Hová mész tovább?", player, index, 1, options);
             }
 
             switch (choice)
@@ -545,7 +548,7 @@ namespace Pentekesteszimulator
                     Console.WriteLine("A rendőr eltette a szondát, és jó utat kívánt.");
                     Console.ReadKey();
                     Console.ForegroundColor = ConsoleColor.White;
-                    Auto(); //PARAMETER AAAAAAAA
+                    Auto("A rendőrrel lévő találkozás enyhén megrázott, de most megúsztad..."); //PARAMETER AAAAAAAA
                     break;
                 case 2:
                     int bribe;
@@ -564,7 +567,7 @@ namespace Pentekesteszimulator
                         Increase(0, 0, -bribe);
                         Console.WriteLine("A rendőr elrakta a zsebébe a szondát, és jó utat kívánt.");
                         Console.ReadKey();
-                        Auto(); //IDE IS KELL PARAMETER
+                        Auto("A rendőr elfogadta a kenőpénzt, becsukta a szemét és elengedett."); //IDE IS KELL PARAMETER
                     }
                     else
                     {
@@ -1029,7 +1032,7 @@ namespace Pentekesteszimulator
                     case 2:
                         if (boughtBeer == true)
                         {
-                            Haverok();
+                            Haverok($"Összeültél a 3 haveroddal inni.\n{beerCount} sört vittél, a többiekével együtt összesen {allBeer} sörötök van.");
                         }
                         else
                         {
@@ -1254,7 +1257,7 @@ namespace Pentekesteszimulator
             }
 
             #region haverok
-            static void Haverok()
+            static void Haverok(string desc)
             {
                 Time(1);
                 if (allBeer < 3)
@@ -1266,11 +1269,11 @@ namespace Pentekesteszimulator
                 if (char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
                 {
                     options = new string[] { "Isztok egy kört", "Viccesgombáztok", "Autókáztok egyet", "Visszamész a faluközpontba", "Elmentek a templomba" };
-                    choice = Display("Haverod tanyája", $"Összeültél a 3 haveroddal inni.\n{beerCount} sört vittél, a többiekével együtt összesen {allBeer} sörötök van.", "Lehetőségetek van elmenni az éjféli misére", $"{RandomQuestion()}", player, index, 0, options);
+                    choice = Display("Haverod tanyája", $"{desc}", "Lehetőségetek van elmenni az éjféli misére", $"{RandomQuestion()}", player, index, 0, options);
                 }
                 else
                 {
-                    choice = Display("Haverod tanyája", $"Összeültél a 3 haveroddal inni.\n {beerCount} sört vittél, a többiekével együtt összesen {allBeer} sörötök van.", " ", "Mit tesztek?", player, index, 0, options);
+                    choice = Display("Haverod tanyája", $"{desc}", " ", "Mit tesztek?", player, index, 0, options);
                 }
                 switch (choice)
                 {
@@ -1279,13 +1282,13 @@ namespace Pentekesteszimulator
                         {
                             Console.WriteLine("Nincs elég sör hármótoknak, ezért nem isztok.");
                             Console.ReadKey();
-                            Haverok();
+                            Haverok($"Sajnos kevés a sörötök, {allBeer} van, ezért nincs elég mindenkinek!\nVenned kéne...");
                         }
                         else
                         {
                             allBeer -= 3;
                             Increase(r.Next(30, 60) / 100.0, 15, 0); //alkohol boldogság pénz
-                            Haverok();
+                            Haverok($"Ittatok egy jót, már csak {allBeer} sörötök maradt.");
                         }
                         break;
                     case 2:
@@ -1306,14 +1309,38 @@ namespace Pentekesteszimulator
         static void DrunkDriving()
         {
             Increase(0, 2, 0);
-            Vehicle Vehicle1 = RandomVehicle();
+            Vehicle vehicle1 = RandomVehicle();
+            Vehicle vehicle2 = RandomVehicle();
+            Vehicle vehicle3 = RandomVehicle();
 
-            string[] options = new string[] { "Falu" };
-            int choice = Display("Bicikli tároló", "Úgy döntöttél biciklivel indulsz útnak.", " ", $"{Vehicle1}", player, index, 1, options);
+            string[] options = new string[] {$"Feri járgánya: {vehicle1} (milyen Feri?)", $"A karcsú ember járgánya: {vehicle2}", $"{RandomPerson()} járgánya: {vehicle3}"};
+            int choice = Display("Haverod tanyája", "Úgy döntöttetek, elmentek egyet kocsikázni", "", $"Kinek a járgányát választod?", player, index, 1, options);
 
             switch (choice)
             {
                 case 1:
+                    Console.WriteLine($"Beugrottál a haverod {vehicle1}-ébe/ába\nNyomj Entert a vezetéshez...");
+                    Console.ReadKey();
+                    Console.WriteLine($"Érzed, ahogy mind a {vehicle1.Performance} ló dübörög alattad.");
+                    Console.WriteLine("\nTovábbmész? (I)/(N)");
+                    string userInput = Console.ReadLine();
+                    while (userInput.ToLower() != "i" && userInput.ToLower() != "n")
+                    {
+                        Console.WriteLine($"Ez nem \"I\", és nem is \"N\", te {RandomInsult()}");
+                        Console.WriteLine("\nTovábbmész? (I)/(N)");
+                        userInput = Console.ReadLine();
+                    }
+                    if(userInput.ToLower() == "i")
+                    {
+                        Console.WriteLine("asd");
+                    }
+                    break;
+
+                case 2:
+                    Falu("Eltekertél a főút végéből egészen a faluközpontig.");
+                    break;
+
+                case 3:
                     Falu("Eltekertél a főút végéből egészen a faluközpontig.");
                     break;
             }

@@ -20,7 +20,6 @@ Ezt meg en:
 	otthon ivas ml választás véralk. szorzó
 	r.next 0-100ig van mindenhol de a 100 nem szamit at kell irni 0-101
 	time multiplier nem mindenhol van áttírva
-	utalom a rulettet faszom kurva rulett
 
 
 En csinalom:

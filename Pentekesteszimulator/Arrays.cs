@@ -364,6 +364,7 @@ namespace Pentekesteszimulator
              "egy nem létező istenhez fohászkodtál a negyedik utolsó italod után",
              "a hangszóródon hangosan náci indulót játszottál",
              "rácsatlakoztál egy államtársad mobileszközére \"mögötted vagyok\" BlueTooth névvel",
+             "felkeltél, és a hozzád legközelebb eső honfitársadat elkezdted aggresszívan szaglászni"
 
             };
             return scandals[r.Next(0, scandals.Length)];
@@ -394,6 +395,10 @@ namespace Pentekesteszimulator
                 "tervezi, hogy az apja után megy tejért",
                 "bizonyítja, hogy a Föld lapos",
                 "lóháton ostorral a kezében hadonászik",
+                "olajozza a félmeztelen felsőtestét",
+                "üvöltve nehézgépeket operál",
+                "oroszlánként küzd UNO-ban",
+                "rakétahajtóműveket szerel fel egy Lidl-s bevásárlókocsira"
 
             };
             return actions[r.Next(0, actions.Length)];
