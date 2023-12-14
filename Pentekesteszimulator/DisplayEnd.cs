@@ -87,12 +87,19 @@ namespace Pentekesteszimulator
 
             Console.CursorVisible = false;
 
-            Console.WriteLine("Nyomj entert a kilépéshez!\n");
+            Console.WriteLine("Nyomj entert a kilépéshez!\nNyomj C-t a creditek megjelenítéséhez!\n");
             ConsoleKey ret;
             do
             {
                 ret = Console.ReadKey(true).Key;
-            } while (ret != ConsoleKey.Enter);
+            } while (ret != ConsoleKey.Enter && ret != ConsoleKey.C);
+
+            if(ret == ConsoleKey.C)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                credits(40);
+                
+            }
 
             Console.WriteLine("Bezárhatod a programot.");
 
