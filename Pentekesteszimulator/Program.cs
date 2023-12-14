@@ -1057,7 +1057,7 @@ namespace Pentekesteszimulator
                     
                         break;
                     case 3:
-                        FalusiKocsma();
+                        FalusiKocsma("Valahogyan eljutottál a határvégi kocsmához.");
                         break;
                     case 4:
                         if (chance % 10 == 0) 
@@ -1459,7 +1459,7 @@ namespace Pentekesteszimulator
         #endregion //haverok
 
         #region falusikocsma
-        static void FalusiKocsma()
+        static void FalusiKocsma(string desc)
             {
 
                 Time(1);
@@ -1472,7 +1472,7 @@ namespace Pentekesteszimulator
                 {
                     alcPlusTime = true;
                     options = new string[] { "Ivás", "Roulette", "Vissza a faluközpontba", $"Duhajkodás" };
-                    choice = Display("Csévi Szilva Kocsma", "Valahogyan eljutottál a határvégi kocsmához", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat. ", $"{RandomQuestion()}", player, index, 0, options);
+                    choice = Display("Csévi Szilva Kocsma", $"{desc}", "A magas véralkoholszinted felszámolta az összes erkölcsi és morális korlátodat. ", $"{RandomQuestion()}", player, index, 0, options);
                     if(char.ToLower(player.Time[0]) == '2' && char.ToLower(player.Time[1]) == '3')
                     {
                         options = new string[] { "Ivás", "Roulette", "Vissza a faluközpontba", "Duhajkodás", "Elmész az éjféli misére" };
@@ -1492,10 +1492,10 @@ namespace Pentekesteszimulator
                 {
                     case 1:
                         Increase(r.Next(30, 60) / 100.0, 10, -700); //alkohol boldogság pénz
-                        FalusiKocsma();
+                        FalusiKocsma("Ittál egy jót, ez kifejezetten boldoggá tett.");
                         break;
                     case 2:
-                       Roulette();
+                       Roulette("Úgy gondolod, jó ötlet feltenni az összes pénzedet a rouletten, amiről már lekoptak a színek.");
                         break;
                     case 3:
                         Falu("A kocsmából visszasétáltál a faluba.");
@@ -1519,12 +1519,12 @@ namespace Pentekesteszimulator
                 }
             }
 
-            static void Roulette()
+            static void Roulette(string desc)
             {
             string opponent = RandomPerson();
             Increase(0, 0, 0); //alkohol boldogság pénz
             string[] options = new string[] { "Játék", "Vissza a pulthoz" };
-            int choice = Display("Csévi Szilva Pub roulette asztala", $"Úgy gondolod, jó ötlet feltenni az összes pénzedet a rouletten, amiről már lekoptak a színek.", " ", $"{RandomQuestion()}", player, index, 0, options);
+            int choice = Display("Csévi Szilva Pub roulette asztala", $"{desc}", " ", $"{RandomQuestion()}", player, index, 0, options);
 
             static string SpinRoulette(string[] wheel)
             {
@@ -1595,7 +1595,7 @@ namespace Pentekesteszimulator
                                 Thread.Sleep(1000);
                                 Console.ReadKey(true);
 
-                                Roulette();
+                                Roulette("Nyertél egyet a rouletten, ez boldogsággal tölt el.");
                             }
                             else
                             {
@@ -1606,7 +1606,7 @@ namespace Pentekesteszimulator
                                 Thread.Sleep(2000);
                                 Console.ReadKey(true);
 
-                                Roulette(); //PARAMETER
+                                Roulette("Sajnos vesztettél a rouletten, ez szomorúvá tett."); //PARAMETER
                             }
                         }
 
@@ -1639,7 +1639,7 @@ namespace Pentekesteszimulator
                                  Console.WriteLine($"Mégegyszer feldolgozhatatlanul nagy számot raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
                                  Console.ForegroundColor = ConsoleColor.White;
                                  Console.ReadKey();
-                                 Roulette(); //PARAMETER
+                                 Roulette("Feldolgozuhatatlanul nagy számot tettél fel tétnek.\nÉn a helyedben több ilyent nem mernék csinálni."); //PARAMETER
                             }
                         }
 
@@ -1669,14 +1669,14 @@ namespace Pentekesteszimulator
                             Console.WriteLine($"Mégegyszer számon kívül mást raksz fel tétnek, rád fogják hívni a biztonságiőrt.");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadKey();
-                            Roulette();
+                            Roulette("Nem számot tettél fel tétnek.\nÉn a helyedben több ilyent nem mernék csinálni.");
                         }
 
                     }
                     break;
 
                 case 2:
-                    FalusiKocsma(); //PARAMETER
+                    FalusiKocsma("A roulette asztaltól visszamentél a pulthoz."); //PARAMETER
                     break;
 
             }

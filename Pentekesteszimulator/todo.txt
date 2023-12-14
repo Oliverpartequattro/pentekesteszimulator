@@ -8,8 +8,6 @@ Bugfix:
 	sarki bolt rablás haverokkal!!!
 
 Ezt meg en:
-	reszeg vezetes haverokkal - valasztas kinek a whipje inkabb
-	parameter
 	otthon ivas ml választás véralk. szorzó
 	time multiplier nem mindenhol van áttírva
 
