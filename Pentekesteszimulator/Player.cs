@@ -15,12 +15,11 @@ namespace Pentekesteszimulator
 
         public Player1()
         {
-            Money = 30000; // Ft
+            Money = 4000; // Ft
             Alcohol = 0.0; // vérezrelék
 
             Random r = new Random();
-            //Happiness = r.Next(30, 60); // 100-ból
-            Happiness = 100; // 100-ból
+            Happiness = r.Next(30, 60); // 100-ból
 
             Time = "15:00";
         }
