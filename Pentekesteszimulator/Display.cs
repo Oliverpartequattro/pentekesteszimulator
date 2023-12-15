@@ -43,7 +43,7 @@ namespace Pentekesteszimulator
             if(player.Money < 1500)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Vigyázz, nagyon kevés pénzed van! Márcsak {player.Money}Ft-od maradt! Ha elfogy vége lesz a züllésnek.\n");
+                Console.WriteLine($"Vigyázz, nagyon kevés pénzed van! Márcsak {player.Money}Ft-od maradt! Ha elfogy vége lesz a züllésnek. És muszály lesz hazasétálnod.\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
 
@@ -123,71 +123,8 @@ namespace Pentekesteszimulator
                 DisplayEnd(false, "None", "Elfogyott az összes pénzed. Még időben elindulsz hogy gyalog hazaérj.");
             }
 
-            //Start:  //goto hihihi
-            //ConsoleKey ret;
-            //do
-            //{
-            //    ret = Console.ReadKey(true).Key;
-            //} while (ret != ConsoleKey.DownArrow && ret != ConsoleKey.UpArrow && ret != ConsoleKey.Enter);
-
-            ////if(index == 1)
-            ////{
-            ////    switch (ret)
-            ////    {
-            ////        case (ConsoleKey.UpArrow):
-            ////            return Display(location, description, extra, question, player, options.Length, 0, options);
-            ////        case (ConsoleKey.DownArrow):
-            ////            return Display(location, description, extra, question, player, index + 1, 0, options);
-            ////    }
-            ////}
-            ////else if (index == options.Length) 
-            ////{
-            ////    switch (ret)
-            ////    {
-            ////        case (ConsoleKey.UpArrow):
-            ////            return Display(location, description, extra, question, player, index - 1, 0, options);
-            ////        case (ConsoleKey.DownArrow):
-            ////            return Display(location, description, extra, question, player, 1, 0, options);
-            ////    }
-            ////}
-            ////else
-            ////{
-            //    switch (ret)
-            //    {
-            //        case (ConsoleKey.UpArrow):
-            //            index -= 1;
-            //            goto Start;
-            //            break;
-
-            //        //return Display(location, description, extra, question, player, index-1, 0, options);
-            //        case (ConsoleKey.DownArrow):
-            //            index += 1;
-            //            goto Start;
-
-            //            break;
-            //    //return Display(location, description, extra, question, player, index+1, 0, options);
-
-            //        case (ConsoleKey.Enter):
-            //        if (player.Alcohol > 4 && r.Next(1, 5) == 3)
-            //        {
-            //            index = r.Next(1, options.Length + 1);
-            //        }
-
-            //        return index;
-
-
-            //    }
-            //}
-
-
-            //if (player.Alcohol > 4 && r.Next(1, 5) == 3)
-            //{
-            //    index = r.Next(1, options.Length + 1);
-            //}
-
             greenRowThatWillBeWhite = firstRow;
             lastIndex = index;
-
             rePaint(index, greenRowThatWillBeWhite, whiteRowThatWillBeGreen, options);
             ConsoleKey ret;
             bool continueLoop = true;
@@ -378,10 +315,22 @@ namespace Pentekesteszimulator
                 ConsoleColor happCol;
 
                 Console.ForegroundColor = ConsoleColor.Black;
-
+                
                 if (int.Parse(words[1]) >= 80)
                 {
                     happCol = ConsoleColor.DarkGreen;
+
+                    if (plugCount > 0)
+                    {
+                        if (r.Next(0, 2) == 0)
+                        {
+                            happCol = ConsoleColor.Magenta;
+                        }
+                        else
+                        {
+                            happCol = ConsoleColor.DarkMagenta;
+                        }
+                    }
                 }
                 else if (int.Parse(words[1]) >= 60)
                 {

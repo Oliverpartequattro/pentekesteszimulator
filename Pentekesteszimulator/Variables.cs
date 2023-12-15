@@ -17,6 +17,7 @@ namespace Pentekesteszimulator
         public static int beerCount = 0;
         public static int badCount = 0;
         public static int goodCount = 0;
+        public static int plugCount = 0;
         public static int beersInRow = 0;
         public static int deathChance = 0;
         public static int greenRowThatWillBeWhite;

@@ -27,16 +27,8 @@ namespace Pentekesteszimulator
             Console.SetWindowPosition(0, 0);
 #pragma warning restore CA1416 // Validate platform compatibility
 
-            //Console.WriteLine(carDeath(0.1, 120));
-            //Console.WriteLine(carDeath(0.2, 120));
-            //Console.WriteLine(carDeath(0.3, 120));
-            //Console.WriteLine(carDeath(0.4, 120));
-            //Console.WriteLine(carDeath(0.2, 120));
-            //Console.WriteLine(carDeath(0.2, 220));
-            //Console.WriteLine(carDeath(0.2, 320));
-            //Console.WriteLine(carDeath(0.2, 420));
-
-            Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
+            credits(40);
+            //Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
 
         }
 
@@ -655,7 +647,6 @@ namespace Pentekesteszimulator
                     break;
             }
         }
-
 
         #region varos
         static void Varos(string desc)
@@ -1805,7 +1796,7 @@ namespace Pentekesteszimulator
 
         public static void Csehorszag()
         {
-            string[] options = new string[] { "Betérsz a \"hořící kostra\" sörözőbe", "FUVEZES????",};
+            string[] options = new string[] { "Betérsz a \"hořící kostra\" sörözőbe", "Meglátogatod a cseh plugot"};
             int choice = Display("Prága", "Végigmentél az E50-es autópályán egészen Prágáig, és leparkoltál párhuzamosan.", " ", $"{RandomQuestion()}", player, index, 1, options);
             switch (choice)
             {
@@ -1813,10 +1804,36 @@ namespace Pentekesteszimulator
                     CsehSorozo();
                     break;
                 case 2:
-                    //Brownie();
+                    Plug();
                     break;
             }
         }
+
+        public static void Plug()
+        {
+            string[] options = new string[] { "Brownie", "Pár g" };
+            int choice = Display("Találka hely", "Megbeszélted hol találkozok és most rá vársz.", " ", $"Mit veszel?", player, index, 1, options);
+            switch (choice)
+            {
+                case 1:
+                    Console.WriteLine("Elfogyasztottad a browniekat, és most jól érzed magad.");
+                    Increase(0, 100, -3000);
+                    Console.ReadKey(true);
+                    plugCount += 1;
+
+                    Csehorszag();
+                    break;
+                case 2:
+                    Console.WriteLine("Elfogyasztottad a szajrét, és most jól érzed magad.");
+                    Increase(0, 100, -3000);
+                    Console.ReadKey(true);
+                    plugCount += 1;
+
+                    Csehorszag();
+                    break;
+            }
+        }
+
         public static void CsehSorozo()
         {
             if (!voltCsoves)
@@ -1826,7 +1843,7 @@ namespace Pentekesteszimulator
 
             opponent = RandomCzechPerson();
             Increase(r.Next(30, 60) / 100.0, 10, -1000); //alkohol boldogság pénz
-            string[] options = new string[] { "Ivás", "Vissza a városba", };
+            string[] options = new string[] { "Ivás", "Elhagyod a kocsmát", };
             int choice;
             if (player.Alcohol >= 2.0)
             {
@@ -1980,7 +1997,6 @@ namespace Pentekesteszimulator
         }
 
         #endregion //kulfold
-
 
         //document pont áőáőáőőáőőáőáő
         //hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás, hibás
