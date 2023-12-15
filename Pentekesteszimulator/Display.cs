@@ -35,7 +35,7 @@ namespace Pentekesteszimulator
             if(player.Alcohol > 4.0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Vigyázz, figyelj az alkohol szintedre, mert halál közeli állapotban vagy!\n");
+                Console.WriteLine("Vigyázz, figyelj az alkohol szintedre, mert halál közeli állapotban vagy!\nNéha még azt sem tudod mit akarsz, ezért céltalanul barangolsz.\n");
                 Console.ForegroundColor = ConsoleColor.White;
 
             }
@@ -43,7 +43,7 @@ namespace Pentekesteszimulator
             if(player.Money < 1500)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Vigyázz, nagyon kevés pénzed van! Márcsak {player.Money}Ft-od maradt! Ha elfogy vége lesz a züllésnek. És muszály lesz hazasétálnod.\n");
+                Console.WriteLine($"Vigyázz, nagyon kevés pénzed van! Már csak {player.Money}Ft-od maradt! Ha elfogy vége lesz a züllésnek. És muszáj lesz hazasétálnod.\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
 

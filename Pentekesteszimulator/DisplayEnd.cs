@@ -97,7 +97,7 @@ namespace Pentekesteszimulator
             if(ret == ConsoleKey.C)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                credits(40);
+                credits(201);
                 
             }
 

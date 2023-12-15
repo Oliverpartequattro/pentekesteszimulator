@@ -27,8 +27,7 @@ namespace Pentekesteszimulator
             Console.SetWindowPosition(0, 0);
 #pragma warning restore CA1416 // Validate platform compatibility
 
-            credits(40);
-            //Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
+            Otthon("Egy 18 éves Jedlikes diák vagy. Rettentően másnaposan ébredsz fel, ezen a felhős péntek délutánon úgy érzed, mintha egy ősapád 2000 év távlatából szólna hozzád, hogy egy speciális képességgel áldottak meg:\nA CSALÁDFÁD ALKOHOLISTÁINAK EREJE FOLYIK A VÉREDBEN!\n\nÚgy érzed, egyetlen célod van: LEGYÉL GYŐRZÁMOLY LEGHÍRHEDTEBB ALKOHOLISTÁJA!");
 
         }
 

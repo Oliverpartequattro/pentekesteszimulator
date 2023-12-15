@@ -17,11 +17,11 @@ namespace Pentekesteszimulator
             string[] sorok =
             {
                 "A JÁTÉKOT KITALÁLTA:",
-                "Ronz Olivér",
+                "Roncz Olivér",
                 "Süke Benedek",
                 "",
                 "A JÁTÉKOT KÉSZÍTETTE:",
-                "Ronz Olivér",
+                "Roncz Olivér",
                 "Süke Benedek",
                 "",
                 "KÜLÖN KÖSZÖNET:",
@@ -57,7 +57,7 @@ namespace Pentekesteszimulator
                 }
                 Thread.Sleep(speed);
             }
-            for (int i = 0; i < sorok.Length + 2; i++) //mi ez a plusz szám?
+            for (int i = 0; i < sorok.Length + 22; i++) //mi ez a plusz szám?
             {
                 Console.WriteLine();
                 Thread.Sleep(speed);
